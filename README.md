@@ -30,7 +30,7 @@ In the grim darkness of the 41st millenium, it's a bit annoying to try and build
 ## Features
 ### Essential
 - Create a character via gui interface
-- Save character to the database 
+- Save character to the database
 - Update character
 - Export character as a printable PDF
 
@@ -39,6 +39,11 @@ In the grim darkness of the 41st millenium, it's a bit annoying to try and build
 - Togglable combat status modifiers
 - Archiving characters
 - Dice Roller with automated DoS/DoF calculation
+- Daemon Weapon/Armor Creation
+- Create custom database entries
+- NPC Maker
+- Ability to have multiple characters open and swap between them
+- create .exe file for easy startup
 
 ## Do Know
 - Database creation with sqlite or postgresql
@@ -50,7 +55,7 @@ In the grim darkness of the 41st millenium, it's a bit annoying to try and build
 
 ## Libraries needed
 - GUI
-    - Tk
+    - Tkinter
 - Database interfacing
 - PDF exporting
 
