@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from math import floor
+from PIL import Image, ImageTk
 
 
 class CharacteristicsPage:
@@ -9,37 +10,60 @@ class CharacteristicsPage:
         self.character = character
 
     def top_row(self):
-        name_and_archetype = Frame(self.root)
-        name_label = Label(name_and_archetype, text=f'Name: {self.character["name"]}')
-        name_label.grid(row=0, column=0)
-        archetype_label = Label(name_and_archetype, text=f'Archetype: {self.character["archetype"]}')
-        archetype_label.grid(row=1, column=0)
-        name_and_archetype.grid(row=0, column=0)
+        top_row_frame = Frame(self.root, relief="groove")
+        name_label = Label(top_row_frame, text=f'Name: {self.character["name"]}\n'
+                                               f'Archetype: {self.character["archetype"]}')
+        name_label.grid(row=0, column=0, sticky=W)
 
-        variables = Frame(self.root)
-        wounds = Label(variables, text=f'Wounds: CHANGES/{self.character["characteristics"]["wounds"]} ')
-        infamy_points = Label(variables, text=f'Infamy: CHANGES/{floor(self.character["characteristics"]["infamy"]/10)}')
-        corruption = Label(variables, text=f'Corruption: {self.character["characteristics"]["corruption"]} ')
-        ag_mod = floor(self.character["characteristics"]["agility"]/10)
-        movement = Label(variables, text=f'Movement:')
-        move_values = Label(variables, text=f'Half {ag_mod} '
-                                            f'Full {3*ag_mod} \n'
-                                            f'Charge {6*ag_mod} '
-                                            f'Run {9*ag_mod}')
-        wounds.grid(row=0, column=0)
-        infamy_points.grid(row=0, column=1)
-        corruption.grid(row=0, column=2)
-        movement.grid(row=0, column=3)
-        move_values.grid(row=0, column=4)
-        variables.grid(row=0, column=1)
+        wounds_box = Frame(top_row_frame)
+        wounds_title = Label(wounds_box, text="Wounds:")
+        wounds_tracker = Spinbox(wounds_box,
+                                 from_=0,
+                                 to=self.character['characteristics']["wounds"],
+                                 width=5,
+                                 justify=RIGHT)
+        wounds_total = Label(wounds_box, text=f"/{self.character['characteristics']['wounds']}")
+        wounds_title.grid(row=0, column=0, sticky=W)
+        wounds_tracker.grid(row=0, column=1, sticky=E)
+        wounds_total.grid(row=0, column=2, sticky=E)
+
+        infamy_box = Frame(top_row_frame)
+        infamy_title = Label(infamy_box, text="Infamy:")
+        infamy_tracker = Spinbox(infamy_box,
+                                 from_=0,
+                                 to=floor(self.character["characteristics"]["infamy"] / 10),
+                                 width=5,
+                                 justify=RIGHT)
+        infamy_total = Label(infamy_box, text=floor(self.character["characteristics"]["infamy"] / 10))
+        infamy_title.grid(row=0, column=0, sticky=W)
+        infamy_tracker.grid(row=0, column=1, sticky=E)
+        infamy_total.grid(row=0, column=2, sticky=E)
+
+        corruption = Label(top_row_frame, text=f'Corruption: {self.character["characteristics"]["corruption"]} ')
+        ag_mod = floor(self.character["characteristics"]["agility"] / 10)
+        movement = Label(top_row_frame, text=f'Movement:')
+        move_values = Label(top_row_frame, text=f'Half {ag_mod} '
+                                                f'Full {3 * ag_mod} \n'
+                                                f'Charge {6 * ag_mod} '
+                                                f'Run {9 * ag_mod}')
+        afflictions = Text(top_row_frame, height=4, width=20)
+
+        wounds_box.grid(row=0, column=1)
+        infamy_box.grid(row=0, column=2)
+        corruption.grid(row=0, column=3)
+        movement.grid(row=0, column=4)
+        move_values.grid(row=0, column=5)
+        afflictions.grid(row=0, column=6, sticky=E)
+
+        top_row_frame.grid(row=0, column=0, padx=5, pady=5, columnspan=3)
 
     def characteristics_box(self):
-        charframe = Frame(self.root)
+        charframe = Frame(self.root, relief="groove")
         for characteristic in self.character["characteristics"]:
             charlabel = Label(charframe,
                               text=f'{characteristic.title()}: {self.character["characteristics"][characteristic]}')
-            charlabel.grid()
-        charframe.grid(row=1, column=0)
+            charlabel.grid(sticky=E)
+        charframe.grid(row=1, column=0, sticky=N)
 
     def skills_box(self):
         skills_frame = Frame(self.root)
@@ -51,12 +75,10 @@ class CharacteristicsPage:
                 skill_name.grid(sticky=W, row=x, column=y)
                 x += 1
                 for sub_category, rating in self.character["skills"][skill].items():
-                    # print(sub_category, rating)
+                    # print(sub_category, x, y)
 
-                    sub_category_frame = Frame(skills_frame)
-                    skill_label = Label(sub_category_frame, text=f'{sub_category}: {rating}')
-                    skill_label.grid()
-                    sub_category_frame.grid(column=y)
+                    skill_label = Label(skills_frame, text=f'{sub_category}: {rating}')
+                    skill_label.grid(row=x, column=y)
                     x += 1
             else:
                 skill_label = Label(skills_frame,
@@ -64,21 +86,20 @@ class CharacteristicsPage:
                 skill_label.grid(sticky=W, row=x, column=y)
                 x += 1
 
-            if x > 18:
+            if x > 10:
                 y += 1
                 x = 0
 
         skills_frame.grid(row=1, column=1)
 
     def description_box(self):
-        # TODO: Properly Install PIL and get images to scale
         description_frame = Frame(self.root)
-        picture = PhotoImage(file=self.character["picture"])
-        token_image = Label(description_frame, image=picture, height=80, width=80)
-        token_image.image = picture
-        token_image.grid(row=0, column=0)
+        picture = ImageTk.PhotoImage(Image.open(self.character["picture"]).resize((80, 80), Image.ANTIALIAS))
+        token_image_label = Label(description_frame, image=picture)
+        token_image_label.image = picture
+        token_image_label.grid(row=0, column=0)
 
-        alignment_image = PhotoImage(file=f'assets/{self.character["alignment"]}.png')
+        alignment_image = ImageTk.PhotoImage(Image.open(f'assets/{self.character["alignment"]}.png').resize((80, 80), Image.ANTIALIAS))
         alignment = Label(description_frame, image=alignment_image, height=80, width=80)
         alignment.image = alignment_image
         alignment.grid(row=0, column=1)

@@ -3,9 +3,9 @@ from tkinter import ttk
 from Toolbar import *
 from CharacterSelection import *
 from Information import *
-from PageButtons import *
+# from PageButtons import *
 
-
+selector = "characteristics"
 
 root = Tk()
 root.title("Liber Characterum")
@@ -20,12 +20,12 @@ charsel = CharacterSelection(root)
 charsel.create()
 
 # Information Page
-info = Information(root)
+info = Info(root)  # , selector)
 info.create()
 
 
 # Page Buttons
-pgb = PageButtons(root)
-pgb.create()
+# pgb = PageButtons(root, selector)
+# pgb.create()
 
 root.mainloop()

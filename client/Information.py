@@ -1,6 +1,12 @@
 from tkinter import *
 from tkinter import ttk
+# from PageButtons import *
 from CharacteristicsPage import *
+from TraitsAndTalentsPage import *
+from EquipmentPage import *
+from GearPage import *
+from PowersPage import *
+from AdvancementsPage import *
 
 testcharacter = {
     'name': "Testy McTestface",
@@ -54,18 +60,69 @@ testcharacter = {
         "tech_use": 30,
         "tracking": -20,
         "trade": {"Software Development": 20}
+    },
+    "talents": [
+        {
+            "name": "Touch Typer",
+            "description": "Able to type without looking at the keyboard",
+            "book": "Internet"
+         },
+        {
+            "name": "Google-fu",
+            "description": "+10 to Inquiry tests when using a search engine",
+            "book": "Internet"
+        }
+    ],
+    "traits": [
+        {
+            "name": "Flatiron Alumni",
+            "description": "+10 to social tests during interviews with other Flatiron Alumni",
+            "book": "Canvas"
+        },
+        {
+            "name": "Just one more test...",
+            "description": "+10 to Toughness tests for staying up late to work on code.",
+            "book": "Michael Law's Guide to Coding"
+        }
+    ],
+    "equipment": {
+        "weapons": {},
+        "armors": {}
     }
 }
 
 
-class Information:
-    def __init__(self, root):
+class Info:
+    def __init__(self, root):  # , selector):
         self.root = root
+        self.selector = "traits_talents"
 
     def create(self):
+        print(self.selector)
         infoframe = ttk.Frame(self.root, width=1200, height=400, relief="groove")
         # Put comparator statement for checking which panel to access
         characteristicspage = CharacteristicsPage(root=infoframe, character=testcharacter)
-        characteristicspage.create()
+        traits_and_talents_page = TraitsAndTalentsPage(root=infoframe, character=testcharacter)
+        equipment_page = EquipmentPage(root=infoframe, character=testcharacter)
+        gear_page = GearPage(root=infoframe, character=testcharacter)
+        powers_page = PowersPage(root=infoframe, character=testcharacter)
+        advancements_page = AdvancementsPage(root=infoframe, character=testcharacter)
+        if self.selector == "characteristics":
+            characteristicspage.create()
+        elif self.selector == "traits_talents":
+            traits_and_talents_page.create()
+        elif self.selector == "equipment":
+            equipment_page.create()
+        elif self.selector == "gear":
+            gear_page.create()
+        elif self.selector == "powers":
+            powers_page.create()
+        elif self.selector == "advancement":
+            advancements_page.create()
+        else:
+            pass
 
-        infoframe.grid()
+        # pgb = PageButtons(self.root)
+        # pgb.create()
+
+        infoframe.grid(sticky=E, row=2, column=0, padx=5, pady=5)

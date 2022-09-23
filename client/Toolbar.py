@@ -7,7 +7,7 @@ class Toolbar:
         self.root = root
 
     def create(self):
-        toolbar = ttk.Frame(self.root)
+        toolbar = ttk.Frame(self.root, relief="groove")
 
         # File
         filelabel = Label(toolbar, text="File")
@@ -45,4 +45,4 @@ class Toolbar:
         helplabel.grid(column=3, row=0)
         helpdropdown.grid(column=3, row=1)
 
-        toolbar.grid()
+        toolbar.grid(row=0, column=0, padx=5, pady=5)
