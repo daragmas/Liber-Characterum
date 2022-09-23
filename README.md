@@ -76,3 +76,5 @@ In the grim darkness of the 41st millenium, it's a bit annoying to try and build
 - Mutations
 - Psychic Powers
 
+### BEHOLD! THE DATABASE SCHEMA!
+![shema](schema.png)

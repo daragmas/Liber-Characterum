@@ -6,6 +6,7 @@ from Information import *
 from PageButtons import *
 
 
+
 root = Tk()
 root.title("Liber Characterum")
 root.geometry("1200x600")
