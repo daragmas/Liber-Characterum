@@ -86,8 +86,42 @@ testcharacter = {
         }
     ],
     "equipment": {
-        "weapons": {},
-        "armors": {}
+        "weapons": [
+            {
+                "name": "Laspistol",
+                "class": "basic",
+                "damage": "1d10+2",
+                "damage_type": "E",
+                "penetration": 0,
+                "range": 30,
+                "rate_of_fire": "S/2/-",
+                "clip": 30,
+                "reload": "half",
+                "special": ["reliable", "variable fire"]
+            },
+{
+                "name": "Another Laspistol",
+                "class": "basic",
+                "damage": "1d10+2",
+                "damage_type": "E",
+                "penetration": 0,
+                "range": 30,
+                "rate_of_fire": "S/2/-",
+                "clip": 30,
+                "reload": "half",
+                "special": ["reliable", "variable fire"]
+            }
+            ],
+        "armors":
+            [
+                {
+                    "name": "Guard Flak Armor",
+                    "coverage": "all",
+                    "armor_points": 4,
+                    "weight": "11",
+                }
+            ]
+
     }
 }
 
@@ -95,7 +129,7 @@ testcharacter = {
 class Info:
     def __init__(self, root):  # , selector):
         self.root = root
-        self.selector = "traits_talents"
+        self.selector = "advancements"
 
     def create(self):
         print(self.selector)
@@ -117,7 +151,7 @@ class Info:
             gear_page.create()
         elif self.selector == "powers":
             powers_page.create()
-        elif self.selector == "advancement":
+        elif self.selector == "advancements":
             advancements_page.create()
         else:
             pass
