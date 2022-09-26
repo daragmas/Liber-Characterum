@@ -14,14 +14,17 @@ In the grim darkness of the 41st millenium, it's a bit annoying to try and build
 - [ ] Only War
 - [ ] Deathwatch
 - [ ] Rogue Trader
+- [ ] Dark Heresy
 
 
 ## To Do List
 
-- [ ] Set up Github Repo
+- [X] Set up Github Repo
 - [ ] Create basic database
     - [ ] Allow for custom database entries
 - [ ] Create Interface with Tk
+  - [ ] Base Wireframes
+  - [ ] Database Interaction
 - [ ] Configure Character Creation Interface
 - [ ] Allow character saving as a database file
     - [ ] Character Exporting as .pdf
@@ -46,7 +49,7 @@ In the grim darkness of the 41st millenium, it's a bit annoying to try and build
 - create .exe file for easy startup
 
 ## Do Know
-- Database creation with sqlite or postgresql
+- Database creation with sqlite or postgresql. Maybe MongoDB?
 - How to play Black Crusade (sorta)
 
 ## Don't Know

@@ -3,7 +3,8 @@ from tkinter import ttk
 from Toolbar import *
 from CharacterSelection import *
 from Information import *
-# from PageButtons import *
+
+# TODO: import ttk Styles
 
 testcharacter = {
     'name': "Testy McTestface",
@@ -68,6 +69,11 @@ testcharacter = {
             "name": "Google-fu",
             "description": "+10 to Inquiry tests when using a search engine",
             "book": "Internet"
+        },
+        {
+            "name": "Psy Rating 1",
+            "description": "Do some wacky psychic shit, brah!",
+            "book": "Black Crusade Core Rulebook"
         }
     ],
     "traits": [
@@ -80,6 +86,11 @@ testcharacter = {
             "name": "Just one more test...",
             "description": "+10 to Toughness tests for staying up late to work on code.",
             "book": "Michael Law's Guide to Coding"
+        },
+        {
+            "name": "Psyker",
+            "description": "You can do a psychic, if you train!",
+            "book": "Black Crusade Core Rulebook"
         }
     ],
     "equipment": {
@@ -127,14 +138,14 @@ testcharacter = {
                     "quality": "average",
                     "description": "A thing of average quality."
                 },
-{
+                {
                     "name": "Another Thing",
                     "book": "Book 2",
                     "quantity": 2,
                     "quality": "best",
                     "description": "A thing of great quality."
                 },
-{
+                {
                     "name": "Thing number 3",
                     "book": "Book 3",
                     "quantity": 3,
@@ -164,13 +175,37 @@ testcharacter = {
             "description": "It work!?!?!"
         }
     ],
-    "mutations":
-    [
+    "mutations": [
         {
             "name": "Test Mutation",
             "description": "This is a test value"
         }
-    ]
+    ],
+    "psychic": {
+        "rating": 1,
+        "class": "unbound",
+        "type": {
+            "fettered": "Focus Test with PR equal to half normal. \nNo chance for Psychic Phenomena",
+            "unfettered": "If you roll doubles on the Focus Test,\n roll for Psychic Phenomena, adding +10 to the roll.",
+            "push": "Add up to +5 to PR when rolling Focus Test.\n Roll for Psychic Phenomena at a +5 for every +1 to "
+                    "PR",
+            "sustained": "+10 to all rolls for Psychic Phenomena.\n Decrease PR by 1 per power sustained",
+        },
+        "powers": [
+            {
+                "name": "Doombolt",
+                "action": "half",
+                "focus": "willpower",
+                "focus_difficulty": 0,
+                # TODO: Figure out how to do difference range values (Self, scaling with PR, static values)
+                "range": 20,
+                "sustained": "",
+                "grouping": "unaligned",
+                "subtypes": ["attack", "concentration"],
+                "description": "Psychic Barrage. 1d10+PR PEN 8"
+            }
+        ]
+    }
 }
 
 character_list = [testcharacter]

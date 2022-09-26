@@ -41,7 +41,7 @@ class EquipmentPage:
 
             weapon_subframe.grid()
 
-        weapons_frame.grid(row=1, column=0, sticky=N)
+        weapons_frame.grid(row=0, column=0, sticky=N)
 
     def armors(self):
         # TODO: Set up "equipped" parameter that handles ap values on diagram
@@ -61,10 +61,11 @@ class EquipmentPage:
             weight.grid(row=1, column=1)
             armor_subframe.grid()
 
-        armors_frame.grid(row=1, column=1, sticky=N)
+        armors_frame.grid(row=0, column=1, sticky=N)
 
     def armor_diagram(self):
         # TODO: Set up fields for AP values on body parts
+        # TODO: Fix scaling of armor diagram
 
         canvas_frame = Frame(self.root, height=200, width=200)
         canvas_frame.grid(row=0, column=2, sticky=NE, rowspan=2, columnspan=2)
@@ -75,7 +76,20 @@ class EquipmentPage:
         diagram_canvas.pack(fill="both", expand=True)
         diagram_canvas.create_image(0, 0, image=diagram_image, anchor="nw")
 
+    def add_weapon(self):
+        print("To be created!")
+
+    def add_armor(self):
+        print("To be created!")
+
+    def add_equipment_buttons(self):
+        add_weapon_button = Button(self.root, text="Add Weapon", command=self.add_weapon)
+        add_armor_button = Button(self.root, text="Add Armor", command=self.add_armor)
+        add_weapon_button.grid(row=1, column=0)
+        add_armor_button.grid(row=1, column=1)
+
     def create(self):
         self.weapons()
         self.armors()
         self.armor_diagram()
+        self.add_equipment_buttons()

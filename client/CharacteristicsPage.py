@@ -24,6 +24,7 @@ class CharacteristicsPage:
         wounds_total = Label(wounds_box, text=f"/{self.character['characteristics']['wounds']}")
         wounds_tracker.grid(row=0, column=0, sticky=E)
         wounds_total.grid(row=0, column=1, sticky=E)
+        # TODO: Add saving current wounds between switching tabs
 
         infamy_box = LabelFrame(top_row_frame, text="Infamy:")
         infamy_tracker = Spinbox(infamy_box,
@@ -34,6 +35,7 @@ class CharacteristicsPage:
         infamy_total = Label(infamy_box, text=floor(self.character["characteristics"]["infamy"] / 10))
         infamy_tracker.grid(row=0, column=0, sticky=E)
         infamy_total.grid(row=0, column=1, sticky=E)
+        # TODO: Add saving current IP between switching tabs
 
         corruption = Label(top_row_frame, text=f'Corruption: {self.character["characteristics"]["corruption"]} ')
         ag_mod = floor(self.character["characteristics"]["agility"] / 10)
@@ -45,6 +47,8 @@ class CharacteristicsPage:
         afflictions_box = LabelFrame(top_row_frame, text="Afflictions and Conditions")
         afflictions = Text(afflictions_box, height=4, width=20)
         afflictions.pack()
+
+        # TODO: Add saving what is written in the afflictions box
 
         wounds_box.grid(row=0, column=1)
         infamy_box.grid(row=0, column=2)
@@ -87,7 +91,8 @@ class CharacteristicsPage:
             if x > 10:
                 y += 1
                 x = 0
-
+        # TODO: Add functionality to modify skill ratings via clicking on the value
+        # TODO: Add functionality to add new specialist skills
         skills_frame.grid(row=1, column=1)
 
     def description_box(self):
@@ -109,6 +114,7 @@ class CharacteristicsPage:
         details = Text(description_frame, height=10, width=20, yscrollcommand=detail_scroll.set)
         details.grid(row=1, column=0, columnspan=2)
 
+        # TODO: Add saving what is written in the description box
         description_frame.grid(row=1, column=2)
 
     def create(self):
