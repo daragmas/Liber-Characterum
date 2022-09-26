@@ -12,8 +12,6 @@ from AdvancementsPage import *
 class Info:
     def __init__(self, root, character):
         self.root = root
-        self.selector = StringVar()
-        self.selector.set("characteristics")
         self.character = character
         self.info_frame = ttk.Frame(self.root, width=1200, height=400, relief="groove")
         self.info_frame.grid(sticky=E, row=2, column=0, padx=5, pady=5)
@@ -84,6 +82,5 @@ class Info:
         page_buttons.grid(row=3, column=0, padx=5, pady=5)
 
     def create(self):
-        print(self.selector)
-
         self.page_buttons()
+        self.render_characteristics()

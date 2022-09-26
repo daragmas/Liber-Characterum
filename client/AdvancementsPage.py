@@ -8,7 +8,7 @@ class AdvancementsPage:
         self.character = character
 
     def xp(self):
-        xp_frame = Frame(self.root)
+        xp_frame = LabelFrame(self.root, text="Experience Points")
         xp_label = Label(xp_frame, text=f'{self.character["spent_xp"]} xp / {self.character["total_xp"]} xp')
         avail_xp_label = Label(xp_frame, text=f'Available XP: {self.character["total_xp"]-self.character["spent_xp"]}')
         xp_label.grid(row=0, column=0)
@@ -17,9 +17,7 @@ class AdvancementsPage:
         xp_frame.grid(row=0, column=0)
 
     def alignment(self):
-        alignment_box = Frame(self.root)
-        alignment_label = Label(alignment_box, text='Alignment')
-        alignment_label.grid(row=0, column=0, columnspan=2)
+        alignment_box = LabelFrame(self.root, text='Alignment')
 
         khorne = Label(alignment_box, text=f'Khorne: {self.character["total_alignments"]["khorne"]}')
         nurgle = Label(alignment_box, text=f'Nurgle: {self.character["total_alignments"]["nurgle"]}')
@@ -39,25 +37,21 @@ class AdvancementsPage:
         alignment_box.grid(row=0, column=1)
 
     def advancements(self):
-        advancements_frame = Frame(self.root)
-        advancements_label = Label(advancements_frame, text="Advancements")
-        advancements_label.grid(row=0, column=0)
+        advancements_frame = LabelFrame(self.root, text="Advancements")
         for advancement in self.character["purchased_advancements"]:
             advancement_label = Label(advancements_frame, text=advancement["name"])
             advancement_label.grid(sticky=W)
         advancements_frame.grid(row=1, column=0)
 
     def mutations(self):
-        mutations_frame = Frame(self.root)
-        mutations_label = Label(mutations_frame, text="Gifts from the Gods")
-        mutations_label.grid(row=0, column=0)
+        mutations_frame = LabelFrame(self.root, text="Gifts from the Gods")
         for mutation in self.character["mutations"]:
             mutation_label = Label(mutations_frame, text=mutation["name"])
             mutation_label.grid()
         mutations_frame.grid(row=1, column=1)
 
     def selection(self):
-        selection_frame = Frame(self.root)
+        selection_frame = LabelFrame(self.root, text="Info")
 
         # TODO: Create functionality for clicking something on this tab and it appearing in the frame
         selection_label = Label(selection_frame,

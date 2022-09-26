@@ -9,12 +9,9 @@ class EquipmentPage:
         self.character = character
 
     def weapons(self):
-        weapons_frame = Frame(self.root)
-        weapons_label = Label(weapons_frame, text="Weapons")
-        weapons_label.grid(row=0, column=0)
+        weapons_frame = LabelFrame(self.root, text="Weapons")
 
         for weapon in self.character["equipment"]["weapons"]:
-            print(weapon)
             weapon_subframe = Frame(weapons_frame)
             name = Label(weapon_subframe, text=f'Name: {weapon["name"].title()}')
             weapon_class = Label(weapon_subframe, text=f'Class: {weapon["class"].title()}')
@@ -48,9 +45,7 @@ class EquipmentPage:
 
     def armors(self):
         # TODO: Set up "equipped" parameter that handles ap values on diagram
-        armors_frame = Frame(self.root)
-        armors_label = Label(armors_frame, text="Armors")
-        armors_label.grid(row=0, column=0)
+        armors_frame = LabelFrame(self.root, text="Armors")
 
         for armor in self.character["equipment"]["armors"]:
             armor_subframe = Frame(armors_frame)

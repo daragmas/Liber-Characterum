@@ -13,9 +13,7 @@ class TraitsAndTalentsPage:
         print(name, desc, book)
 
     def talents_list(self):
-        talents_frame = Frame(self.root)
-        talent_label = Label(talents_frame, text="Talents")
-        talent_label.grid(row=0, column=0, sticky=N)
+        talents_frame = LabelFrame(self.root, text="Talents")
 
         talents_subframe = Frame(talents_frame)
         for talent in self.character["talents"]:
@@ -28,9 +26,7 @@ class TraitsAndTalentsPage:
         talents_frame.grid(row=0, column=0)
 
     def traits_list(self):
-        traits_frame = Frame(self.root)
-        trait_label = Label(traits_frame, text="Traits")
-        trait_label.grid(row=0, column=0, sticky=N)
+        traits_frame = LabelFrame(self.root, text="Traits")
 
         traits_subframe = Frame(traits_frame)
         for trait in self.character["traits"]:
@@ -43,7 +39,7 @@ class TraitsAndTalentsPage:
         traits_frame.grid(row=0, column=1)
 
     def description_box(self):
-        description_frame = Frame(self.root)
+        description_frame = LabelFrame(self.root, text="Info")
         description_name = Label(description_frame, text=self.selected["name"])
         description_book = Label(description_frame, text=self.selected["book"])
         description_description = Label(description_frame, text=self.selected["desc"])
