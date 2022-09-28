@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import ttk
-# from PageButtons import *
 from CharacteristicsPage import *
 from TraitsAndTalentsPage import *
 from EquipmentPage import *
@@ -24,14 +23,19 @@ class Info:
     def create(self):
         characteristics_page = CharacteristicsPage(root=self.characteristics_tab, character=self.character)
         characteristics_page.create()
+
         traits_and_talents_page = TraitsAndTalentsPage(root=self.traits_and_talents_tab, character=self.character)
         traits_and_talents_page.create()
+
         equipment_page = EquipmentPage(root=self.equipment_tab, character=self.character)
         equipment_page.create()
+
         gear_page = GearPage(root=self.gear_tab, character=self.character)
         gear_page.create()
+
         powers_page = PowersPage(root=self.powers_tab, character=self.character)
         powers_page.create()
+
         advancements_page = AdvancementsPage(root=self.advancements_tab, character=self.character)
         advancements_page.create()
 
