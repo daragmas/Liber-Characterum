@@ -11,76 +11,33 @@ from AdvancementsPage import *
 
 class Info:
     def __init__(self, root, character):
-        self.root = root
+        self.root = ttk.Notebook(root)
+        self.root.grid()
         self.character = character
-        self.info_frame = ttk.Frame(self.root, width=1200, height=400, relief="groove")
-        self.info_frame.grid(sticky=E, row=2, column=0, padx=5, pady=5)
-
-    def clear_frame(self):
-        for widget in self.info_frame.winfo_children():
-            widget.destroy()
-
-    def render_characteristics(self):
-        self.clear_frame()
-        characteristics_page = CharacteristicsPage(root=self.info_frame, character=self.character)
-        characteristics_page.create()
-
-    def render_traits_talents(self):
-        self.clear_frame()
-        traits_and_talents_page = TraitsAndTalentsPage(root=self.info_frame, character=self.character)
-        traits_and_talents_page.create()
-
-    def render_equipment(self):
-        self.clear_frame()
-        equipment_page = EquipmentPage(root=self.info_frame, character=self.character)
-        equipment_page.create()
-
-    def render_gear(self):
-        self.clear_frame()
-        gear_page = GearPage(root=self.info_frame, character=self.character)
-        gear_page.create()
-
-    def render_powers(self):
-        self.clear_frame()
-        powers_page = PowersPage(root=self.info_frame, character=self.character)
-        powers_page.create()
-
-    def render_advancements(self):
-        self.clear_frame()
-        advancements_page = AdvancementsPage(root=self.info_frame, character=self.character)
-        advancements_page.create()
-
-    def page_buttons(self):
-        page_buttons = ttk.Frame(self.root, relief="groove")
-
-        characteristics_button = ttk.Button(page_buttons,
-                                            text="Characteristics",
-                                            command=self.render_characteristics)
-        traits_and_talents_button = ttk.Button(page_buttons,
-                                               text="Traits and Talents",
-                                               command=self.render_traits_talents)
-        equipment_button = ttk.Button(page_buttons,
-                                      text="Equipment",
-                                      command=self.render_equipment)
-        gear_button = ttk.Button(page_buttons,
-                                 text="Gear",
-                                 command=self.render_gear)
-        powers_button = ttk.Button(page_buttons,
-                                   text="Powers",
-                                   command=self.render_powers)
-        advancement_button = ttk.Button(page_buttons,
-                                        text="Advancements",
-                                        command=self.render_advancements)
-
-        characteristics_button.grid(column=0, row=0)
-        traits_and_talents_button.grid(column=1, row=0)
-        equipment_button.grid(column=2, row=0)
-        gear_button.grid(column=3, row=0)
-        powers_button.grid(column=4, row=0)
-        advancement_button.grid(column=5, row=0)
-
-        page_buttons.grid(row=3, column=0, padx=5, pady=5)
+        self.characteristics_tab = Frame(self.root)
+        self.traits_and_talents_tab = Frame(self.root)
+        self.equipment_tab = Frame(self.root)
+        self.gear_tab = Frame(self.root)
+        self.powers_tab = Frame(self.root)
+        self.advancements_tab = Frame(self.root)
 
     def create(self):
-        self.page_buttons()
-        self.render_characteristics()
+        characteristics_page = CharacteristicsPage(root=self.characteristics_tab, character=self.character)
+        characteristics_page.create()
+        traits_and_talents_page = TraitsAndTalentsPage(root=self.traits_and_talents_tab, character=self.character)
+        traits_and_talents_page.create()
+        equipment_page = EquipmentPage(root=self.equipment_tab, character=self.character)
+        equipment_page.create()
+        gear_page = GearPage(root=self.gear_tab, character=self.character)
+        gear_page.create()
+        powers_page = PowersPage(root=self.powers_tab, character=self.character)
+        powers_page.create()
+        advancements_page = AdvancementsPage(root=self.advancements_tab, character=self.character)
+        advancements_page.create()
+
+        self.root.add(self.characteristics_tab, text='Characteristics')
+        self.root.add(self.traits_and_talents_tab, text='Traits and Talents')
+        self.root.add(self.equipment_tab, text='Equipment')
+        self.root.add(self.gear_tab, text='Gear')
+        self.root.add(self.powers_tab, text='Powers')
+        self.root.add(self.advancements_tab, text='Advancements')

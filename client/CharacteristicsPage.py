@@ -71,28 +71,34 @@ class CharacteristicsPage:
         skills_frame = LabelFrame(self.root, text="Skills")
         x = 0
         y = 0
-        for skill in self.character["skills"]:
-            if type(self.character["skills"][skill]) == dict:
-                skill_name = Label(skills_frame, text=f'{skill.title()}:')
-                skill_name.grid(sticky=W, row=x, column=y)
-                x += 1
-                for sub_category, rating in self.character["skills"][skill].items():
-                    # print(sub_category, x, y)
-
-                    skill_label = Label(skills_frame, text=f'{sub_category}: {rating}')
-                    skill_label.grid(row=x, column=y)
-                    x += 1
-            else:
-                skill_label = Label(skills_frame,
-                                    text=f'{skill.title()}: {self.character["skills"][skill]}')
-                skill_label.grid(sticky=W, row=x, column=y)
-                x += 1
-
-            if x > 10:
+        nonspecialist = LabelFrame(skills_frame, text="Non-specialist")
+        for skill in self.character["skills"]["non-specialist"]:
+            skill_label = Label(nonspecialist,
+                                text=f'{skill.title()}: {self.character["skills"]["non-specialist"][skill]}')
+            skill_label.grid(sticky=W, row=x, column=y)
+            x += 1
+            if x > 11:
                 y += 1
                 x = 0
+        x = 0
+        y = 0
+        specialist = LabelFrame(skills_frame, text="Specialist")
+        for skill in self.character["skills"]["specialist"]:
+            skill_name = LabelFrame(specialist, text=f'{skill.title()}:')
+            skill_name.grid(sticky=W, row=x, column=y)
+            x += 1
+            for sub_category, rating in self.character["skills"]["specialist"][skill].items():
+                skill_label = Label(skill_name, text=f'{sub_category}: {rating}')
+                skill_label.grid(row=x, column=y, sticky=W)
+                x += 1
+            if x > 11:
+                y += 1
+                x = 0
+
         # TODO: Add functionality to modify skill ratings via clicking on the value
         # TODO: Add functionality to add new specialist skills
+        nonspecialist.grid(row=0, column=0, sticky=N)
+        specialist.grid(row=0, column=1, sticky=N)
         skills_frame.grid(row=1, column=1)
 
     def description_box(self):

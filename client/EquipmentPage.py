@@ -68,7 +68,7 @@ class EquipmentPage:
         # TODO: Fix scaling of armor diagram
 
         canvas_frame = Frame(self.root, height=200, width=200)
-        canvas_frame.grid(row=0, column=2, sticky=NE, rowspan=2, columnspan=2)
+        canvas_frame.grid(row=0, column=3, sticky=NE)
 
         diagram_image = ImageTk.PhotoImage(Image.open('assets/armor_diagram.PNG').resize((100, 200), Image.ANTIALIAS))
         diagram_canvas = Canvas(canvas_frame, width=200, height=200)
@@ -76,20 +76,38 @@ class EquipmentPage:
         diagram_canvas.pack(fill="both", expand=True)
         diagram_canvas.create_image(0, 0, image=diagram_image, anchor="nw")
 
+    def force_field(self):
+        force_field_frame = LabelFrame(self.root, text="Force Field")
+        x = 0
+        for key in self.character["equipment"]["force_field"]:
+            force_field_attribute = Label(force_field_frame, text=key)
+            force_field_value = Label(force_field_frame, text=self.character["equipment"]["force_field"][key])
+            force_field_attribute.grid(row=0, column=x)
+            force_field_value.grid(row=1, column=x)
+            x += 1
+
+        force_field_frame.grid(row=0, column=2, sticky=N)
+
+
     def add_weapon(self):
         print("To be created!")
 
     def add_armor(self):
         print("To be created!")
 
+    def force_field_select(self):
+        print("Coming soon!")
     def add_equipment_buttons(self):
         add_weapon_button = Button(self.root, text="Add Weapon", command=self.add_weapon)
         add_armor_button = Button(self.root, text="Add Armor", command=self.add_armor)
+        select_force_field = Button(self.root, text="Select Force Field", command=self.force_field_select)
         add_weapon_button.grid(row=1, column=0)
         add_armor_button.grid(row=1, column=1)
+        select_force_field.grid(row=1, column=2)
 
     def create(self):
         self.weapons()
         self.armors()
         self.armor_diagram()
+        self.force_field()
         self.add_equipment_buttons()

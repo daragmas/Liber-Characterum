@@ -10,7 +10,7 @@ testcharacter = {
     'name': "Testy McTestface",
     "archetype": "Codetester",
     "picture": "assets/testy_mctestface.png",
-    "alignment": "tzeentch",
+    "alignment": "unaligned",
     "characteristics": {
         "weapon_skill": 10,
         "ballistic_skill": 11,
@@ -26,38 +26,43 @@ testcharacter = {
         "wounds": 22
     },
     "skills": {
-        "acrobatics": 0,
-        "athletics": 0,
-        "awareness": 0,
-        "charm": 10,
-        "command": -20,
-        "commerce": 0,
-        "common_lore": {"Take Out": 10},
-        "deceive": 10,
-        "dodge": -20,
-        "forbidden_lore": {"Sinatra": 10},
-        "inquiry": 30,
-        "intimidate": 0,
-        "linguistics": {"English": 0, "Python": 10, "Ruby": 10, "JavaScript": 30},
-        "logic": 20,
-        "medicae": 0,
-        "navigation_surface": 0,
-        "navigation_stellar": -20,
-        "navigation_warp": -20,
-        "operate_aeronautica": -20,
-        "operate_surface": -20,
-        "operate_voidship": -20,
-        "parry": 0,
-        "psyniscience": -20,
-        "scholastic_lore": {},
-        "scrutiny": 10,
-        "security": 0,
-        "sleight_of_hand": -20,
-        "stealth": 0,
-        "survival": 10,
-        "tech_use": 30,
-        "tracking": -20,
-        "trade": {"Software Development": 20}
+        "non-specialist":
+            {
+                "acrobatics": 0,
+                "athletics": 0,
+                "awareness": 0,
+                "charm": 10,
+                "command": -20,
+                "commerce": 0,
+                "deceive": 10,
+                "dodge": -20,
+                "inquiry": 30,
+                "intimidate": 0,
+                "logic": 20,
+                "medicae": 0,
+                "operate_aeronautica": -20,
+                "operate_surface": -20,
+                "operate_voidship": -20,
+                "parry": 0,
+                "psyniscience": -20,
+                "scrutiny": 10,
+                "security": 0,
+                "sleight_of_hand": -20,
+                "stealth": 0,
+                "survival": 10,
+                "tech_use": 30,
+                "tracking": -20
+            },
+        "specialist":
+            {
+                "common_lore": {"Take Out": 10},
+                "forbidden_lore": {"Sinatra": 10},
+                "linguistics": {"English": 0, "Python": 10, "Ruby": 10, "JavaScript": 30},
+                "navigation": {},
+                "scholastic_lore": {},
+                "trade": {"Software Development": 20}
+            }
+
     },
     "talents": [
         {
@@ -129,6 +134,13 @@ testcharacter = {
                     "weight": "11",
                 }
             ],
+        "force_field":
+            {
+                "name": "Conversion Field",
+                "protection": 50,
+                "weight": 1,
+                "overload": 10
+            },
         "gear":
             [
                 {

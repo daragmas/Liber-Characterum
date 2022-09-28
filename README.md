@@ -20,14 +20,47 @@ In the grim darkness of the 41st millenium, it's a bit annoying to try and build
 ## To Do List
 
 - [X] Set up Github Repo
+- [ ] Test Database structure
+  - [ ] Configure .csv reader 
+  - [ ] Populate test database
+  - [ ] Test data retrieval
+- [ ] Get Data from Books
+  - [X] Archetypes
+  - [X] Races
+    - [ ] Figure out how to factor Space Marine Implants
+  - [X] Talents
+  - [X] Skills
+    - [X] Separate into Specialist and Non-Specialist
+  - [X] Passions
+  - [ ] Armors
+    - [ ] Upgrades
+    - [ ] Figure out how to factor Power Armor Special Qualities
+  - [ ] Weapons
+    - [ ] Upgrades
+    - [ ] Special Qualities
+  - [ ] Force Fields
+  - [ ] Gear
+    - [ ] Ammunition
+    - [ ] Wearables
+    - [ ] Consumables
+    - [ ] Tools
+    - [ ] Wargear
+  - [ ] Cybernetics
+  - [ ] Psychic Powers
+- [ ] Learn Daemon Weapon/Armor creation system, and then implement it
 - [ ] Create basic database
     - [ ] Allow for custom database entries
 - [ ] Create Interface with Tk
-  - [ ] Base Wireframes
+  - [X] Base Tabs
+  - [ ] Refactor the ENTIRE interface into a ttk.Notebook
+  - [ ] Pop-up windows for adding items
   - [ ] Database Interaction
-- [ ] Configure Character Creation Interface
-- [ ] Allow character saving as a database file
-    - [ ] Character Exporting as .pdf
+  - [ ] Fix rendering of unaligned icon
+- [ ] Creating new character for database
+- [ ] Opening character from database
+- [ ] Saving new character/changes to database
+  - [ ] Allow character saving as a database file
+  - [ ] Character Exporting as .pdf
 
 
 ## Features
