@@ -52,7 +52,7 @@ In the grim darkness of the 41st millenium, it's a bit annoying to try and build
     - [ ] Allow for custom database entries
 - [ ] Create Interface with Tk
   - [X] Base Tabs
-  - [ ] Refactor the ENTIRE interface into a ttk.Notebook
+  - [X] Refactor the ENTIRE interface into a ttk.Notebook
   - [ ] Pop-up windows for adding items
   - [ ] Database Interaction
   - [ ] Fix rendering of unaligned icon

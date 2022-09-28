@@ -13,12 +13,12 @@ class Info:
         self.root = ttk.Notebook(root)
         self.root.grid()
         self.character = character
-        self.characteristics_tab = Frame(self.root)
-        self.traits_and_talents_tab = Frame(self.root)
-        self.equipment_tab = Frame(self.root)
-        self.gear_tab = Frame(self.root)
-        self.powers_tab = Frame(self.root)
-        self.advancements_tab = Frame(self.root)
+        self.characteristics_tab = Frame(self.root, width=1200, height=400)
+        self.traits_and_talents_tab = Frame(self.root, width=1200, height=400)
+        self.equipment_tab = Frame(self.root, width=1200, height=400)
+        self.gear_tab = Frame(self.root, width=1200, height=400)
+        self.powers_tab = Frame(self.root, width=1200, height=400)
+        self.advancements_tab = Frame(self.root, width=1200, height=400)
 
     def create(self):
         characteristics_page = CharacteristicsPage(root=self.characteristics_tab, character=self.character)

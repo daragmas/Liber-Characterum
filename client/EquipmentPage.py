@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from AddEquipment import *
 from PIL import ImageTk, Image
 
 
@@ -88,15 +89,17 @@ class EquipmentPage:
 
         force_field_frame.grid(row=0, column=2, sticky=N)
 
-
     def add_weapon(self):
-        print("To be created!")
+        add_wep = AddEquipment(root=self.root, category='weapons')
+        add_wep.create()
+
 
     def add_armor(self):
         print("To be created!")
 
     def force_field_select(self):
         print("Coming soon!")
+
     def add_equipment_buttons(self):
         add_weapon_button = Button(self.root, text="Add Weapon", command=self.add_weapon)
         add_armor_button = Button(self.root, text="Add Armor", command=self.add_armor)
