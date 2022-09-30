@@ -1,4 +1,4 @@
-# Liber Characterum (Ruby Version)
+# Liber Characterum
 ### A Character Creator Application for Warhammer 40k TTRPGs
 
 In the grim darkness of the 41st millenium, it's a bit annoying to try and build a new character for your tabletop games. LC is here to try and make that a bit easier.
@@ -54,6 +54,14 @@ In the grim darkness of the 41st millenium, it's a bit annoying to try and build
   - [X] Base Tabs
   - [X] Refactor the ENTIRE interface into a ttk.Notebook
   - [ ] Pop-up windows for adding items
+    - [X] Weapons
+    - [X] Armors
+    - [ ] Force Field
+    - [ ] Gear
+    - [ ] Powers
+    - [ ] Talents
+    - [ ] Advancements
+  - [ ] Filters for Add X windows
   - [ ] Database Interaction
   - [ ] Fix rendering of unaligned icon
 - [ ] Creating new character for database

@@ -53,6 +53,21 @@ class AddEquipment:
             Label(description_frame, text=self.dict[i]["Description"], wraplength=250).pack(side=LEFT)
             description_frame.grid(row=5, column=0, columnspan=4)
 
+    def armor_details(self, details_window):
+        for widget in details_window.winfo_children():
+            widget.destroy()
+
+        for i in self.item_list.curselection():
+            Label(details_window, text=self.dict[i]["Name"]).grid(row=0, column=0, sticky=W)
+            Label(details_window, text=f'Type: {self.dict[i]["Grouping"]}').grid(row=1, column=0, sticky=W)
+            Label(details_window, text=f'AP: {self.dict[i]["AP"]}').grid(row=2, column=0, sticky=W)
+            Label(details_window, text=f'Coverage: {self.dict[i]["Covering"]}').grid(row=3, column=0, sticky=W)
+            Label(details_window, text=f'Weight: {self.dict[i]["Wt"]} kg').grid(row=4, column=0, sticky=W)
+            Label(details_window, text=f"Special: {self.dict[i]['Special']}").grid(row=5, column=0, columnspan=2, sticky=W)
+            Label(details_window, text=f'Availability: {self.dict[i]["Availability"]}').grid(row=6, column=0,
+                                                                                             columnspan=2, sticky=W)
+            Label(details_window, text=f'Alignment Required: {self.dict[i]["Alignment Required"]}').grid(row=7, column=0, sticky=W)
+
     def create(self):
         self.item_window.grab_set()
         self.item_window.geometry("500x500")
@@ -61,13 +76,13 @@ class AddEquipment:
 
         for index, item in enumerate(self.dict):
             self.item_list.insert(index, item["Name"])
-        if self.category == "weapons":
+        if self.category == "weapon":
             self.item_list.bind("<Button>", lambda e: self.weapons_details(details_window))
-        elif self.category == "armors":
-            pass
+        elif self.category == "armor":
+            self.item_list.bind("<Button>", lambda e: self.armor_details(details_window))
         self.item_list.grid(row=0, column=0, sticky=N)
         details_window.grid(row=0, column=1, sticky=N)
-        add_button = Button(self.item_window, text="Add Weapon", command=self.add_button_click)
+        add_button = Button(self.item_window, text=f"Add {self.category.title()}", command=self.add_button_click)
         add_button.grid(row=1, column=0)
         self.quality()
 

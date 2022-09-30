@@ -90,12 +90,12 @@ class EquipmentPage:
         force_field_frame.grid(row=0, column=2, sticky=N)
 
     def add_weapon(self):
-        add_wep = AddEquipment(root=self.root, category='weapons')
+        add_wep = AddEquipment(root=self.root, category='weapon')
         add_wep.create()
 
-
     def add_armor(self):
-        print("To be created!")
+        add_arm = AddEquipment(root=self.root, category='armor')
+        add_arm.create()
 
     def force_field_select(self):
         print("Coming soon!")

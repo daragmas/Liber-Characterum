@@ -9,7 +9,6 @@ class CharacterSelection:
 
     def create(self):
         character_selection = ttk.Frame(self.root, relief="groove")
-        # samplechars = ["Char1", "Char2", "Char3"]
         for character in self.characters:
             char_button = Button(character_selection, text=character["name"])
             char_button.grid(row=0)

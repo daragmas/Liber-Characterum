@@ -4,8 +4,12 @@
     <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/AddEquipment.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/AddEquipment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/CharacterSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/CharacterSelection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/EquipmentPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/EquipmentPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/Information.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/Information.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/Toolbar.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/Toolbar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/data/weapons.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/weapon.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
