@@ -13,6 +13,12 @@ class NewCharacter:
     def set_character_name(self, character_name):
         self.new_character = {**self.new_character, "name": character_name.get()}
 
+    def set_character_attributes(self, attributes):
+        for key in attributes:
+            self.new_character = {**self.new_character, key: attributes[key]}
+
+        pp(self.new_character)
+
     def name_character(self):
         Label(self.new_character_window, text="Name ").grid(row=0, column=0)
         character_name = Entry(self.new_character_window)
@@ -20,12 +26,8 @@ class NewCharacter:
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
 
     def race_selection(self):
-        # race_choice = StringVar()
-        race_selection = RaceSelection(root=self.new_character_window)
+        race_selection = RaceSelection(root=self.new_character_window, new_character=self.set_character_attributes)
         race_selection.create()
-        # race_select = Button(self.new_character_window, text="Race ", command=race_selection.create)
-        # race_select.grid(row=1, column=0)
-        # Label(self.new_character_window, text=f'{race_choice}').grid(row=1, column=1)
 
     def characteristics_generation(self):
         pass
@@ -50,7 +52,6 @@ class NewCharacter:
         race_select.grid(row=1, column=0)
         Label(self.new_character_window, text=f'{race_choice}').grid(row=1, column=1)
 
-
     def create(self):
         self.new_character_window.grab_set()
         self.new_character_window.geometry("600x600")
@@ -63,4 +64,3 @@ class NewCharacter:
         # self.passions_selection()
 
         Button(self.new_character_window, text="Create", command=self.finish_creation).grid()
-
