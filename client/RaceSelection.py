@@ -3,6 +3,8 @@ from tkinter import *
 from tkinter import ttk
 import pandas
 
+# TODO: Fix mortal race selection not saving properly
+
 
 class RaceSelection:
     def __init__(self, root, new_character):
@@ -14,7 +16,7 @@ class RaceSelection:
         self.pass_choice = new_character
 
     def choose_race(self):
-        print(self.race_list.curselection())
+        # print(self.race_list.curselection())
         for i in self.race_list.curselection():
             selected = self.info[i]
             if type(selected["Starting Skills"]) != float:
@@ -22,7 +24,7 @@ class RaceSelection:
             else:
                 non_specialist_skills = {}
 
-            print('talents')
+            # print('talents')
             if type(selected["Starting Talents"]) != float:
                 talents = [x for x in selected["Starting Talents"].split(', ')]
             else:
@@ -47,7 +49,7 @@ class RaceSelection:
             }
 
             for choice in self.decisions:
-                print("choice", choice)
+                # print("choice", choice)
                 for key in choice:
                     # if key == 'equipment':
                     for subtype in choice[key]:
