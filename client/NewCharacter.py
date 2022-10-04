@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import ttk
 from RaceSelection import *
 from CharacteristicsGeneration import *
+from ArchetypeSelection import *
 
 
 class NewCharacter:
@@ -33,6 +34,9 @@ class NewCharacter:
             print("characteristic", characteristic, "rating", rating)
         pp(self.new_character)
 
+    def set_character_archetype(self):
+        pass
+
     def name_character(self):
         Label(self.new_character_window, text="Name ").grid(row=0, column=0)
         character_name = Entry(self.new_character_window)
@@ -40,15 +44,21 @@ class NewCharacter:
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
 
     def race_selection(self):
-        race_selection = RaceSelection(root=self.new_character_window, new_character=self.set_character_race_attributes)
+        race_selection = RaceSelection(root=self.new_character_window,
+                                       new_character=self.set_character_race_attributes)
         race_selection.create()
 
     def characteristics_generation(self):
-        characteristics_generation = CharacteristicsGeneration(self.characteristics_window, self.new_character, self.set_character_characteristics)
+        characteristics_generation = CharacteristicsGeneration(characteristics_frame=self.characteristics_window,
+                                                               new_character=self.new_character,
+                                                               set_characteristics=self.set_character_characteristics)
         characteristics_generation.create()
 
     def archetype_selection(self):
-        pass
+        archetype_selection = ArchetypeSelection(root=self.new_character_window,
+                                                 set_archetype=self.set_character_archetype,
+                                                 new_character=self.new_character)
+        archetype_selection.create()
 
     def passions_selection(self):
         pass
@@ -64,7 +74,9 @@ class NewCharacter:
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
         race_select = Button(self.new_character_window, text="Race ", command=self.race_selection)
         race_select.grid(row=1, column=0)
-        self.characteristics_window.grid(row=1, column=2, sticky=W)
+        self.characteristics_window.grid(row=1, column=2, sticky=W, rowspan=4)
+        archetype_select = Button(self.new_character_window, text="Archetype ", command=self.archetype_selection)
+        archetype_select.grid(row=2, column=0)
         # self.characteristics_generation()
 
     def create(self):
