@@ -4,6 +4,7 @@ from tkinter import ttk
 from RaceSelection import *
 from CharacteristicsGeneration import *
 from ArchetypeSelection import *
+from mergedeep import merge, Strategy
 
 
 class NewCharacter:
@@ -32,10 +33,11 @@ class NewCharacter:
             self.new_character['characteristics'] = {**self.new_character['characteristics'], characteristic:rating}
         except KeyError:
             print("characteristic", characteristic, "rating", rating)
-        pp(self.new_character)
+        # pp(self.new_character)
 
-    def set_character_archetype(self):
-        pass
+    def set_character_archetype(self, archetype, characteristic_mods):
+        self.new_character = merge(self.new_character, archetype, strategy=Strategy.ADDITIVE)
+        pp(self.new_character)
 
     def name_character(self):
         Label(self.new_character_window, text="Name ").grid(row=0, column=0)

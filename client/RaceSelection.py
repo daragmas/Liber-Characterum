@@ -47,16 +47,22 @@ class RaceSelection:
                 "spent_xp": 0,
                 "total_xp": selected["Starting XP"]
             }
+            # print("selection before decision")
+            # pp(selection)
 
             for choice in self.decisions:
                 # print("choice", choice)
                 for key in choice:
+                    # print('key', key)
                     # if key == 'equipment':
                     for subtype in choice[key]:
                         # print('subtype', subtype)
                         for item in choice[key][subtype]:
                             # print('item', item)
                             selection[key][subtype] = [*selection[key][subtype], item]
+
+            # print("selection after decision")
+            # pp(selection)
 
             self.pass_choice(selection)
         self.race_select_window.grab_release()
