@@ -5,7 +5,10 @@ from RaceSelection import *
 from CharacteristicsGeneration import *
 from ArchetypeSelection import *
 from PassionSelection import *
+from CharacterTemplate import character_template
 from mergedeep import merge, Strategy
+from tkinter.filedialog import asksaveasfile
+import json
 
 
 class NewCharacter:
@@ -44,7 +47,7 @@ class NewCharacter:
             self.new_character = {**self.new_character, key: attributes[key]}
 
         try:
-            Label(self.new_character_window, text=f'{self.new_character["race"]}').grid(row=1, column=1,sticky=NW)
+            Label(self.new_character_window, text=f'{self.new_character["race"]}').grid(row=1, column=1, sticky=NW)
         except KeyError:
             pass
 
@@ -88,7 +91,7 @@ class NewCharacter:
             penalties = passions_choices[passion]['Characteristic Penalty'].split(', ')
             for penalty in penalties:
                 split_penalty = penalty.split(': ')
-                split_penalties = {**split_penalties, split_penalty[0]: int(split_penalty[1])*-1}
+                split_penalties = {**split_penalties, split_penalty[0]: int(split_penalty[1]) * -1}
             characteristic_mods = {**split_bonuses, **split_penalties}
             self.characteristics_generation.modifiers[passion] = characteristic_mods
 
@@ -124,8 +127,18 @@ class NewCharacter:
         archetype_selection.create()
 
     def finish_creation(self):
-        # TODO: make comparator to fill in skills that are untrained
+        self.new_character = merge(character_template, self.new_character, strategy=Strategy.ADDITIVE)
         pp(self.new_character)
+
+        path = asksaveasfile(initialdir='./characters',
+                             title='Save New Character',
+                             initialfile='Untitled.json',
+                             defaultextension=".json",
+                             filetypes=[("JSON Documents", "*.json")])
+        json.dump(fp=path, obj=self.new_character, indent=2)
+
+        self.new_character_window.grab_release()
+        self.new_character_window.destroy()
 
     def new_character_form(self):
         Label(self.new_character_window, text="Name ").grid(row=0, column=0)

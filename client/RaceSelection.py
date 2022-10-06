@@ -20,7 +20,7 @@ class RaceSelection:
         for i in self.race_list.curselection():
             selected = self.info[i]
             if type(selected["Starting Skills"]) != float:
-                non_specialist_skills = {x: 0 for x in selected["Starting Skills"].split(', ')}
+                non_specialist_skills = {x.casefold(): 0 for x in selected["Starting Skills"].split(', ')}
             else:
                 non_specialist_skills = {}
 
