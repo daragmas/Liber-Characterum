@@ -317,9 +317,10 @@ class ArchetypeSelection:
                 if '_' in split_mod[0]:
                     split_mod[0] = split_mod[0].replace('_', " ")
                 characteristics_mods = {**characteristics_mods, split_mod[0]: split_mod[1]}
-            characteristics_mods = {**characteristics_mods, 'wounds': archetype['characteristics']['wounds']}
         except AttributeError:
             pass
+
+        characteristics_mods = {**characteristics_mods, 'wounds': archetype['characteristics']['wounds']}
 
         self.set_archetype(archetype, characteristics_mods)
         self.archetype_select_window.grab_release()

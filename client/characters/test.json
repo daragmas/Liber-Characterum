@@ -3,6 +3,11 @@
     "archetype": "Codetester",
     "picture": "assets/testy_mctestface.png",
     "alignment": "khorne",
+    "passions": {
+        "Pride": "Logic",
+        "Disgrace": "Hubris",
+        "Motivation": "Arcane"
+    },
     "characteristics": {
         "weapon_skill": 10,
         "ballistic_skill": 11,

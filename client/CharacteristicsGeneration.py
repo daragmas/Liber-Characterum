@@ -18,7 +18,6 @@ characteristics_bc = [
     "wounds"
 ]
 
-# TODO: Figure out how to pass modifiers from archetype to show_modifiers
 
 class CharacteristicsGeneration:
     def __init__(self, characteristics_frame, new_character, set_characteristics, modifiers, update_mods):
@@ -71,12 +70,28 @@ class CharacteristicsGeneration:
             if key == characteristic:
                 total_modifier += int(value)
 
+        for key, value in self.modifiers["Pride"].items():
+            if key == characteristic:
+                total_modifier += int(value)
+
+        for key, value in self.modifiers["Disgrace"].items():
+            if key == characteristic:
+                total_modifier += int(value)
+
+        for key, value in self.modifiers["Motivation"].items():
+            if key == characteristic:
+                total_modifier += int(value)
+
+        # print(characteristic, total_modifier)
+
         modifier_label = Label(self.characteristics_frame,
                                text=total_modifier,
                                width=5)
         modifier_label.grid(row=index, column=2)
 
     def calculate_final(self, characteristic, index):
+        # TODO: pass modifiers from show_modifiers to calculate_final
+
         if characteristic == 'infamy':
             total_modifier = 19
         elif characteristic == 'corruption' or characteristic == 'wounds':
@@ -87,6 +102,19 @@ class CharacteristicsGeneration:
         for key, value in self.modifiers['archetype'].items():
             if key == characteristic:
                 total_modifier += int(value)
+
+        for key, value in self.modifiers["Pride"].items():
+            if key == characteristic:
+                total_modifier += int(value)
+
+        for key, value in self.modifiers["Disgrace"].items():
+            if key == characteristic:
+                total_modifier += int(value)
+
+        for key, value in self.modifiers["Motivation"].items():
+            if key == characteristic:
+                total_modifier += int(value)
+
         self.characteristics[characteristic]['final'] = self.characteristics[characteristic]['base'] + total_modifier
         final_label = Label(self.characteristics_frame, text=self.characteristics[characteristic]['final'], width=5)
         final_label.grid(row=index, column=3)

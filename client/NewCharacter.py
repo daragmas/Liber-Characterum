@@ -4,6 +4,7 @@ from tkinter import ttk
 from RaceSelection import *
 from CharacteristicsGeneration import *
 from ArchetypeSelection import *
+from PassionSelection import *
 from mergedeep import merge, Strategy
 
 
@@ -11,14 +12,19 @@ class NewCharacter:
     def __init__(self, root):
         self.root = root
         self.new_character_window = Toplevel(self.root)
-        self.new_character = {'characteristics': {}}
+        self.new_character = {'characteristics': {},
+                              'passions': {
+                                  'Pride': '',
+                                  'Disgrace': '',
+                                  'Motivation': ''
+                              }}
         self.characteristics_window = LabelFrame(self.new_character_window, text="Characteristics")
         self.characteristics_modifiers = {
             "race": 0,
             "archetype": {},
-            "pride": {},
-            "disgrace": {},
-            "motivation": {}
+            "Pride": {},
+            "Disgrace": {},
+            "Motivation": {}
         }
         self.update_modifiers = lambda: self.characteristics_modifiers
         self.race_selection = RaceSelection(root=self.new_character_window,
@@ -28,6 +34,7 @@ class NewCharacter:
                                                                     set_characteristics=self.set_character_characteristics,
                                                                     modifiers=self.characteristics_modifiers,
                                                                     update_mods=self.update_modifiers)
+        self.passions_selection = PassionSelection(root=self.new_character_window, set_passions=self.set_passions)
 
     def set_character_name(self, character_name):
         self.new_character = {**self.new_character, "name": character_name.get()}
@@ -37,7 +44,7 @@ class NewCharacter:
             self.new_character = {**self.new_character, key: attributes[key]}
 
         try:
-            Label(self.new_character_window, text=f'{self.new_character["race"]}').grid(row=1, column=1)
+            Label(self.new_character_window, text=f'{self.new_character["race"]}').grid(row=1, column=1,sticky=NW)
         except KeyError:
             pass
 
@@ -57,45 +64,64 @@ class NewCharacter:
     def set_character_archetype(self, archetype, characteristic_mods):
         self.new_character = merge(self.new_character, archetype, strategy=Strategy.ADDITIVE)
         try:
-            Label(self.new_character_window, text=f'{self.new_character["archetype"]}').grid(row=2, column=1)
+            Label(self.new_character_window, text=f'{self.new_character["archetype"]}').grid(row=2, column=1, sticky=NW)
         except KeyError:
             pass
 
-        pp(characteristic_mods)
+        # pp(characteristic_mods)
         self.characteristics_generation.modifiers['archetype'] = characteristic_mods
         for characteristic in characteristic_mods:
             index = characteristics_bc.index(characteristic) + 1
             self.characteristics_generation.show_modifiers(characteristic, index)
             self.characteristics_generation.calculate_final(characteristic, index)
-        # self.characteristics_modifiers['archetype'] = characteristic_mods
+
+    def set_passions(self, passions_choices):
+        for passion in passions_choices:
+            self.new_character['passions'][passion] = passions_choices[passion]['Name']
+
+            bonuses = passions_choices[passion]['Characteristic Bonus'].split(', ')
+            split_bonuses = {}
+            for bonus in bonuses:
+                split_bonus = bonus.split(': ')
+                split_bonuses = {**split_bonuses, split_bonus[0]: int(split_bonus[1])}
+            split_penalties = {}
+            penalties = passions_choices[passion]['Characteristic Penalty'].split(', ')
+            for penalty in penalties:
+                split_penalty = penalty.split(': ')
+                split_penalties = {**split_penalties, split_penalty[0]: int(split_penalty[1])*-1}
+            characteristic_mods = {**split_bonuses, **split_penalties}
+            self.characteristics_generation.modifiers[passion] = characteristic_mods
+
+            for characteristic in characteristic_mods:
+                index = characteristics_bc.index(characteristic) + 1
+                self.characteristics_generation.show_modifiers(characteristic, index)
+                self.characteristics_generation.calculate_final(characteristic, index)
+
+        try:
+            pride_label = Label(self.new_character_window, text=f'Pride: {self.new_character["passions"]["Pride"]}')
+            pride_label.grid(row=3, column=1, sticky=NW)
+            disgrace_label = Label(self.new_character_window,
+                                   text=f'Disgrace: {self.new_character["passions"]["Disgrace"]}')
+            disgrace_label.grid(row=4, column=1, sticky=NW)
+            motivation_label = Label(self.new_character_window,
+                                     text=f'Motivation: {self.new_character["passions"]["Motivation"]}')
+            motivation_label.grid(row=5, column=1, sticky=NW)
+        except KeyError:
+            pp(self.new_character['passions'])
+        # pp(characteristic_mods)
+        # pp(self.characteristics_generation.modifiers)
 
     def name_character(self):
-        Label(self.new_character_window, text="Name ").grid(row=0, column=0)
+        Label(self.new_character_window, text="Name ").grid(row=0, column=0, sticky=NW)
         character_name = Entry(self.new_character_window)
-        character_name.grid(row=0, column=1)
+        character_name.grid(row=0, column=1, sticky=NW)
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
-
-    # def race_selection(self):
-    #     # race_selection = RaceSelection(root=self.new_character_window,
-    #     #                                new_character=self.set_character_race_attributes)
-    #     self.race_selection.create()
-
-    # def characteristics_generation(self):
-    #     characteristics_generation = CharacteristicsGeneration(characteristics_frame=self.characteristics_window,
-    #                                                            new_character=self.new_character,
-    #                                                            set_characteristics=self.set_character_characteristics,
-    #                                                            modifiers=self.characteristics_modifiers,
-    #                                                            update_mods=self.update_modifiers)
-    #     characteristics_generation.create()
 
     def archetype_selection(self):
         archetype_selection = ArchetypeSelection(root=self.new_character_window,
                                                  set_archetype=self.set_character_archetype,
                                                  new_character=self.new_character)
         archetype_selection.create()
-
-    def passions_selection(self):
-        pass
 
     def finish_creation(self):
         # TODO: make comparator to fill in skills that are untrained
@@ -108,12 +134,15 @@ class NewCharacter:
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
 
         race_select = Button(self.new_character_window, text="Race ", command=self.race_selection.create)
-        race_select.grid(row=1, column=0)
+        race_select.grid(row=1, column=0, sticky=NW)
 
-        self.characteristics_window.grid(row=1, column=2, sticky=W, rowspan=4)
+        self.characteristics_window.grid(row=1, column=2, sticky=W, rowspan=15)
 
         archetype_select = Button(self.new_character_window, text="Archetype ", command=self.archetype_selection)
-        archetype_select.grid(row=2, column=0)
+        archetype_select.grid(row=2, column=0, sticky=NW)
+
+        passions_select = Button(self.new_character_window, text='Passions', command=self.passions_selection.create)
+        passions_select.grid(row=3, column=0, sticky=NW)
         # self.characteristics_generation()
 
     def create(self):

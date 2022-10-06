@@ -5,10 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/ArchetypeSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/ArchetypeSelection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/CharacteristicsGeneration.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/CharacteristicsGeneration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/Information.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/Information.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/NewCharacter.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/NewCharacter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/Toolbar.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/Toolbar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/characters/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/characters/test.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
