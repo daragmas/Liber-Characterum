@@ -13,6 +13,21 @@ class NewCharacter:
         self.new_character_window = Toplevel(self.root)
         self.new_character = {'characteristics': {}}
         self.characteristics_window = LabelFrame(self.new_character_window, text="Characteristics")
+        self.characteristics_modifiers = {
+            "race": 0,
+            "archetype": {},
+            "pride": {},
+            "disgrace": {},
+            "motivation": {}
+        }
+        self.update_modifiers = lambda: self.characteristics_modifiers
+        self.race_selection = RaceSelection(root=self.new_character_window,
+                                            new_character=self.set_character_race_attributes)
+        self.characteristics_generation = CharacteristicsGeneration(characteristics_frame=self.characteristics_window,
+                                                                    new_character=self.new_character,
+                                                                    set_characteristics=self.set_character_characteristics,
+                                                                    modifiers=self.characteristics_modifiers,
+                                                                    update_mods=self.update_modifiers)
 
     def set_character_name(self, character_name):
         self.new_character = {**self.new_character, "name": character_name.get()}
@@ -21,23 +36,38 @@ class NewCharacter:
         for key in attributes:
             self.new_character = {**self.new_character, key: attributes[key]}
 
-        # print("new Character", self.new_character)
         try:
             Label(self.new_character_window, text=f'{self.new_character["race"]}').grid(row=1, column=1)
         except KeyError:
             pass
-        self.characteristics_generation()
+
+        if self.new_character['race'] == 'Mortal':
+            self.characteristics_modifiers['race'] = 25
+        elif self.new_character['race'] == 'Chaos Space Marine':
+            self.characteristics_modifiers['race'] = 30
+
+        self.characteristics_generation.create()
 
     def set_character_characteristics(self, characteristic, rating):
         try:
-            self.new_character['characteristics'] = {**self.new_character['characteristics'], characteristic:rating}
+            self.new_character['characteristics'] = {**self.new_character['characteristics'], characteristic: rating}
         except KeyError:
             print("characteristic", characteristic, "rating", rating)
-        # pp(self.new_character)
 
     def set_character_archetype(self, archetype, characteristic_mods):
         self.new_character = merge(self.new_character, archetype, strategy=Strategy.ADDITIVE)
-        pp(self.new_character)
+        try:
+            Label(self.new_character_window, text=f'{self.new_character["archetype"]}').grid(row=2, column=1)
+        except KeyError:
+            pass
+
+        pp(characteristic_mods)
+        self.characteristics_generation.modifiers['archetype'] = characteristic_mods
+        for characteristic in characteristic_mods:
+            index = characteristics_bc.index(characteristic) + 1
+            self.characteristics_generation.show_modifiers(characteristic, index)
+            self.characteristics_generation.calculate_final(characteristic, index)
+        # self.characteristics_modifiers['archetype'] = characteristic_mods
 
     def name_character(self):
         Label(self.new_character_window, text="Name ").grid(row=0, column=0)
@@ -45,16 +75,18 @@ class NewCharacter:
         character_name.grid(row=0, column=1)
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
 
-    def race_selection(self):
-        race_selection = RaceSelection(root=self.new_character_window,
-                                       new_character=self.set_character_race_attributes)
-        race_selection.create()
+    # def race_selection(self):
+    #     # race_selection = RaceSelection(root=self.new_character_window,
+    #     #                                new_character=self.set_character_race_attributes)
+    #     self.race_selection.create()
 
-    def characteristics_generation(self):
-        characteristics_generation = CharacteristicsGeneration(characteristics_frame=self.characteristics_window,
-                                                               new_character=self.new_character,
-                                                               set_characteristics=self.set_character_characteristics)
-        characteristics_generation.create()
+    # def characteristics_generation(self):
+    #     characteristics_generation = CharacteristicsGeneration(characteristics_frame=self.characteristics_window,
+    #                                                            new_character=self.new_character,
+    #                                                            set_characteristics=self.set_character_characteristics,
+    #                                                            modifiers=self.characteristics_modifiers,
+    #                                                            update_mods=self.update_modifiers)
+    #     characteristics_generation.create()
 
     def archetype_selection(self):
         archetype_selection = ArchetypeSelection(root=self.new_character_window,
@@ -74,9 +106,12 @@ class NewCharacter:
         character_name = Entry(self.new_character_window)
         character_name.grid(row=0, column=1)
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
-        race_select = Button(self.new_character_window, text="Race ", command=self.race_selection)
+
+        race_select = Button(self.new_character_window, text="Race ", command=self.race_selection.create)
         race_select.grid(row=1, column=0)
+
         self.characteristics_window.grid(row=1, column=2, sticky=W, rowspan=4)
+
         archetype_select = Button(self.new_character_window, text="Archetype ", command=self.archetype_selection)
         archetype_select.grid(row=2, column=0)
         # self.characteristics_generation()

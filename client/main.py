@@ -8,6 +8,11 @@ from Information import *
 
 
 def set_character(character):
+    try:
+        root.winfo_children()[1].destroy()
+    except IndexError:
+        pass
+
     info = Info(root, character)
     root.after(0, info.create())
 
@@ -20,9 +25,5 @@ root.geometry("1200x600")
 tb = Toolbar(root, set_character)
 tb.create()
 
-# TODO: Replace CharacterSelection functionality with ttk.Notebook tabs
-# Character Selection
-# charsel = CharacterSelection(root, characters=character_list)
-# charsel.create()
 
 root.mainloop()

@@ -13,9 +13,6 @@ class Toolbar:
     def make_new_character(self):
         new_character = NewCharacter(root=self.root)
         new_character.create()
-        # Open new character popup
-        # Get starting choices
-        # Get name
         # Save choices and info to dictionary
         # Save dictionary as JSON file in characters folder
         # self.character_setter(new_character_json)

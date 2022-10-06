@@ -1,3 +1,4 @@
+import _tkinter
 from tkinter import *
 from tkinter import ttk
 from CharacteristicsPage import *

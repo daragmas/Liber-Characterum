@@ -21,31 +21,32 @@ characteristics_bc = [
 # TODO: Figure out how to pass modifiers from archetype to show_modifiers
 
 class CharacteristicsGeneration:
-    def __init__(self, characteristics_frame, new_character, set_characteristics):
+    def __init__(self, characteristics_frame, new_character, set_characteristics, modifiers, update_mods):
         self.characteristics_frame = characteristics_frame
-        self.characteristics = {characteristic: {"base": 0, "modifiers": {}, 'final': 0} for characteristic in characteristics_bc}
         self.new_character = new_character
+        self.modifiers = modifiers
+        self.characteristics = {characteristic: {"base": 0, "modifiers": {}, 'final': 0} for characteristic in characteristics_bc}
         self.set_characteristics = set_characteristics
+        self.update_modifiers = update_mods
 
     def change_rating(self, characteristic, value, index):
-        print('characteristic', characteristic, 'value', value)
         self.characteristics[characteristic]["base"] = int(value)
-        # pp(self.characteristics[characteristic])
+        self.modifiers = self.update_modifiers()
+        pp(self.modifiers)
         self.calculate_final(characteristic, index)
+        # TODO: Update characteristic values when modifiers are updated
 
     def roll_stats(self):
-        # TODO: Move racial mods to show_modifiers?
-        if self.new_character['race'] == 'Mortal':
-            characteristics_mod = 25
-        elif self.new_character['race'] == 'Chaos Space Marine':
-            characteristics_mod = 30
-        else:
-            characteristics_mod = 0
         for characteristic in characteristics_bc:
-            self.characteristics[characteristic]['base'] = random.randint(2, 20) + characteristics_mod
-        self.characteristics["infamy"]['base'] = random.randint(1, 5) + 19
-        self.characteristics["corruption"]['base'], self.characteristics["wounds"]['base'] = 0, 0
-        # pp(self.characteristics)
+            if characteristic == 'infamy':
+                self.characteristics[characteristic]['base'] = random.randint(1, 5)
+                self.characteristics[characteristic]['modifiers'] = {'race': 0}
+            elif characteristic == 'corruption' or characteristic == 'wounds':
+                self.characteristics[characteristic]['base'] = 0
+                self.characteristics[characteristic]['modifiers'] = {'race': 0}
+            else:
+                self.characteristics[characteristic]['base'] = random.randint(2, 20)
+                self.characteristics[characteristic]['modifiers'] = {'race': self.modifiers['race']}
         self.characteristics_table()
 
     def characteristic_row(self, characteristic, index):
@@ -59,19 +60,33 @@ class CharacteristicsGeneration:
                                   lambda e: self.change_rating(characteristic, characteristic_value.get(), index))
 
     def show_modifiers(self, characteristic, index):
-        # if self.new_character['race'] == 'Mortal':
-        #     characteristics_mod = 25
-        # elif self.new_character['race'] == 'Chaos Space Marine':
-        #     characteristics_mod = 30
-        # else:
-        #     characteristics_mod = 0
-        # self.characteristics[characteristic]['modifiers'] = {**self.characteristics[characteristic]['modifiers'], "race": {
-        #     "value": characteristics_mod}}
-        modifier_label = Label(self.characteristics_frame, text=0, width=5)
+        if characteristic == 'infamy':
+            total_modifier = 19
+        elif characteristic == 'corruption' or characteristic == 'wounds':
+            total_modifier = 0
+        else:
+            total_modifier = self.modifiers['race']
+
+        for key, value in self.modifiers['archetype'].items():
+            if key == characteristic:
+                total_modifier += int(value)
+
+        modifier_label = Label(self.characteristics_frame,
+                               text=total_modifier,
+                               width=5)
         modifier_label.grid(row=index, column=2)
 
     def calculate_final(self, characteristic, index):
-        total_modifier = sum([value for key, value in self.characteristics[characteristic]['modifiers'].items() if key == 'value'])
+        if characteristic == 'infamy':
+            total_modifier = 19
+        elif characteristic == 'corruption' or characteristic == 'wounds':
+            total_modifier = 0
+        else:
+            total_modifier = self.modifiers['race']
+
+        for key, value in self.modifiers['archetype'].items():
+            if key == characteristic:
+                total_modifier += int(value)
         self.characteristics[characteristic]['final'] = self.characteristics[characteristic]['base'] + total_modifier
         final_label = Label(self.characteristics_frame, text=self.characteristics[characteristic]['final'], width=5)
         final_label.grid(row=index, column=3)
