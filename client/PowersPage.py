@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+import AddPower
 
 
 class PowersPage:
@@ -9,7 +10,7 @@ class PowersPage:
         self.selected_frame = LabelFrame(self.root, text="Info")
 
     def add_power(self):
-        print("This will add a power!")
+        AddPower.create(self.root)
 
     def top_bar(self):
         psy_rating_frame = Frame(self.root)

@@ -13,10 +13,6 @@ class Toolbar:
     def make_new_character(self):
         new_character = NewCharacter(root=self.root)
         new_character.create()
-        # Save choices and info to dictionary
-        # Save dictionary as JSON file in characters folder
-        # self.character_setter(new_character_json)
-        pass
 
     def open_character(self):
         character_file = tkinter.filedialog.askopenfilename(initialdir='./characters',
