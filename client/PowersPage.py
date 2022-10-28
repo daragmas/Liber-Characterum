@@ -10,7 +10,7 @@ class PowersPage:
         self.selected_frame = LabelFrame(self.root, text="Info")
 
     def add_power(self):
-        AddPower.create(self.root)
+        AddPower.create(self.root, self.character)
 
     def top_bar(self):
         psy_rating_frame = Frame(self.root)

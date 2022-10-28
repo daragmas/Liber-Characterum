@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/%SystemDrive%/ProgramData/Microsoft/Windows/Caches/cversions.2.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/%SystemDrive%/ProgramData/Microsoft/Windows/Caches/{6AF0698E-D558-4F6E-9B3C-3716689AF493}.2.ver0x0000000000000001.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/%SystemDrive%/ProgramData/Microsoft/Windows/Caches/{DDF571F2-BE98-426D-8288-1A9A39C3FDA2}.2.ver0x0000000000000001.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/AddPower.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/data/powers.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Liber_Characterum_ruby.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Liber_Characterum_ruby.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/AddPower.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/AddPower.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/PowersPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/PowersPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/Toolbar.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/Toolbar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/characters/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/characters/test.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/data/powers.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/powers.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,14 +27,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "//wsl$/Ubuntu/home/natepwolf/Projects/Liber-Characterum/client/data",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl$/Ubuntu/home/natepwolf/Projects/Liber-Characterum/client/data&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings>

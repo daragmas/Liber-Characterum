@@ -2,7 +2,7 @@
     "name": "Testy McTestface",
     "archetype": "Codetester",
     "picture": "assets/testy_mctestface.png",
-    "alignment": "khorne",
+    "alignment": "unaligned",
     "passions": {
         "Pride": "Logic",
         "Disgrace": "Hubris",
@@ -169,7 +169,7 @@
         "khorne": 1,
         "nurgle": 2,
         "slaanesh": 3,
-        "tzeentch": 8,
+        "tzeentch": 5,
         "unaligned": 4
     },
     "purchased_advancements": [

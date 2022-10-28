@@ -1,14 +1,32 @@
+import tkinter
 from tkinter import *
 from tkinter import ttk
 import pandas
 from pprint import pprint as pp
 
-
 # pp(data)
 data = pandas.read_csv('./data/powers.csv').to_dict('records')
 
 
-def create(root):
+def fill_listbox(listbox, power_filter):
+    for index, power in enumerate(data):
+        pp(power['Prerequisites'].split(', '))
+        if power_filter == 1:
+            if power['Prerequisites'] == "None":
+                listbox.insert(index, power['Name'])
+            else:
+                prereqs = power['Prerequisites'].split(', ')
+                for prereq in prereqs:
+                    pass
+        else:
+            listbox.insert(index, power['Name'])
+    # TODO: Add Filter
+
+
+def create(root, character):
+    # pp(character)
+    print('Add Power Alignment Check:', character['alignment'])
+
     def show_details():
         for widget in details_frame.winfo_children():
             widget.destroy()
@@ -51,7 +69,7 @@ def create(root):
         sustained.grid(row=4, column=1, sticky=NW)
         subtype.grid(row=8, column=0, sticky=NW)
         description.grid(row=9, column=0, columnspan=2, sticky=NW)
-        details_frame.grid(row=1, column=1)
+        details_frame.grid(row=1, column=1, sticky=NW)
 
     powers_window = Toplevel(root)
     powers_window.grab_set()
@@ -59,15 +77,19 @@ def create(root):
     powers_window.geometry('800x600')
 
     powers_list = Listbox(powers_window, height=25)
-    for index, power in enumerate(data):
-        powers_list.insert(index, power['Name'])
-    # TODO: Add Filter
-    powers_list.grid(row=1, column=0, rowspan=9, sticky=NW)
+    fill_listbox(powers_list, power_filter=0)
+    power_filter = IntVar()
+    filter_prereqs = Checkbutton(powers_window,
+                                 text='Filter by prerequisites',
+                                 variable=power_filter,
+                                 onvalue=1, offvalue=0, command=lambda: fill_listbox(powers_list, power_filter))
 
+    # fill_listbox(powers_list, power_filter)
+
+    # for index, power in enumerate(data):
+    #     powers_list.insert(index, power['Name'])
+    # # TODO: Add Filter
+    powers_list.grid(row=1, column=0, rowspan=9, sticky=NW)
+    filter_prereqs.grid(row=0, column=0, sticky=NW)
     details_frame = LabelFrame(powers_window, text='Details')
     powers_list.bind('<Button>', lambda e: show_details())
-
-
-
-
-
