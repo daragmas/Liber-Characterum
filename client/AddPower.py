@@ -15,12 +15,12 @@ def fill_listbox(listbox, power_filter, character):
         # pp(power['Prerequisites'])
         if power_filter.get() == 1:
             if power['Prerequisites'] == ["None"]:
-                print('No PreReq')
                 listbox.insert(index, power['Name'])
             else:
                 print(power['Prerequisites'])
-                for prereq in power['Prerequisites']:
-                    pass
+                for prereqType, arr in power['Prerequisites'].items():
+                    if arr:
+                        print(arr)
         else:
             listbox.insert(index, power['Name'])
     # TODO: Add Filter

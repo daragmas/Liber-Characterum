@@ -30,14 +30,14 @@ class NewCharacter:
             "Motivation": {}
         }
         self.update_modifiers = lambda: self.characteristics_modifiers
-        self.race_selection = RaceSelection(root=self.new_character_window,
-                                            new_character=self.set_character_race_attributes)
+        # self.race_selection = RaceSelection(root=self.new_character_window,
+        #                                     new_character=self.set_character_race_attributes)
         self.characteristics_generation = CharacteristicsGeneration(characteristics_frame=self.characteristics_window,
                                                                     new_character=self.new_character,
                                                                     set_characteristics=self.set_character_characteristics,
                                                                     modifiers=self.characteristics_modifiers,
                                                                     update_mods=self.update_modifiers)
-        self.passions_selection = PassionSelection(root=self.new_character_window, set_passions=self.set_passions)
+        # self.passions_selection = PassionSelection(root=self.new_character_window, set_passions=self.set_passions)
 
     def set_character_name(self, character_name):
         self.new_character = {**self.new_character, "name": character_name.get()}
@@ -71,7 +71,6 @@ class NewCharacter:
         except KeyError:
             pass
 
-        # pp(characteristic_mods)
         self.characteristics_generation.modifiers['archetype'] = characteristic_mods
         for characteristic in characteristic_mods:
             index = characteristics_bc.index(characteristic) + 1
@@ -111,8 +110,6 @@ class NewCharacter:
             motivation_label.grid(row=5, column=1, sticky=NW)
         except KeyError:
             pp(self.new_character['passions'])
-        # pp(characteristic_mods)
-        # pp(self.characteristics_generation.modifiers)
 
     def name_character(self):
         Label(self.new_character_window, text="Name ").grid(row=0, column=0, sticky=NW)
@@ -120,15 +117,37 @@ class NewCharacter:
         character_name.grid(row=0, column=1, sticky=NW)
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
 
+    def race_selection(self):
+        race_selection = RaceSelection(root=self.new_character_window,
+                                       new_character=self.set_character_race_attributes)
+        race_selection.create()
+
     def archetype_selection(self):
         archetype_selection = ArchetypeSelection(root=self.new_character_window,
                                                  set_archetype=self.set_character_archetype,
                                                  new_character=self.new_character)
         archetype_selection.create()
 
+    def passion_selection(self):
+        passions_selection = PassionSelection(root=self.new_character_window, set_passions=self.set_passions)
+        passions_selection.create()
+
     def finish_creation(self):
+        formattedspecialists = {
+            "Common Lore": {},
+            "Forbidden Lore": {},
+            "Linguistics": {},
+            "Scholastic Lore": {},
+            "Navigate": {},
+            "Trade": {}
+        }
+        for skill, rating in self.new_character['skills']['specialist'].items():
+            splitskill = skill.strip(')').split(' (')
+            merge(formattedspecialists, {splitskill[0]: {splitskill[1]: rating}}, strategy=Strategy.ADDITIVE)
+
+        self.new_character['skills']['specialist'] = formattedspecialists
+
         self.new_character = merge(character_template, self.new_character, strategy=Strategy.ADDITIVE)
-        pp(self.new_character)
 
         path = asksaveasfile(initialdir='./characters',
                              title='Save New Character',
@@ -146,7 +165,7 @@ class NewCharacter:
         character_name.grid(row=0, column=1)
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
 
-        race_select = Button(self.new_character_window, text="Race ", command=self.race_selection.create)
+        race_select = Button(self.new_character_window, text="Race ", command=self.race_selection)
         race_select.grid(row=1, column=0, sticky=NW)
 
         self.characteristics_window.grid(row=1, column=2, sticky=W, rowspan=15)
@@ -154,9 +173,8 @@ class NewCharacter:
         archetype_select = Button(self.new_character_window, text="Archetype ", command=self.archetype_selection)
         archetype_select.grid(row=2, column=0, sticky=NW)
 
-        passions_select = Button(self.new_character_window, text='Passions', command=self.passions_selection.create)
+        passions_select = Button(self.new_character_window, text='Passions', command=self.passion_selection)
         passions_select.grid(row=3, column=0, sticky=NW)
-        # self.characteristics_generation()
 
     def create(self):
         self.new_character_window.grab_set()
@@ -165,3 +183,4 @@ class NewCharacter:
         self.new_character_form()
 
         Button(self.new_character_window, text="Create", command=self.finish_creation).grid()
+        Button(self.new_character_window, text="Console Log", command=lambda: pp(self.new_character)).grid()

@@ -348,12 +348,10 @@
       "Talents": [
         "Psy Rating 4"
       ],
-      "Skills": [
-        "Devoted to Slaanesh"
-      ],
+      "Skills": [],
       "Powers": [],
       "Traits": [],
-      "Alignment": ""
+      "Alignment": "Slaanesh"
     },
     "Action": "Half Action",
     "Focus Power": "Challenging (+0) Opposed Willpower Test",
@@ -504,13 +502,15 @@
     "Alternate Names": "Crimson Fire of Tzeentch, M\u2019Kachan\u2019s Wrath, The Inevitable Gift",
     "Value": "500xp",
     "Prerequisites": {
-      "Characteristics": [],
+      "Characteristics": [
+        {
+          "Willpower": 50
+        }
+      ],
       "Talents": [
         "Psy Rating 5"
       ],
-      "Skills": [
-        "WP 50+"
-      ],
+      "Skills": [],
       "Powers": [],
       "Traits": [
         "Mark of Tzeentch"

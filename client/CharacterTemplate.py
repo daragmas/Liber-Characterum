@@ -1,7 +1,7 @@
 character_template = {
     "name": "",
     "archetype": "",
-    "picture": "",
+    "picture": "assets/testy_mctestface.png",
     "alignment": "",
     "passions": {
         "Pride": "",
@@ -50,8 +50,15 @@ character_template = {
                 "tech_use": -20,
                 "tracking": -20
             },
-        "specialist": {}
-
+        "specialist":
+            {
+                "Common Lore": {},
+                "Forbidden Lore": {},
+                "Linguistics": {},
+                "Scholastic Lore": {},
+                "Navigate": {},
+                "Trade": {}
+            }
     },
     "talents": [],
     "traits": [],

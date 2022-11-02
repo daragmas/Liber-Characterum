@@ -2,7 +2,7 @@
     "name": "Testy McTestface",
     "archetype": "Codetester",
     "picture": "assets/testy_mctestface.png",
-    "alignment": "unaligned",
+    "alignment": "Unaligned",
     "passions": {
         "Pride": "Logic",
         "Disgrace": "Hubris",
