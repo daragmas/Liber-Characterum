@@ -4,8 +4,6 @@
     <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/AddPower.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/AddPower.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/PowersPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/PowersPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/characters/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/characters/test.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/data/powers.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/powers.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +46,7 @@
       <recent name="\\wsl$\Ubuntu\home\natepwolf\Projects\Phase-Projects\Phase5\Liber_Characterum_ruby\client\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\natepwolf\Projects\Liber-Characterum\client\data" />
       <recent name="\\wsl$\Ubuntu\home\natepwolf\Projects\Phase-Projects\Phase5\Liber_Characterum_ruby\client\assets" />
       <recent name="\\wsl$\Ubuntu\home\natepwolf\Projects\Phase-Projects\Phase5\Liber_Characterum_ruby\client" />
     </key>
