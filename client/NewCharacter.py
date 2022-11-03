@@ -29,15 +29,13 @@ class NewCharacter:
             "Disgrace": {},
             "Motivation": {}
         }
+        self.display_stats_window = Frame(self.new_character_window)
         self.update_modifiers = lambda: self.characteristics_modifiers
-        # self.race_selection = RaceSelection(root=self.new_character_window,
-        #                                     new_character=self.set_character_race_attributes)
         self.characteristics_generation = CharacteristicsGeneration(characteristics_frame=self.characteristics_window,
                                                                     new_character=self.new_character,
                                                                     set_characteristics=self.set_character_characteristics,
                                                                     modifiers=self.characteristics_modifiers,
                                                                     update_mods=self.update_modifiers)
-        # self.passions_selection = PassionSelection(root=self.new_character_window, set_passions=self.set_passions)
 
     def set_character_name(self, character_name):
         self.new_character = {**self.new_character, "name": character_name.get()}
@@ -49,7 +47,7 @@ class NewCharacter:
         try:
             Label(self.new_character_window, text=f'{self.new_character["race"]}').grid(row=1, column=1, sticky=NW)
         except KeyError:
-            pass
+            print("Race: ", self.new_character['race'])
 
         if self.new_character['race'] == 'Mortal':
             self.characteristics_modifiers['race'] = 25
@@ -57,6 +55,37 @@ class NewCharacter:
             self.characteristics_modifiers['race'] = 30
 
         self.characteristics_generation.create()
+        self.display_stats()
+
+    def display_stats(self):
+        for widget in self.display_stats_window.winfo_children():
+            widget.destroy()
+
+        talent_frame = LabelFrame(self.display_stats_window, text='Talents')
+        for talent in self.new_character['talents']:
+            Label(talent_frame, text=talent).grid(sticky=NW)
+        talent_frame.grid(sticky=NW, row=0, column=0)
+
+        traits_frame = LabelFrame(self.display_stats_window, text='Traits')
+        for traits in self.new_character['traits']:
+            Label(traits_frame, text=traits).grid(sticky=NW)
+        traits_frame.grid(sticky=NW, row=0, column=1)
+
+        equipment_frame = LabelFrame(self.display_stats_window, text='Equipment')
+        for equipment, item_array in self.new_character['equipment'].items():
+            equipment_type = LabelFrame(equipment_frame, text=equipment.title())
+            if type(item_array) == str:
+                Label(equipment_type, text=item_array).grid(sticky=NW)
+            else:
+                for item in item_array:
+                    try:
+                        Label(equipment_type, text=f"{item['Name']} ({item['quality']})").grid(sticky=NW)
+                    except AttributeError or TypeError:
+                        Label(equipment_type, text=item).grid(sticky=NW)
+            equipment_type.grid(sticky=NW)
+        equipment_frame.grid(sticky=NW, columnspan=2)
+
+        self.display_stats_window.grid(row=0, column=3, rowspan=20)
 
     def set_character_characteristics(self, characteristic, rating):
         try:
@@ -76,6 +105,8 @@ class NewCharacter:
             index = characteristics_bc.index(characteristic) + 1
             self.characteristics_generation.show_modifiers(characteristic, index)
             self.characteristics_generation.calculate_final(characteristic, index)
+
+        self.display_stats()
 
     def set_passions(self, passions_choices):
         for passion in passions_choices:
@@ -160,15 +191,15 @@ class NewCharacter:
         self.new_character_window.destroy()
 
     def new_character_form(self):
-        Label(self.new_character_window, text="Name ").grid(row=0, column=0)
+        Label(self.new_character_window, text="Name: ").grid(row=0, column=0, sticky=NW)
         character_name = Entry(self.new_character_window)
-        character_name.grid(row=0, column=1)
+        character_name.grid(row=0, column=1, sticky=NW)
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
 
         race_select = Button(self.new_character_window, text="Race ", command=self.race_selection)
         race_select.grid(row=1, column=0, sticky=NW)
 
-        self.characteristics_window.grid(row=1, column=2, sticky=W, rowspan=15)
+        self.characteristics_window.grid(row=0, column=2, sticky=NW, rowspan=15)
 
         archetype_select = Button(self.new_character_window, text="Archetype ", command=self.archetype_selection)
         archetype_select.grid(row=2, column=0, sticky=NW)

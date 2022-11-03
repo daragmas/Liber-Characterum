@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import ttk
 import pandas
 
+
 # TODO: Fix mortal race selection not saving properly
 
 
@@ -14,70 +15,60 @@ class RaceSelection:
         self.race_list = Listbox(self.race_select_window)
         self.decisions = []
         self.pass_choice = new_character
+        self.selection = {}
 
     def choose_race(self):
-        # print(self.race_list.curselection())
-        for i in self.race_list.curselection():
-            selected = self.info[i]
-            if type(selected["Starting Skills"]) != float:
-                non_specialist_skills = {x.casefold(): 0 for x in selected["Starting Skills"].split(', ')}
-            else:
-                non_specialist_skills = {}
+        # for i in self.race_list.curselection():
+        #     selected = self.selection
+        if type(self.selection["Starting Skills"]) != float:
+            non_specialist_skills = {x.casefold(): 0 for x in self.selection["Starting Skills"].split(', ')}
+        else:
+            non_specialist_skills = {}
 
-            # print('talents')
-            if type(selected["Starting Talents"]) != float:
-                talents = [x for x in selected["Starting Talents"].split(', ')]
-            else:
-                talents = []
+        if type(self.selection["Starting Talents"]) != float:
+            talents = [x for x in self.selection["Starting Talents"].split(', ')]
+        else:
+            talents = []
 
-            selection = {
-                "race": selected["Name"],
-                "skills":
-                    {
-                        "non-specialist": non_specialist_skills,
-                        "specialist": {x: 0 for x in selected["Starting Specialist Skills"].split(', ')}
-                    },
-                "talents": talents,
-                "traits": [x for x in selected["Starting Traits"].split(', ')],
-                "equipment": {
-                    "armors": [selected["Starting Armor"]],
-                    "weapons": [selected["Starting Weapons"]],
-                    "gear": [selected["Starting Gear"]]
+        selection = {
+            "race": self.selection["Name"],
+            "skills":
+                {
+                    "non-specialist": non_specialist_skills,
+                    "specialist": {x: 0 for x in self.selection["Starting Specialist Skills"].split(', ')}
                 },
-                "spent_xp": 0,
-                "total_xp": selected["Starting XP"]
-            }
-            # print("selection before decision")
-            # pp(selection)
+            "talents": talents,
+            "traits": [x for x in self.selection["Starting Traits"].split(', ')],
+            "equipment": {
+                "armors": [self.selection["Starting Armor"]],
+                "weapons": [self.selection["Starting Weapons"]],
+                "gear": [self.selection["Starting Gear"]]
+            },
+            "spent_xp": 0,
+            "total_xp": self.selection["Starting XP"]
+        }
 
-            for choice in self.decisions:
-                # print("choice", choice)
-                for key in choice:
-                    # print('key', key)
-                    # if key == 'equipment':
-                    for subtype in choice[key]:
-                        # print('subtype', subtype)
-                        for item in choice[key][subtype]:
-                            # print('item', item)
-                            selection[key][subtype] = [*selection[key][subtype], item]
+        for choice in self.decisions:
+            for key in choice:
+                for subtype in choice[key]:
+                    for item in choice[key][subtype]:
+                        selection[key][subtype] = [*selection[key][subtype], item]
 
-            # print("selection after decision")
-            # pp(selection)
+        self.pass_choice(selection)
 
-            self.pass_choice(selection)
         self.race_select_window.grab_release()
         self.race_select_window.destroy()
 
-    def starting_skills(self, i, root):
+    def starting_skills(self, root):
         skills = LabelFrame(root, text=f"Starting Skills")
         try:
-            skills_array = self.info[i]["Starting Skills"].split(', ')
+            skills_array = self.selection["Starting Skills"].split(', ')
             for index, skill in enumerate(skills_array):
                 Label(skills, text=skill).grid(row=index, column=0, sticky=W)
         except AttributeError:
             pass
 
-        specialist_skills = self.info[i]["Starting Specialist Skills"].split(', ')
+        specialist_skills = self.selection["Starting Specialist Skills"].split(', ')
 
         for index, skill in enumerate(specialist_skills):
             Label(skills, text=skill).grid(row=index, column=1, sticky=W)
@@ -104,10 +95,10 @@ class RaceSelection:
                                    command=make_choice)
         choice_radio.pack(side=LEFT)
 
-    def starting_skill_choices(self, i, root):
+    def starting_skill_choices(self, root):
         skill_choices = LabelFrame(root, text="Skill Choices")
         try:
-            choices_array = self.info[i]["Starting Skill Choices"].split(', ')
+            choices_array = self.selection["Starting Skill Choices"].split(', ')
             self.decisions = [{}] * len(choices_array)
             for index, choice in enumerate(choices_array):
                 if "(Any)" in choice:
@@ -119,30 +110,30 @@ class RaceSelection:
         except AttributeError:
             pass
 
-    def starting_talents(self, i, details_window):
+    def starting_talents(self, details_window):
         talents = LabelFrame(details_window, text="Talents")
         try:
-            talents_array = self.info[i]["Starting Talents"].split(', ')
+            talents_array = self.selection["Starting Talents"].split(', ')
             for index, talent in enumerate(talents_array):
                 Label(talents, text=talent).grid(row=index, column=0, sticky=W)
             talents.grid(row=2, column=4, sticky=NW, rowspan=2)
         except AttributeError:
             pass
 
-    def starting_traits(self, i, details_window):
+    def starting_traits(self, details_window):
         traits = LabelFrame(details_window, text="Traits")
         try:
-            traits_array = self.info[i]["Starting Traits"].split(', ')
+            traits_array = self.selection["Starting Traits"].split(', ')
             for index, trait in enumerate(traits_array):
                 Label(traits, text=trait).grid(row=index, column=0, sticky=W)
             traits.grid(row=3, column=1, sticky=NW)
         except AttributeError:
             pass
 
-    def starting_equipment_choices(self, i, root):
+    def starting_equipment_choices(self, root):
         equipment_choices = LabelFrame(root, text="Equipment Choices")
         try:
-            choices_array = self.info[i]["Starting Equipment Choices"].split(', ')
+            choices_array = self.selection["Starting Equipment Choices"].split(', ')
             split_choices = []
             for choices in choices_array:
                 split_choices += [choices.split(' or ')]
@@ -153,60 +144,65 @@ class RaceSelection:
                 for ind, option in enumerate(choice):
                     self.option_choice(choices_frame=equipment_choices, option=option, index=ind, choice_var=choice_var)
 
-            choices_array.grid(row=4, column=3, sticky=NW)
         except AttributeError:
-            pass
+            print("Equipment Error Render")
         equipment_choices.grid()
 
-    def starting_equipment(self, i, details_window):
+    def starting_equipment(self, details_window):
         # TODO: Fix nan rendering for Mortal
         equipment_frame = LabelFrame(details_window, text="Equipment")
         armor_frame = LabelFrame(equipment_frame, text="Starting Armor")
         try:
-            Label(armor_frame, text=self.info[i]["Starting Armor"]).grid()
+            if str(self.selection["Starting Armor"]) != 'nan':
+                Label(armor_frame, text=self.selection["Starting Armor"]).grid()
+                armor_frame.grid(sticky=W, row=0, column=0)
         except AttributeError:
-            Label(armor_frame, text="").grid()
-        armor_frame.grid(sticky=W, row=0, column=0)
+            pass
 
         weapon_frame = LabelFrame(equipment_frame, text="Starting Weapon")
         try:
-            Label(weapon_frame, text=self.info[i]["Starting Weapons"]).grid()
+            if str(self.selection["Starting Weapons"]) != 'nan':
+                Label(weapon_frame, text=self.selection["Starting Weapons"]).grid()
+                weapon_frame.grid(sticky=W, row=1, column=0)
         except AttributeError:
-            Label(weapon_frame, text="").grid()
-        weapon_frame.grid(sticky=W, row=1, column=0)
+            pass
 
         gear_frame = LabelFrame(equipment_frame, text="Starting Gear")
         try:
-            Label(gear_frame, text=self.info[i]["Starting Gear"]).grid()
+            if str(self.selection["Starting Gear"]) != 'nan':
+                Label(gear_frame, text=self.selection["Starting Gear"]).grid()
+                gear_frame.grid(sticky=W, row=2, column=0)
         except AttributeError:
-            Label(gear_frame, text="").grid()
-        gear_frame.grid(sticky=W, row=2, column=0)
+            pass
 
-        self.starting_equipment_choices(i, equipment_frame)
+        self.starting_equipment_choices(equipment_frame)
 
         equipment_frame.grid(row=3, column=0, sticky=NW)
 
-    def starting_xp(self, i, details_window):
+    def starting_xp(self, details_window):
         xp_frame = LabelFrame(details_window, text="Starting XP")
-        Label(xp_frame, text=self.info[i]["Starting XP"]).grid()
+        Label(xp_frame, text=self.selection["Starting XP"]).grid()
         xp_frame.grid(row=5, column=0, sticky=W)
 
     def show_info(self, details_window):
         for widget in details_window.winfo_children():
             widget.destroy()
 
-        for i in self.race_list.curselection():
-            self.decisions = []
-            Label(details_window, text=f"{self.info[i]['Name']}").grid(row=0, column=0)
-            Label(details_window,
-                  text=f"{self.info[i]['Description']}",
-                  wraplength=275, justify=LEFT).grid(row=1, column=0, columnspan=2)
-            self.starting_skills(i, details_window)
-            self.starting_skill_choices(i, details_window)
-            self.starting_talents(i, details_window)
-            self.starting_traits(i, details_window)
-            self.starting_equipment(i, details_window)
-            self.starting_xp(i, details_window)
+        for race in self.info:
+            if race.get('Name') == self.race_list.get(ANCHOR):
+                self.selection = race
+
+        self.decisions = []
+        Label(details_window, text=f"{self.selection['Name']}").grid(row=0, column=0)
+        Label(details_window,
+              text=f"{self.selection['Description']}",
+              wraplength=275, justify=LEFT).grid(row=1, column=0, columnspan=2)
+        self.starting_skills(details_window)
+        self.starting_skill_choices(details_window)
+        self.starting_talents(details_window)
+        self.starting_traits(details_window)
+        self.starting_equipment(details_window)
+        self.starting_xp(details_window)
 
     def create(self):
         self.race_select_window.grab_set()
