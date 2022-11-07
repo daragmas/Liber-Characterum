@@ -1,26 +1,26 @@
 {
-  "name": "testsetset",
-  "archetype": "Champion",
+  "name": "Testing",
+  "archetype": "Chosen",
   "picture": "assets/testy_mctestface.png",
   "alignment": "Unaligned",
   "passions": {
-    "Pride": "Devotion",
-    "Disgrace": "Gluttony",
-    "Motivation": "Nihlism"
+    "Pride": "Craftsmanship",
+    "Disgrace": "Dread",
+    "Motivation": "Dominion"
   },
   "characteristics": {
-    "weapon skill": 50,
-    "ballistic skill": 34,
-    "strength": 30,
-    "toughness": 50,
-    "agility": 45,
-    "intelligence": 34,
-    "perception": 48,
+    "weapon skill": 32,
+    "ballistic skill": 42,
+    "strength": 45,
+    "toughness": 44,
+    "agility": 31,
+    "intelligence": 41,
+    "perception": 47,
     "willpower": 35,
-    "fellowship": 46,
+    "fellowship": 42,
     "infamy": 24,
-    "corruption": 5,
-    "wounds": 22
+    "corruption": 0,
+    "wounds": 17
   },
   "skills": {
     "non-specialist": {
@@ -49,9 +49,9 @@
       "tech_use": -20,
       "tracking": -20,
       "operate (surface)": 0,
-      "Command": 0,
-      "Deceive": 0,
-      "Scrutiny": 0
+      "Intimidate": 0,
+      "Stealth": 0,
+      "Dodge": "10"
     },
     "specialist": {
       "Common Lore": {
@@ -65,9 +65,7 @@
       "Linguistics": {
         "Low Gothic": 0
       },
-      "Scholastic Lore": {
-        "test": 0
-      },
+      "Scholastic Lore": {},
       "Navigate": {
         "Surface": 0
       },
@@ -75,42 +73,220 @@
     }
   },
   "talents": [
-    "Ambidextrous",
-    "Bulging Biceps",
-    "Legion Weapon Training",
-    "Heightened Senses (Hearing)",
-    "Heightened Senses (Sight)",
-    "Nerves of Steel",
-    "Quick Draw",
-    "Resistance (Cold)",
-    "Resistance (Heat)",
-    "Resistance (Poisons)",
-    "Unarmed Warrior",
-    "Iron Discipline",
-    "Air of Authority",
-    "Sure Strike"
+    {
+      "name": "Ambidextrous",
+      "book": "Core",
+      "description": "This talent does not represent true ambidexterity so much as sufficient training with both hands to make the distinction mute. The character may use either hand equally well for any task, and does not suffer the \u201320 penalty for actions using his off hand. Special: When combined with the Two-Weapon Wielder Talent, the penalty for making attacks with both weapons in the same Turn drops to \u201310."
+    },
+    {
+      "name": "Bulging Biceps",
+      "book": "Core",
+      "description": "Whereas a weaker man would be sent flying when using heavy weapons, the character\u2019s strong physique allows him to remain standing. The character can fi re heavy weapons using Semi-Auto Burst or Full Auto Burst without bracing, and he does not suffer the -30 penalty for failing to brace. In addition whenever the character uses the Athletics Heft Special Skill Use (see page 96) he may add +20 to his Athletics Skill Test to refl ect his massive muscles."
+    },
+    {
+      "name": "Legion Weapon Training",
+      "book": "Core",
+      "description": "Chaos Space Marines spend years becoming profi cient with all manner of weapons, and by the time a Space Marine enters service in a Legion he has not only trained with both heavy and melee weapons, but used those weapons on countless battle fi elds. Chaos Space Marines are profi cient with all weapons of the Bolt, Chain, Melta, Plasma, Power, Flame, Primary, Las, Solid Projectile, Thrown, and Launcher categories. In essence the only weapons that a Chaos Space Marine is not profi cient with are Exotic Weapons; for these he must acquire individual Talents as normal."
+    },
+    {
+      "name": "Heightened Senses (Hearing)",
+      "book": "Core",
+      "description": "Either genetics or augmetics have rendered one of the character\u2019s senses superior to others. When the character gains this Talent, select one of the five senses: The character gains a +10 bonus to any tests specifically involving this sense. Thus, Heightened Senses (Sight) would apply to an Awareness Test to see a flock of Shale Crows, but not to a Ballistic Skill Test simply because the character is using his eyes. This talent may be taken more than once, each time with a different specialisation."
+    },
+    {
+      "name": "Heightened Senses (Sight)",
+      "book": "Core",
+      "description": "Either genetics or augmetics have rendered one of the character\u2019s senses superior to others. When the character gains this Talent, select one of the five senses: The character gains a +10 bonus to any tests specifically involving this sense. Thus, Heightened Senses (Sight) would apply to an Awareness Test to see a flock of Shale Crows, but not to a Ballistic Skill Test simply because the character is using his eyes. This talent may be taken more than once, each time with a different specialisation."
+    },
+    {
+      "name": "Nerves of Steel",
+      "book": "Core",
+      "description": "Long years on the battlefield enable the character to remain calm as fire rains down all around him. The character may reroll failed Willpower Tests to avoid or recover from Pinning. In addition is seldom impressed by the aggressive displays of his enemies and gains a +10 to Willpower Tests when resisting the effects of enemy Intimidation Skill attempts."
+    },
+    {
+      "name": "Quick Draw",
+      "book": "Core",
+      "description": "The character has practiced so frequently with his weapons that they practically leap into his hands in response to a simple thought. The character can draw and ready a weapon as a Free Action when the character is armed with a Pistol or Basic-class ranged weapon, or a melee weapon that can be wielded in one hand."
+    },
+    {
+      "name": "Resistance (Cold)",
+      "book": "Core",
+      "description": "The character\u2019s background, experience, training, exposure, or plain stubbornness has developed a resistance within him. Each time the character select this talent, choose one area of resistance. The character gains a +10 bonus when making tests to resist the effects of this group. The character\u2019s GM may wish to approve certain choices or have them justifi ed by the character\u2019s past."
+    },
+    {
+      "name": "Resistance (Heat)",
+      "book": "Core",
+      "description": "The character\u2019s background, experience, training, exposure, or plain stubbornness has developed a resistance within him. Each time the character select this talent, choose one area of resistance. The character gains a +10 bonus when making tests to resist the effects of this group. The character\u2019s GM may wish to approve certain choices or have them justifi ed by the character\u2019s past."
+    },
+    {
+      "name": "Resistance (Poisons)",
+      "book": "Core",
+      "description": "The character\u2019s background, experience, training, exposure, or plain stubbornness has developed a resistance within him. Each time the character select this talent, choose one area of resistance. The character gains a +10 bonus when making tests to resist the effects of this group. The character\u2019s GM may wish to approve certain choices or have them justifi ed by the character\u2019s past."
+    },
+    {
+      "name": "Unarmed Warrior",
+      "book": "Core",
+      "description": "Due to extensive training in techniques of unarmed combat the character has gained the Natural Weapon Trait (see page 142) improving all his unarmed attacks from 1d5-3 to 1d10 Primitive (7) and meaning he counts as armed even when facing opponents with weapons while bare handed."
+    },
+    {
+      "name": "Lightning Reflexes",
+      "book": "Core",
+      "description": "The character always expects trouble, even in the most innocuous situations, allowing him to act quickly when needed. When making an Initiative Roll the character may roll twice and add the highest of the two dice result to his Agility Bonus."
+    },
+    {
+      "name": "Quick Draw",
+      "book": "Core",
+      "description": "The character has practiced so frequently with his weapons that they practically leap into his hands in response to a simple thought. The character can draw and ready a weapon as a Free Action when the character is armed with a Pistol or Basic-class ranged weapon, or a melee weapon that can be wielded in one hand."
+    },
+    {
+      "name": "Disarm",
+      "book": "Core",
+      "description": "The character can wrest weapons from his opponent\u2019s hands through practised technique or brute force. If in close combat, the character may use a Full Action to disarm his foe by making an Opposed Weapon Skill Test. If the character wins the test, the enemy drops his weapon at his feet. Should the character obtain three or more Degrees of Success, he may take the enemy\u2019s weapon from him."
+    },
+    {
+      "name": "Sure Strike",
+      "book": "Core",
+      "description": "The character\u2019s eye, hand and weapon act seamlessly together, placing the characters blows where he intends. When making a Called Shot (see page 234) melee attack, the character reduces the penalty by 10 (so a \u201320 becomes a \u201310 instead)."
+    }
   ],
   "traits": [
-    "Amphibious",
-    "Unnatural Strength (+4)",
-    "Unnatural Toughness (+4)",
-    "Inspiring Presence"
+    {
+      "name": "Amphibious",
+      "book": "Core",
+      "description": "The creature can breathe water as well as air and can stay underwater indefinitely without the need to surface. If this trait is taken by a creature with the ability to breathe a substance other than air (i.e. water, ammonia, carbon-dioxide etc) then it can breathe air as well as its native atmosphere."
+    },
+    {
+      "name": "Unnatural Characteristic (Strength +4)",
+      "book": "Core",
+      "description": "One or more of the creature\u2019s Characteristics is unnatural. This is indicated by a number which is then added directly to the creature\u2019s Characteristic Bonus. For example, a creature with a Strength of 41 normally has a 4 Strength Bonus. If the creature had Unnatural Characteristic Strength (3) then its Strength Bonus increases to 7 (4+3). A creature may have this Trait more than once. Each time, it is applied to a new Characteristic. In addition, whenever someone with an Unnatural Characteristic succeeds on a Test utilizing that Characteristic, they gain a number of bonus Degrees of Success equal to half of their Unnatural Characteristic."
+    },
+    {
+      "name": "Unnatural Characteristic (Toughness +4)",
+      "book": "Core",
+      "description": "One or more of the creature\u2019s Characteristics is unnatural. This is indicated by a number which is then added directly to the creature\u2019s Characteristic Bonus. For example, a creature with a Strength of 41 normally has a 4 Strength Bonus. If the creature had Unnatural Characteristic Strength (3) then its Strength Bonus increases to 7 (4+3). A creature may have this Trait more than once. Each time, it is applied to a new Characteristic. In addition, whenever someone with an Unnatural Characteristic succeeds on a Test utilizing that Characteristic, they gain a number of bonus Degrees of Success equal to half of their Unnatural Characteristic."
+    },
+    {
+      "name": "Cold Killer",
+      "book": "Core",
+      "description": "Chosen are masters of conflict and combat, and few are better at crippling or killing their opponent. When a Chosen inflicts Zealous Hatred on a target, he may choose to reroll the Crit Result. The second result stands."
+    }
   ],
   "equipment": {
     "weapons": [
-      "Legionnaire Combat Knife",
-      "Legionnaire Bolter",
       {
-        "name": "Legionnaire Power Sword",
-        "quality": "Common"
+        "Name": "Legion Combat Knife",
+        "Class": "Melee",
+        "Range": NaN,
+        "RoF": NaN,
+        "Damage": "1d10",
+        "Damage Type": "R",
+        "Penetration": 2,
+        "Clip": NaN,
+        "Reload": NaN,
+        "Special": NaN,
+        "Weight": 2.0,
+        "Availability": "Very Rare",
+        "Grouping": "Primary",
+        "System": "BC",
+        "Book": "Core",
+        "Description": "A formidable weapon and one that only the great warriors of the Chaos Space Marines would call a mere knife\u2014if it were not for the too-wide grip, humans could use these impressive blades as swords. Tough and thick, these knives are designed for in-close fi ghting and stabbing and are often the last weapon a Space Marine will use when all else has run out of ammunition or power. This is a Legion weapon and follows all the rules for the use of Legion weapons. This is a one-handed melee weapon.",
+        "Quality": "Common"
+      },
+      {
+        "Name": "Legion Bolter",
+        "Class": "Basic",
+        "Range": "100",
+        "RoF": "S/3/\u2013 ",
+        "Damage": "1d10+9",
+        "Damage Type": "X",
+        "Penetration": 4,
+        "Clip": 35.0,
+        "Reload": "Full ",
+        "Special": "Tearing",
+        "Weight": 10.0,
+        "Availability": "Extremely Rare",
+        "Grouping": "Bolt",
+        "System": "BC",
+        "Book": "Core",
+        "Description": "Just as the Adeptus Astartes of the Imperium wield weapons beyond the heft of mere mortals, so to do the Traitor Legions arm themselves with larger bolt weapons that fi re far more powerful rounds. Those of the Chaos Space Marines are often true relic weapons, possibly even left over from the Heresy itself, and thus are possessed by ancient and murderous machine spirits. The blood-thirst of their weapons is kept in check only by the formidable will of their fearsome masters. The Legion boltgun, bolt pistol, combi-bolter, and heavy bolter share many design similarities with their non-Legion variations, the most sizeable difference being the more powerful rounds and more reliable mechanisms. They also count as Legion weapons, and thus follow the rules concerning non-Legionaires wielding Traitor Legion weapons.",
+        "Quality": "Common"
+      },
+      {
+        "Name": "Legion Bolt Pistol",
+        "Class": "Pistol",
+        "Range": "30",
+        "RoF": "S/2/-",
+        "Damage": "1d10+9",
+        "Damage Type": "X",
+        "Penetration": 4,
+        "Clip": 8.0,
+        "Reload": "Full ",
+        "Special": "Tearing",
+        "Weight": 5.5,
+        "Availability": "Extremely Rare",
+        "Grouping": "Bolt",
+        "System": "BC",
+        "Book": "Core",
+        "Description": "Just as the Adeptus Astartes of the Imperium wield weapons beyond the heft of mere mortals, so to do the Traitor Legions arm themselves with larger bolt weapons that fi re far more powerful rounds. Those of the Chaos Space Marines are often true relic weapons, possibly even left over from the Heresy itself, and thus are possessed by ancient and murderous machine spirits. The blood-thirst of their weapons is kept in check only by the formidable will of their fearsome masters. The Legion boltgun, bolt pistol, combi-bolter, and heavy bolter share many design similarities with their non-Legion variations, the most sizeable difference being the more powerful rounds and more reliable mechanisms. They also count as Legion weapons, and thus follow the rules concerning non-Legionaires wielding Traitor Legion weapons.",
+        "Quality": "Common"
+      },
+      {
+        "Name": "Legion Chainsword",
+        "Class": "Melee",
+        "Range": NaN,
+        "RoF": NaN,
+        "Damage": "1d10+3",
+        "Damage Type": "R",
+        "Penetration": 3,
+        "Clip": NaN,
+        "Reload": NaN,
+        "Special": "Tearing, Balanced",
+        "Weight": 10.0,
+        "Availability": "Extremely Rare",
+        "Grouping": "Chain",
+        "System": "BC",
+        "Book": "Core",
+        "Description": "As the name suggests, chainswords are roughly sword-like in shape with a large flat housing containing the chain. Chainsword variants often used by Chaos followers often have the entire blade chassis opened to expose the chained teeth. This makes the weapon more dangerous to both user and victim, but for a truly dedicated warrior this is of little concern. Like all their weapons, the chainswords used by Legion forces are longer and heavier, fi t only to be carried by these mightiest of warriors. The Legion variant is a Legion weapon and follows all the rules for the use of Legion weapons. This is a one-handed melee weapon.",
+        "Quality": "Common"
       }
     ],
     "armors": [
-      "Legionnaire Power Armour,"
+      {
+        "Name": "Legion Power Armor",
+        "Covering": "Arms, Body, Legs, Head",
+        "AP": 8,
+        "Wt": 100.0,
+        "Availability": "Extremely Rare",
+        "Grouping": "Power",
+        "System": "Black Crusade",
+        "Book": "Core Rulebook",
+        "Special": NaN,
+        "Alignment Required": NaN,
+        "Unnamed: 10": NaN
+      }
     ],
     "force_field": {},
     "gear": [
-      "Clip (Starting Weapon) x4"
+      {
+        "Name": "Clip (Starting Weapon)",
+        "System": "BC",
+        "Book": "Core",
+        "Wt": 0.0,
+        "Availability": "Abundant",
+        "Description": "A clip of basic ammunition for the specified weapon to be reloaded once.",
+        "Quantity": "4",
+        "Quality": "Common"
+      },
+      {
+        "Name": "Clip (Legion Bolt Pistol)",
+        "System": "BC",
+        "Book": "Core",
+        "Wt": 0.0,
+        "Availability": "Abundant",
+        "Description": "A clip of basic ammunition for the specified weapon to be reloaded once.",
+        "Quantity": "2",
+        "Quality": "Common"
+      }
     ]
   },
   "spent_xp": 0,
@@ -126,7 +302,7 @@
   "mutations": [],
   "psychic": {
     "rating": 0,
-    "class": NaN,
+    "class": "Non-Psyker",
     "type": {
       "fettered": "",
       "unfettered": "",

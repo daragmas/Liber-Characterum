@@ -4,9 +4,6 @@ from tkinter import ttk
 import pandas
 
 
-# TODO: Fix mortal race selection not saving properly
-
-
 class RaceSelection:
     def __init__(self, root, new_character):
         self.root = root
@@ -18,8 +15,6 @@ class RaceSelection:
         self.selection = {}
 
     def choose_race(self):
-        # for i in self.race_list.curselection():
-        #     selected = self.selection
         if type(self.selection["Starting Skills"]) != float:
             non_specialist_skills = {x.casefold(): 0 for x in self.selection["Starting Skills"].split(', ')}
         else:
@@ -29,6 +24,10 @@ class RaceSelection:
             talents = [x for x in self.selection["Starting Talents"].split(', ')]
         else:
             talents = []
+
+        if str(self.selection["Starting Weapons"]) != 'nan':
+            split_and_strip = self.selection["Starting Weapons"].strip(')').split(' (')
+            self.selection['Starting Weapons'] = {'name': split_and_strip[0], 'quality': split_and_strip[1]}
 
         selection = {
             "race": self.selection["Name"],
@@ -40,9 +39,9 @@ class RaceSelection:
             "talents": talents,
             "traits": [x for x in self.selection["Starting Traits"].split(', ')],
             "equipment": {
-                "armors": [self.selection["Starting Armor"]],
-                "weapons": [self.selection["Starting Weapons"]],
-                "gear": [self.selection["Starting Gear"]]
+                "armors": [self.selection["Starting Armor"]] if str(self.selection["Starting Armor"]) != 'nan' else [],
+                "weapons": [self.selection["Starting Weapons"]] if str(self.selection["Starting Weapons"]) != 'nan' else [],
+                "gear": [self.selection["Starting Gear"]] if str(self.selection["Starting Gear"]) != 'nan' else []
             },
             "spent_xp": 0,
             "total_xp": self.selection["Starting XP"]
@@ -52,6 +51,9 @@ class RaceSelection:
             for key in choice:
                 for subtype in choice[key]:
                     for item in choice[key][subtype]:
+                        if subtype == 'weapons':
+                            split_strip = item.strip(')').split(' (')
+                            item = {'name': split_strip[0], 'quality': split_strip[1]}
                         selection[key][subtype] = [*selection[key][subtype], item]
 
         self.pass_choice(selection)
@@ -133,23 +135,24 @@ class RaceSelection:
     def starting_equipment_choices(self, root):
         equipment_choices = LabelFrame(root, text="Equipment Choices")
         try:
-            choices_array = self.selection["Starting Equipment Choices"].split(', ')
-            split_choices = []
-            for choices in choices_array:
-                split_choices += [choices.split(' or ')]
-            new_spaces = [{}] * len(choices_array)
-            self.decisions.extend(new_spaces)
-            for index, choice in enumerate(split_choices):
-                choice_var = StringVar()
-                for ind, option in enumerate(choice):
-                    self.option_choice(choices_frame=equipment_choices, option=option, index=ind, choice_var=choice_var)
-
+            if str(self.selection["Starting Equipment Choices"]) != 'nan':
+                choices_array = self.selection["Starting Equipment Choices"].split(', ')
+                split_choices = []
+                for choices in choices_array:
+                    split_choices += [choices.split(' or ')]
+                new_spaces = [{}] * len(choices_array)
+                self.decisions.extend(new_spaces)
+                for index, choice in enumerate(split_choices):
+                    choice_var = StringVar()
+                    for ind, option in enumerate(choice):
+                        self.option_choice(choices_frame=equipment_choices, option=option, index=ind, choice_var=choice_var)
+            else:
+                self.selection["Starting Equipment Choices"] = []
         except AttributeError:
-            print("Equipment Error Render")
+            print(self.selection["Starting Equipment Choices"])
         equipment_choices.grid()
 
     def starting_equipment(self, details_window):
-        # TODO: Fix nan rendering for Mortal
         equipment_frame = LabelFrame(details_window, text="Equipment")
         armor_frame = LabelFrame(equipment_frame, text="Starting Armor")
         try:
@@ -219,4 +222,3 @@ class RaceSelection:
         details_window.grid(row=0, column=1, sticky=N)
         select_button = Button(self.race_select_window, text="Choose Race", command=self.choose_race)
         select_button.grid(row=2, column=0)
-        # print(self.info)

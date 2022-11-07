@@ -224,13 +224,11 @@ class ArchetypeSelection:
         for widget in self.details_frame.winfo_children():
             widget.destroy()
 
-        # self.archetype_selection = {}
         for archetype in self.info:
             if archetype.get('Name') == self.archetypes_list.get(ANCHOR):
                 self.archetype_selection = archetype
 
         try:
-            # pp(self.archetype_selection)
             Label(self.details_frame, text=self.archetype_selection['Name']).grid(row=0, column=0, columnspan=4)
             Label(self.details_frame,
                   text=self.archetype_selection["Summary"],
@@ -251,23 +249,23 @@ class ArchetypeSelection:
         self.details_frame.grid(row=0, column=1, rowspan=2, sticky=NW)
 
     def choose_archetype(self):
-        # pp(self.skill_decisions)
-        # pp(self.talent_decisions)
-        # pp(self.equipment_decisions)
+        # TODO: Talents, Traits, and Equipment if reselecting archetype
 
         try:
             starting_specialist_skills = {x: 0 for x in
                                           self.archetype_selection["Starting Specialist Skills"].split(', ')}
         except AttributeError:
             starting_specialist_skills = {}
-        # print('skills', {x: 0 for x in self.archetype_selection["Starting Skills"].split(', ')})
 
         weapons = []
         try:
             split_weapons = self.archetype_selection['Starting Weapons'].split(', ')
             for weapon in split_weapons:
-                x = weapon.strip(')').split(' (')
-                weapons.append({'name': x[0], "quality": x[1]})
+                if " (" not in weapon:
+                    weapons.append({'name': weapon, 'quality': "Common"})
+                else:
+                    x = weapon.strip(')').split(' (')
+                    weapons.append({'name': x[0], "quality": x[1]})
         except AttributeError:
             pass
 
@@ -282,7 +280,7 @@ class ArchetypeSelection:
             'talents': self.archetype_selection['Starting Talents'].split(', '),
             'traits': self.archetype_selection['Starting Traits'].split(', '),
             'equipment': {
-                'armors': self.archetype_selection['Starting Armor'] if type(
+                'armors': [self.archetype_selection['Starting Armor']] if type(
                     self.archetype_selection['Starting Armor']) != float else [],
                 'weapons': weapons,
                 'gear': self.archetype_selection['Starting Gear'].split(', ') if type(
@@ -292,7 +290,7 @@ class ArchetypeSelection:
                 # TODO: Find way to get psy rating from starting talents list
                 'rating': 0, # self.archetype_selection['Starting Talents'][
                 # self.archetype_selection['Starting Talents'].find('Psy Rating') + 11],
-                'class': self.archetype_selection['Starting Psyker Class'],
+                'class': "None", # self.archetype_selection['Starting Psyker Class'],
                 'powers': self.psychic_powers_choices
             }
         }

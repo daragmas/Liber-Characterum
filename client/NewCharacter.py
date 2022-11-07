@@ -9,6 +9,15 @@ from CharacterTemplate import character_template
 from mergedeep import merge, Strategy
 from tkinter.filedialog import asksaveasfile
 import json
+import pandas
+
+# TODO: Clear Archetype and Archetype benefits if race reselected
+
+traits = pandas.read_csv('./data/traits.csv').to_dict('records')
+talents = pandas.read_csv('./data/talents.csv').to_dict('records')
+armors = pandas.read_csv('./data/armor.csv').to_dict('records')
+weapons = pandas.read_csv('./data/weapon.csv').to_dict('records')
+gear = pandas.read_csv('./data/gear.csv').to_dict('records')
 
 
 class NewCharacter:
@@ -79,8 +88,10 @@ class NewCharacter:
             else:
                 for item in item_array:
                     try:
-                        Label(equipment_type, text=f"{item['Name']} ({item['quality']})").grid(sticky=NW)
-                    except AttributeError or TypeError:
+                        Label(equipment_type, text=f"{item['name']} ({item['quality']})").grid(sticky=NW)
+                    except AttributeError:
+                        Label(equipment_type, text=item).grid(sticky=NW)
+                    except TypeError:
                         Label(equipment_type, text=item).grid(sticky=NW)
             equipment_type.grid(sticky=NW)
         equipment_frame.grid(sticky=NW, columnspan=2)
@@ -178,6 +189,95 @@ class NewCharacter:
 
         self.new_character['skills']['specialist'] = formattedspecialists
 
+        for index, talent in enumerate(self.new_character['talents']):
+            for t in talents:
+                if '(' in talent:
+                    if talent.split(' (')[0] == t['Name']:
+                        self.new_character['talents'][index] = {
+                            "name": talent,
+                            "book": 'Core',
+                            'description': t['Description']
+                        }
+                else:
+                    if talent == t['Name']:
+                        self.new_character['talents'][index] = {
+                            "name": talent,
+                            "book": 'Core',
+                            'description': t['Description']
+                        }
+
+        for index, trait in enumerate(self.new_character['traits']):
+            for tr in traits:
+                if '(' in trait:
+                    if trait.split(' (')[0] == tr["Name"].split(' (')[0]:
+                        self.new_character['traits'][index] = {
+                            'name': trait,
+                            'book': tr['Book'],
+                            'description': tr['Description']
+                        }
+                else:
+                    if trait == tr["Name"]:
+                        self.new_character['traits'][index] = {
+                            'name': trait,
+                            'book': tr['Book'],
+                            'description': tr['Description']
+                        }
+
+        for index, armor in enumerate(self.new_character['equipment']['armors']):
+            for a in armors:
+                if armor == a['Name']:
+                    self.new_character['equipment']['armors'][index] = a
+
+        for index, weapon in enumerate(self.new_character['equipment']['weapons']):
+            for w in weapons:
+                if 'x' in weapon['name']:
+                    if weapon['name'].split(' x')[0] == w['Name']:
+                        self.new_character['equipment']['weapons'][index] = {
+                            **w,
+                            'Quality': weapon['quality'],
+                            'Special': f'{w["Special"]}, Quantity: {weapon["name"].split(" x")[1]}'
+                        }
+
+                elif weapon['name'] == w['Name']:
+                    self.new_character['equipment']['weapons'][index] = {
+                        **w, 'Quality': weapon['quality']}
+
+        for index, starting_gear in enumerate(self.new_character['equipment']['gear']):
+            for g in gear:
+                if ' - ' in starting_gear:
+                    split_gear = starting_gear.split(' - ')
+                    if split_gear[0] == g['Name']:
+                        self.new_character['equipment']['gear'][index] = {
+                            **g,
+                            "Description": f'{g["Description"]}. {split_gear[1]}',
+                            "Quality": "Common",
+                            "Quantity": 1
+                        }
+                elif ' x' in starting_gear:
+                    split_gear = starting_gear.split(' (')
+                    split_gear[1] = split_gear[1].split(') x')
+                    if split_gear[0] == g['Name']:
+                        self.new_character['equipment']['gear'][index] = {
+                            **g,
+                            "Name": f'{split_gear[0]} ({split_gear[1][0]})',
+                            "Quantity": split_gear[1][1],
+                            "Quality": "Common"
+                        }
+                elif starting_gear == g['Name']:
+                    self.new_character['equipment']['gear'][index] = {
+                        **g,
+                        "Quality": "Common",
+                        "Quantity": 1
+                    }
+
+                # TODO: Factor in Qualities after refactoring starting Cybernetics for Heretek
+                qualities = ['Poor', "Good", "Best"]
+                # if any(quality in starting_gear for quality in qualities):
+                #     self.new_character['equipment']['gear'][index] = {
+                #         **self.new_character['equipment']['gear'][index],
+                #         "Quality":
+                #     }
+
         self.new_character = merge(character_template, self.new_character, strategy=Strategy.ADDITIVE)
 
         path = asksaveasfile(initialdir='./characters',
@@ -209,7 +309,7 @@ class NewCharacter:
 
     def create(self):
         self.new_character_window.grab_set()
-        self.new_character_window.geometry("600x600")
+        self.new_character_window.geometry("800x600")
         self.new_character_window.title("New Character")
         self.new_character_form()
 

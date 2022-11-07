@@ -1,0 +1,268 @@
+{
+  "name": "rtrtrtr",
+  "archetype": "Renegade",
+  "picture": "assets/testy_mctestface.png",
+  "alignment": "Unaligned",
+  "passions": {
+    "Pride": "Fortitude",
+    "Disgrace": "Gluttony",
+    "Motivation": "Innovation"
+  },
+  "characteristics": {
+    "weapon skill": 45,
+    "ballistic skill": 46,
+    "strength": 37,
+    "toughness": 42,
+    "agility": 29,
+    "intelligence": 43,
+    "perception": 32,
+    "willpower": 38,
+    "fellowship": 29,
+    "infamy": 20,
+    "corruption": 2,
+    "wounds": 11
+  },
+  "skills": {
+    "non-specialist": {
+      "Acrobatics": -20,
+      "Athletics": 0,
+      "Awareness": 0,
+      "Charm": -20,
+      "Command": 0,
+      "Commerce": -20,
+      "Deceive": -20,
+      "Dodge": "10",
+      "Inquiry": -20,
+      "Intimidate": -20,
+      "Logic": -20,
+      "Medicae": -20,
+      "Operate (aeronautica)": -20,
+      "Operate (surface)": -20,
+      "Operate (voidship)": -20,
+      "Parry": 0,
+      "Psyniscience": -20,
+      "Scrutiny": -20,
+      "Security": -20,
+      "Sleight of hand": -20,
+      "Stealth": -20,
+      "Survival": 0,
+      "Tech-use": -20,
+      "Tracking": -20,
+      "Operate (Aeronautica)": 0,
+      "Tech Use": 0
+    },
+    "specialist": {
+      "Common Lore": {
+        "War": 0
+      },
+      "Forbidden Lore": {},
+      "Linguistics": {},
+      "Scholastic Lore": {
+        "Tactica Imperialis": 0
+      },
+      "Navigate": {},
+      "Trade": {}
+    }
+  },
+  "talents": [
+    {
+      "name": "Jaded",
+      "book": "Core",
+      "description": "The character\u2019s wide travels have shown him both wonders and horrors beyond the ken of most. The galaxy has thrown its worst at the character and he has yet to fl inch. Dead bodies, xenos creatures, and other terrifying but natural occurrences do not elicit Fear Tests. Terrors of the Warp still affect the character normally."
+    },
+    {
+      "name": "Quick Draw",
+      "book": "Core",
+      "description": "The character has practiced so frequently with his weapons that they practically leap into his hands in response to a simple thought. The character can draw and ready a weapon as a Free Action when the character is armed with a Pistol or Basic-class ranged weapon, or a melee weapon that can be wielded in one hand."
+    },
+    {
+      "name": "Rapid Reload",
+      "book": "Core",
+      "description": "The firing ranges and weapon drill chambers are the character\u2019s constant abode, and hours of reloading countless magazines or power cells means that he can replace them without looking and without thinking. The character halves all reload times, rounding down. Thus, Half Action reload become a Free Action, a Full Action reload becomes a Half Action and so on."
+    },
+    {
+      "name": "Weapon Training (Chain)",
+      "book": "Core",
+      "description": "The character can employ some of the most devastating weapons of the battlefi eld. The character can use all weapons with Class: Pistol, Basic, Heavy, Throwing, and Melee within the group he has selected with this talent. When a character attempts to use a weapon he does not have the correct Weapon Training Talent for, he suffers a \u201320 penalty to any relevant Weapon Skill or Ballistic Skill Test. This talent may be taken more than once, each time with a different specialisation."
+    },
+    {
+      "name": "Weapon Training (Las)",
+      "book": "Core",
+      "description": "The character can employ some of the most devastating weapons of the battlefi eld. The character can use all weapons with Class: Pistol, Basic, Heavy, Throwing, and Melee within the group he has selected with this talent. When a character attempts to use a weapon he does not have the correct Weapon Training Talent for, he suffers a \u201320 penalty to any relevant Weapon Skill or Ballistic Skill Test. This talent may be taken more than once, each time with a different specialisation."
+    },
+    {
+      "name": "Weapon Training (Primary)",
+      "book": "Core",
+      "description": "The character can employ some of the most devastating weapons of the battlefi eld. The character can use all weapons with Class: Pistol, Basic, Heavy, Throwing, and Melee within the group he has selected with this talent. When a character attempts to use a weapon he does not have the correct Weapon Training Talent for, he suffers a \u201320 penalty to any relevant Weapon Skill or Ballistic Skill Test. This talent may be taken more than once, each time with a different specialisation."
+    },
+    {
+      "name": "Weapon Training (SP)",
+      "book": "Core",
+      "description": "The character can employ some of the most devastating weapons of the battlefi eld. The character can use all weapons with Class: Pistol, Basic, Heavy, Throwing, and Melee within the group he has selected with this talent. When a character attempts to use a weapon he does not have the correct Weapon Training Talent for, he suffers a \u201320 penalty to any relevant Weapon Skill or Ballistic Skill Test. This talent may be taken more than once, each time with a different specialisation."
+    },
+    {
+      "name": "Weapon Training (Heavy)",
+      "book": "Core",
+      "description": "The character can employ some of the most devastating weapons of the battlefi eld. The character can use all weapons with Class: Pistol, Basic, Heavy, Throwing, and Melee within the group he has selected with this talent. When a character attempts to use a weapon he does not have the correct Weapon Training Talent for, he suffers a \u201320 penalty to any relevant Weapon Skill or Ballistic Skill Test. This talent may be taken more than once, each time with a different specialisation."
+    },
+    {
+      "name": "Weapon Training (Bolt)",
+      "book": "Core",
+      "description": "The character can employ some of the most devastating weapons of the battlefi eld. The character can use all weapons with Class: Pistol, Basic, Heavy, Throwing, and Melee within the group he has selected with this talent. When a character attempts to use a weapon he does not have the correct Weapon Training Talent for, he suffers a \u201320 penalty to any relevant Weapon Skill or Ballistic Skill Test. This talent may be taken more than once, each time with a different specialisation."
+    },
+    {
+      "name": "Catfall",
+      "book": "Core",
+      "description": "Gymnastic ability and natural balance enables the character to fall great distances without harm. The character automatically reduces the distance of all falls by a number of metres equal to his Agility Bonus, ignoring this distance as if it did not exist. In addition the character adds +20 to his Acrobatics Skill Tests when using the Jump Special Skill Use as it pertains to reducing Damage from falling."
+    },
+    {
+      "name": "Sure Strike",
+      "book": "Core",
+      "description": "The character\u2019s eye, hand and weapon act seamlessly together, placing the characters blows where he intends. When making a Called Shot (see page 234) melee attack, the character reduces the penalty by 10 (so a \u201320 becomes a \u201310 instead)."
+    },
+    {
+      "name": "Double Team",
+      "book": "Core",
+      "description": "The character has experience fighting in paired teams that work together to take down their enemies. When ganging up on an opponent, the character gains an additional +10 bonus to Weapon Skill Tests. If one or more of the other allies ganging up on the opponent have this Talent, both gain an additional +10 bonus, for a total of +20. This bonus is in addition to the normal bonus gained from Ganging Up on an opponent (see page 245)."
+    },
+    {
+      "name": "Ambidextrous",
+      "book": "Core",
+      "description": "This talent does not represent true ambidexterity so much as sufficient training with both hands to make the distinction mute. The character may use either hand equally well for any task, and does not suffer the \u201320 penalty for actions using his off hand. Special: When combined with the Two-Weapon Wielder Talent, the penalty for making attacks with both weapons in the same Turn drops to \u201310."
+    }
+  ],
+  "traits": [
+    {
+      "name": "The Quick and The Dead",
+      "book": " Core",
+      "description": "To survive in the Vortex, particularly as a human, one must be quick, both in wits and action. Sometimes fast reflexes can compensate for ceramite armour. All Heretics with this Trait add a +2 bonus to Initiative Rolls."
+    },
+    {
+      "name": "Adroit",
+      "book": "Core",
+      "description": "The Renegade is a skillful and talented individual who substitutes raw power for honed ability. The Renegade must select one Characteristic at Character Creation. Throughout the game, he adds one additional Degree of Success to successful Tests involving that Characteristic (this includes Skill and Characteristic Tests)."
+    }
+  ],
+  "equipment": {
+    "weapons": [
+      {
+        "Name": "Lasgun",
+        "Class": "Basic",
+        "Range": "100",
+        "RoF": "S/3/\u2013",
+        "Damage": "1d10+3",
+        "Damage Type": "E",
+        "Penetration": 0,
+        "Clip": 60.0,
+        "Reload": "Full ",
+        "Special": "Reliable",
+        "Weight": 4.0,
+        "Availability": "Common",
+        "Grouping": "Las",
+        "System": "BC",
+        "Book": "Core",
+        "Description": "Produced in the trillions, the lasgun (created in hundreds of local and Imperial patterns) varies in shape and appearance but remains a reliable and functional infantry rifle. Thoughthere are more powerful weapons, few rival the lasgun\u2019s dependability and robustness.",
+        "Quality": "Best"
+      },
+      {
+        "Name": "Laspistol",
+        "Class": "Pistol",
+        "Range": "30",
+        "RoF": "S/2/-",
+        "Damage": "1d10+2",
+        "Damage Type": "E",
+        "Penetration": 0,
+        "Clip": 30.0,
+        "Reload": "Half",
+        "Special": "Reliable",
+        "Weight": 1.5,
+        "Availability": "Common",
+        "Grouping": "Las",
+        "System": "BC",
+        "Book": "Core",
+        "Description": "As common as the lasgun, the laspistol is the backup weapon of choice for both Imperial forces and many of their foes. It is a favoured sidearm for Imperial and Renegade officers alike, and shares the lasgun\u2019s reliability. ",
+        "Quality": "Best"
+      },
+      {
+        "Name": "Chainsword",
+        "Class": "Melee",
+        "Range": NaN,
+        "RoF": NaN,
+        "Damage": "1d10+2",
+        "Damage Type": "R",
+        "Penetration": 2,
+        "Clip": NaN,
+        "Reload": NaN,
+        "Special": "Tearing, Balanced",
+        "Weight": 6.0,
+        "Availability": "Average",
+        "Grouping": "Chain",
+        "System": "BC",
+        "Book": "Core",
+        "Description": "As the name suggests, chainswords are roughly sword-like in shape with a large flat housing containing the chain. Chainsword variants often used by Chaos followers often have the entire blade chassis opened to expose the chained teeth. This makes the weapon more dangerous to both user and victim, but for a truly dedicated warrior this is of little concern. Like all their weapons, the chainswords used by Legion forces are longer and heavier, fi t only to be carried by these mightiest of warriors. The Legion variant is a Legion weapon and follows all the rules for the use of Legion weapons. This is a one-handed melee weapon.",
+        "Quality": "Best"
+      }
+    ],
+    "armors": [
+      {
+        "Name": "Light Carapace",
+        "Covering": "Arms, Body, Legs",
+        "AP": 5,
+        "Wt": 15.0,
+        "Availability": "Rare",
+        "Grouping": "Carapace",
+        "System": "Black Crusade",
+        "Book": "Core Rulebook",
+        "Special": NaN,
+        "Alignment Required": NaN,
+        "Unnamed: 10": NaN
+      }
+    ],
+    "force_field": {},
+    "gear": [
+      {
+        "Name": "Medikit",
+        "System": "BC",
+        "Book": "Core",
+        "Wt": 2.0,
+        "Availability": "Common",
+        "Description": "Small, compact, and reliable, medi-kits are an essential part of anyone operating outside of Imperial society or away from easy access to medicae support. Each has a diagnostic cogitator complete with bio-scanner and probes, along with chemicals, drugs, and other means to treat a variety of injuries and ailments and will grant a +20 to those using it in conjunction with the Medicae Skill. Advanced models include such items as tox wands, synth-skin applicators, and other aids usually available only to the wealthiest of the Imperial elite. These gain the +20 bonus even if not possessing the Medicae Skill, but weight +3 kg and are Rare instead of Common.",
+        "Quality": "Common",
+        "Quantity": 1
+      },
+      {
+        "Name": "Dataslate",
+        "System": "BC",
+        "Book": "Core",
+        "Wt": 0.5,
+        "Availability": "Common",
+        "Description": "Flat and rectangular, data-slates are widespread throughout Imperial space and are used to store text and other media. Cheap versions can only hold a single file and cannot be altered, while superior slates can be reconfi gured with different information from manual input or machine transmission and even transmit the data to other devices. Since they are seen throughout the Imperium, most authorities would never think to closely examine what information was actually on a slate carried by a \u201cloyal\u201d citizen in their daily business.. with annotated version of Tactica Imperialis",
+        "Quality": "Common",
+        "Quantity": 1
+      }
+    ]
+  },
+  "spent_xp": 0,
+  "total_xp": 1000,
+  "total_alignments": {
+    "khorne": 0,
+    "nurgle": 0,
+    "slaanesh": 0,
+    "tzeentch": 0,
+    "unaligned": 0
+  },
+  "purchased_advancements": [],
+  "mutations": [],
+  "psychic": {
+    "rating": 0,
+    "class": "None",
+    "type": {
+      "fettered": "",
+      "unfettered": "",
+      "push": "",
+      "sustained": ""
+    },
+    "powers": []
+  },
+  "race": "Mortal"
+}

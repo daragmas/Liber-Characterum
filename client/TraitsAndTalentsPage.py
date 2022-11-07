@@ -14,17 +14,17 @@ class TraitsAndTalentsPage:
 
         description_name = Label(self.description_frame, text=item["name"])
         description_book = Label(self.description_frame, text=item["book"])
-        description_description = Label(self.description_frame, text=item["description"])
+        description_description = Label(self.description_frame, text=item["description"], wraplength=300)
 
-        description_name.grid(row=0, column=0, sticky=W)
-        description_book.grid(row=1, column=0, sticky=W)
-        description_description.grid(row=2, column=0, sticky=W)
-        self.description_frame.grid(row=0, column=2, sticky=E)
+        description_name.grid(row=0, column=0, sticky=NW)
+        description_book.grid(row=1, column=0, sticky=NW)
+        description_description.grid(row=2, column=0, sticky=NW)
+        self.description_frame.grid(row=0, column=2, sticky=NE)
 
     def create_list_item(self, root, item):
         entry = Label(root, text=item["name"])
         entry.bind("<Button>", lambda e: self.set_selected(item))
-        entry.grid(sticky=W)
+        entry.grid(sticky=NW)
 
     def talents_list(self):
         talents_frame = LabelFrame(self.root, text="Talents")
@@ -32,7 +32,7 @@ class TraitsAndTalentsPage:
         for talent in self.character["talents"]:
             self.create_list_item(root=talents_frame, item=talent)
 
-        talents_frame.grid(row=0, column=0, sticky=W)
+        talents_frame.grid(row=0, column=0, sticky=NW)
 
     def traits_list(self):
         traits_frame = LabelFrame(self.root, text="Traits")
@@ -40,7 +40,7 @@ class TraitsAndTalentsPage:
         for trait in self.character["traits"]:
             self.create_list_item(root=traits_frame, item=trait)
 
-        traits_frame.grid(row=0, column=1)
+        traits_frame.grid(row=0, column=1, sticky=NW)
 
     def add_talent(self):
         print("coming soon!")

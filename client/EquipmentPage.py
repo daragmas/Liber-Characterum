@@ -14,31 +14,32 @@ class EquipmentPage:
 
         for weapon in self.character["equipment"]["weapons"]:
             weapon_subframe = Frame(weapons_frame)
-            name = Label(weapon_subframe, text=f'Name: {weapon["name"].title()}')
-            weapon_class = Label(weapon_subframe, text=f'Class: {weapon["class"].title()}')
-            damage = Label(weapon_subframe, text=f'DAM: {weapon["damage"]} {weapon["damage_type"]}')
-            penetration = Label(weapon_subframe, text=f'PEN: {weapon["penetration"]}')
-            weapon_range = Label(weapon_subframe, text=f'Range: {weapon["range"]}m')
-            rof = Label(weapon_subframe, text=f'RoF: {weapon["rate_of_fire"]}')
-            clip = Label(weapon_subframe, text=f'Clip: {weapon["clip"]}')
-            reload = Label(weapon_subframe, text=f'Rld: {weapon["reload"]}')
+            name = Label(weapon_subframe, text=f'Name: {weapon["Name"].title()}')
+            weapon_class = Label(weapon_subframe, text=f'Class: {weapon["Class"].title()}')
+            damage = Label(weapon_subframe, text=f'DAM: {weapon["Damage"]} {weapon["Damage Type"]}')
+            penetration = Label(weapon_subframe, text=f'PEN: {weapon["Penetration"]}')
+            weapon_range = Label(weapon_subframe, text=f'Range: {weapon["Range"]}m')
+            rof = Label(weapon_subframe, text=f'RoF: {weapon["RoF"]}')
+            clip = Label(weapon_subframe, text=f'Clip: {weapon["Clip"]}')
+            reload = Label(weapon_subframe, text=f'Rld: {weapon["Reload"]}')
             special_frame = Frame(weapon_subframe)
             special_label = Label(weapon_subframe, text="Special Rules: ")
 
-            for special in weapon["special"]:
-                special_name = Label(special_frame, text=special.title())
-                special_name.grid(row=0)
+            if type(weapon['Special']) != float:
+                for index, special in enumerate(weapon["Special"].split(', ')):
+                    special_name = Label(special_frame, text=special.title())
+                    special_name.grid(row=0, column=index, sticky=NW)
 
-            name.grid(row=0)
-            weapon_class.grid(row=1, column=0)
-            damage.grid(row=1, column=1)
-            penetration.grid(row=1, column=2)
-            weapon_range.grid(row=2, column=0)
-            rof.grid(row=2, column=1)
-            clip.grid(row=2, column=2)
-            reload.grid(row=2, column=3)
-            special_label.grid(row=3, column=0)
-            special_frame.grid(row=3, column=1, columnspan=3)
+            name.grid(row=0, sticky=NW)
+            weapon_class.grid(row=1, column=0, sticky=NW)
+            damage.grid(row=1, column=1, sticky=NW)
+            penetration.grid(row=1, column=2, sticky=NW)
+            weapon_range.grid(row=2, column=0, sticky=NW)
+            rof.grid(row=2, column=1, sticky=NW)
+            clip.grid(row=2, column=2, sticky=NW)
+            reload.grid(row=2, column=3, sticky=NW)
+            special_label.grid(row=3, column=0, sticky=NW)
+            special_frame.grid(row=3, column=1, columnspan=3, sticky=NW)
 
             weapon_subframe.grid()
 
@@ -50,11 +51,11 @@ class EquipmentPage:
 
         for armor in self.character["equipment"]["armors"]:
             armor_subframe = Frame(armors_frame)
-            name = Label(armor_subframe, text=f'Name: {armor["name"]}')
+            name = Label(armor_subframe, text=f'Name: {armor["Name"]}')
             # TODO: Change "ALL Coverage to list of "Head, Body, Arms, Legs"?
-            coverage = Label(armor_subframe, text=f'Coverage: {armor["coverage"]}')
-            armor_points = Label(armor_subframe, text=f'AP: {armor["armor_points"]}')
-            weight = Label(armor_subframe, text=f'Wgt: {armor["weight"]}kg')
+            coverage = Label(armor_subframe, text=f'Coverage: {armor["Covering"]}')
+            armor_points = Label(armor_subframe, text=f'AP: {armor["AP"]}')
+            weight = Label(armor_subframe, text=f'Wgt: {armor["Wt"]}kg')
 
             name.grid(row=0, column=0, columnspan=2)
             armor_points.grid(row=0, column=3)
