@@ -3,6 +3,10 @@
 
 In the grim darkness of the 41st millenium, it's a bit annoying to try and build a new character for your tabletop games. LC is here to try and make that a bit easier.
 
+## How to Use
+
+Currently, only the client folder has any usable code. To make or view a character file, run client/main.py in your editor of choice.
+
 
 ## Supported Systems
 - [ ] Black Crusade

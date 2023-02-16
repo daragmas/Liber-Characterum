@@ -1,5 +1,5 @@
 import tkinter.filedialog
-from tkinter import *
+from tkinter.ttk import *
 from tkinter import ttk
 from RaceSelection import *
 from CharacteristicsGeneration import *
@@ -23,7 +23,7 @@ gear = pandas.read_csv('./data/gear.csv').to_dict('records')
 class NewCharacter:
     def __init__(self, root):
         self.root = root
-        self.new_character_window = Toplevel(self.root)
+        self.new_character_window = Toplevel(self.root, padx=5, pady=5)
         self.new_character = {'characteristics': {},
                               'passions': {
                                   'Pride': '',
@@ -73,12 +73,12 @@ class NewCharacter:
         talent_frame = LabelFrame(self.display_stats_window, text='Talents')
         for talent in self.new_character['talents']:
             Label(talent_frame, text=talent).grid(sticky=NW)
-        talent_frame.grid(sticky=NW, row=0, column=0)
+        talent_frame.grid(sticky='nsew', row=0, column=0)
 
         traits_frame = LabelFrame(self.display_stats_window, text='Traits')
         for traits in self.new_character['traits']:
             Label(traits_frame, text=traits).grid(sticky=NW)
-        traits_frame.grid(sticky=NW, row=0, column=1)
+        traits_frame.grid(sticky='nsew', row=0, column=1)
 
         equipment_frame = LabelFrame(self.display_stats_window, text='Equipment')
         for equipment, item_array in self.new_character['equipment'].items():
@@ -94,7 +94,7 @@ class NewCharacter:
                     except TypeError:
                         Label(equipment_type, text=item).grid(sticky=NW)
             equipment_type.grid(sticky=NW)
-        equipment_frame.grid(sticky=NW, columnspan=2)
+        equipment_frame.grid(sticky='nsew', columnspan=2)
 
         self.display_stats_window.grid(row=0, column=3, rowspan=20)
 
@@ -142,14 +142,11 @@ class NewCharacter:
                 self.characteristics_generation.calculate_final(characteristic, index)
 
         try:
-            pride_label = Label(self.new_character_window, text=f'Pride: {self.new_character["passions"]["Pride"]}')
-            pride_label.grid(row=3, column=1, sticky=NW)
-            disgrace_label = Label(self.new_character_window,
-                                   text=f'Disgrace: {self.new_character["passions"]["Disgrace"]}')
-            disgrace_label.grid(row=4, column=1, sticky=NW)
-            motivation_label = Label(self.new_character_window,
-                                     text=f'Motivation: {self.new_character["passions"]["Motivation"]}')
-            motivation_label.grid(row=5, column=1, sticky=NW)
+            passions_frame = Frame(self.new_character_window)
+            Label(passions_frame, text=f'Pride: {self.new_character["passions"]["Pride"]}').grid(sticky=NW)
+            Label(passions_frame, text=f'Disgrace: {self.new_character["passions"]["Disgrace"]}').grid(sticky=NW)
+            Label(passions_frame, text=f'Motivation: {self.new_character["passions"]["Motivation"]}').grid(sticky=NW)
+            passions_frame.grid(row=3, column=1, sticky=NW)
         except KeyError:
             pp(self.new_character['passions'])
 
@@ -291,27 +288,30 @@ class NewCharacter:
         self.new_character_window.destroy()
 
     def new_character_form(self):
-        Label(self.new_character_window, text="Name: ").grid(row=0, column=0, sticky=NW)
+        Label(self.new_character_window, text="Name: ").grid(row=0, column=0, sticky=NE)
         character_name = Entry(self.new_character_window)
         character_name.grid(row=0, column=1, sticky=NW)
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
 
         race_select = Button(self.new_character_window, text="Race ", command=self.race_selection)
-        race_select.grid(row=1, column=0, sticky=NW)
+        race_select.grid(row=1, column=0, sticky=NE)
 
         self.characteristics_window.grid(row=0, column=2, sticky=NW, rowspan=15)
 
         archetype_select = Button(self.new_character_window, text="Archetype ", command=self.archetype_selection)
-        archetype_select.grid(row=2, column=0, sticky=NW)
+        archetype_select.grid(row=2, column=0, sticky=NE)
 
         passions_select = Button(self.new_character_window, text='Passions', command=self.passion_selection)
-        passions_select.grid(row=3, column=0, sticky=NW)
+        passions_select.grid(row=3, column=0, sticky=NE)
+
+        for widget in self.new_character_window.winfo_children():
+            widget.grid_configure(padx=5, pady=5)
 
     def create(self):
         self.new_character_window.grab_set()
-        self.new_character_window.geometry("800x600")
+        self.new_character_window.geometry("1000x600")
         self.new_character_window.title("New Character")
         self.new_character_form()
 
-        Button(self.new_character_window, text="Create", command=self.finish_creation).grid()
+        Button(self.new_character_window, text="Create", command=self.finish_creation).grid(row=20, sticky=N, columnspan=5)
         Button(self.new_character_window, text="Console Log", command=lambda: pp(self.new_character)).grid()

@@ -1,24 +1,24 @@
 {
-  "name": "Test",
+  "name": "Nate",
   "archetype": "Chosen",
   "picture": "assets/testy_mctestface.png",
   "alignment": "Unaligned",
   "passions": {
-    "Pride": "Foresight",
-    "Disgrace": "Destruction",
-    "Motivation": "Ascendancy"
+    "Pride": "Charm",
+    "Disgrace": "Dread",
+    "Motivation": "Dominion"
   },
   "characteristics": {
-    "weapon skill": 41,
-    "ballistic skill": 33,
-    "strength": 42,
-    "toughness": 41,
-    "agility": 40,
-    "intelligence": 47,
-    "perception": 46,
-    "willpower": 43,
-    "fellowship": 38,
-    "infamy": 25,
+    "weapon skill": 50,
+    "ballistic skill": 50,
+    "strength": 44,
+    "toughness": 43,
+    "agility": 39,
+    "intelligence": 33,
+    "perception": 40,
+    "willpower": 34,
+    "fellowship": 46,
+    "infamy": 23,
     "corruption": 0,
     "wounds": 18
   },
@@ -140,9 +140,9 @@
       "description": "The character has practiced so frequently with his weapons that they practically leap into his hands in response to a simple thought. The character can draw and ready a weapon as a Free Action when the character is armed with a Pistol or Basic-class ranged weapon, or a melee weapon that can be wielded in one hand."
     },
     {
-      "name": "Double Team",
+      "name": "Disarm",
       "book": "Core",
-      "description": "The character has experience fighting in paired teams that work together to take down their enemies. When ganging up on an opponent, the character gains an additional +10 bonus to Weapon Skill Tests. If one or more of the other allies ganging up on the opponent have this Talent, both gain an additional +10 bonus, for a total of +20. This bonus is in addition to the normal bonus gained from Ganging Up on an opponent (see page 245)."
+      "description": "The character can wrest weapons from his opponent\u2019s hands through practised technique or brute force. If in close combat, the character may use a Full Action to disarm his foe by making an Opposed Weapon Skill Test. If the character wins the test, the enemy drops his weapon at his feet. Should the character obtain three or more Degrees of Success, he may take the enemy\u2019s weapon from him."
     },
     {
       "name": "Sure Strike",

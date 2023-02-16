@@ -12,7 +12,7 @@ class ArchetypeSelection:
         self.set_archetype = set_archetype
         self.archetype_select_window = Toplevel(self.root)
         self.info = pandas.read_csv('./data/archetypes.csv').to_dict('records')
-        self.archetypes_list = Listbox(self.archetype_select_window)
+        self.archetypes_list = Listbox(self.archetype_select_window, height=4)
         self.details_frame = LabelFrame(self.archetype_select_window, text="Details")
         self.skill_decisions = []
         self.talent_decisions = []
@@ -33,7 +33,7 @@ class ArchetypeSelection:
         except AttributeError:
             pass
         Label(mods_frame, text=f'Wounds : {wounds} + 1d5').grid(sticky=W)
-        mods_frame.grid(row=2, column=0, sticky=NW)
+        mods_frame.grid(row=2, column=0, sticky='nswe')
 
     def starting_skills(self):
         skills_frame = LabelFrame(self.details_frame, text='Skills')
@@ -49,7 +49,7 @@ class ArchetypeSelection:
         fill_skill_frame("Starting Skills", 0)
         fill_skill_frame("Starting Specialist Skills", 1)
 
-        skills_frame.grid(row=2, column=1, columnspan=1, sticky=NW)
+        skills_frame.grid(row=2, column=1, columnspan=1, sticky='nswe')
 
     def starting_talents(self):
         talents_frame = LabelFrame(self.details_frame, text="Talents")
@@ -59,7 +59,7 @@ class ArchetypeSelection:
                 Label(talents_frame, text=talent).grid(row=index, column=0, sticky=W)
         except AttributeError:
             pass
-        talents_frame.grid(row=3, column=1, sticky=NW)
+        talents_frame.grid(row=3, column=1, sticky='nswe')
 
     def starting_traits(self, traits):
         traits_frame = LabelFrame(self.details_frame, text="Traits")
@@ -71,7 +71,7 @@ class ArchetypeSelection:
         for index, trait in enumerate(traits):
             Label(traits_frame, text=trait).grid(sticky=W, row=index, column=0)
 
-        traits_frame.grid(row=3, column=0, sticky=NW)
+        traits_frame.grid(row=3, column=0, sticky='nswe')
 
     def starting_equipment(self):
         equipment_frame = LabelFrame(self.details_frame, text='Equipment')
@@ -91,7 +91,7 @@ class ArchetypeSelection:
         display_starting_equipment(weapons_frame, self.archetype_selection['Starting Weapons'])
         display_starting_equipment(gear_frame, self.archetype_selection['Starting Gear'])
 
-        equipment_frame.grid(row=4, column=0, columnspan=2, sticky=NW)
+        equipment_frame.grid(row=4, column=0, columnspan=2, sticky='nswe')
 
     def starting_psychic_info(self):
         psychic_frame = LabelFrame(self.details_frame, text='Psychic Details')
@@ -107,17 +107,17 @@ class ArchetypeSelection:
         discipline_choices = LabelFrame(psychic_frame, text="Starting Discipline Options")
         for index, discipline in enumerate(self.archetype_selection["Starting Powers Disciplines"].split(', ')):
             Label(discipline_choices, text=discipline).grid(row=0, column=index, sticky=W)
-        discipline_choices.grid(row=1, column=0, columnspan=2, sticky=NW)
+        discipline_choices.grid(row=1, column=0, columnspan=2, sticky='nswe')
 
         starting_powers_frame = LabelFrame(psychic_frame, text="Powers")
         Label(starting_powers_frame, text="Functionality Coming Soon!").grid()
-        starting_powers_frame.grid(row=3, column=0, sticky=NW)
+        starting_powers_frame.grid(row=3, column=0, sticky='nswe')
 
         choose_powers = Button(psychic_frame, text="Choose Powers", command=lambda: print("Coming Soon!"))
-        choose_powers.grid(row=4, column=0, sticky=NW)
+        choose_powers.grid(row=4, column=0, sticky='nswe')
         # TODO: Choose Starting Psychic Powers here
 
-        psychic_frame.grid(row=5, columnspan=2, sticky=NW)
+        psychic_frame.grid(row=5, columnspan=2, sticky='nswe')
 
     # ----------------------------Choices-------------------------------------------------#
 
@@ -184,7 +184,7 @@ class ArchetypeSelection:
                     self.any_choice(choice, skill_choice_frame, index, 'skill')
         except AttributeError:
             pass
-        skill_choice_frame.grid(row=2, column=2, columnspan=2, sticky=NW)
+        skill_choice_frame.grid(row=2, column=2, columnspan=2, sticky='nswe')
 
     def starting_talent_choices(self, choices):
         talent_choice_frame = LabelFrame(self.details_frame, text="Talent Choices")
@@ -199,7 +199,7 @@ class ArchetypeSelection:
                     self.any_choice(choice, talent_choice_frame, index, 'talent')
         except AttributeError:
             pass
-        talent_choice_frame.grid(row=3, column=2, columnspan=2, sticky=NW)
+        talent_choice_frame.grid(row=3, column=2, columnspan=2, sticky='nswe')
 
     def starting_equipment_choices(self, choices):
         equipment_choice_frame = LabelFrame(self.details_frame, text='Equipment Choices')
@@ -216,7 +216,7 @@ class ArchetypeSelection:
         except AttributeError:
             pass
 
-        equipment_choice_frame.grid(row=4, column=2, columnspan=2, sticky=NW)
+        equipment_choice_frame.grid(row=4, column=2, columnspan=2, sticky='nswe')
 
     # ------------------------------Show Info----------------------------------------- #
 
@@ -246,7 +246,7 @@ class ArchetypeSelection:
                 self.starting_psychic_info()
         except KeyError:
             pass
-        self.details_frame.grid(row=0, column=1, rowspan=2, sticky=NW)
+        self.details_frame.grid(row=0, column=1, rowspan=2, sticky='nswe')
 
     def choose_archetype(self):
         # TODO: Talents, Traits, and Equipment if reselecting archetype
@@ -327,7 +327,7 @@ class ArchetypeSelection:
     def create(self):
         self.archetype_select_window.grab_set()
         self.archetype_select_window.title("Archetype Selection")
-        self.archetype_select_window.geometry("1200x600")
+        self.archetype_select_window.geometry("1200x750")
 
         list_row = 0
         for index, item in enumerate(self.info):
@@ -335,6 +335,6 @@ class ArchetypeSelection:
                 self.archetypes_list.insert(list_row, item['Name'])
                 list_row += 1
         self.archetypes_list.bind('<Button>', lambda e: self.show_info())
-        self.archetypes_list.grid(row=0, column=0, sticky=NW)
+        self.archetypes_list.grid(row=0, column=0, sticky='nw')
         select_button = Button(self.archetype_select_window, text="Choose Archetype", command=self.choose_archetype)
-        select_button.grid(row=1, column=0, sticky=NW)
+        select_button.grid(row=2, column=0, sticky='n', columnspan=2)

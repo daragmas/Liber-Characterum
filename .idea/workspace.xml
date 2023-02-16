@@ -4,18 +4,13 @@
     <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="added starting equipment, trait, and talent information for new characters when saving. Note: Heretek starting cybernetics are not factored. Starting Psychic Powers are not factored.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/ArchetypeSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/ArchetypeSelection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/EquipmentPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/EquipmentPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/GearPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/GearPage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/NewCharacter.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/NewCharacter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/PassionSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/PassionSelection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/RaceSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/RaceSelection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/TraitsAndTalentsPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/TraitsAndTalentsPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/characters/savetest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/characters/savetest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/assets/Unaligned.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/assets/Unaligned.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/characters/Test2.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/characters/Test2.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/data/archetypes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/archetypes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/data/armor.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/armor.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/data/passions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/passions.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/data/races.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/races.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/data/talents.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/talents.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/data/weapon.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

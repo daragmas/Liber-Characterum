@@ -7,12 +7,12 @@ import pandas
 class PassionSelection:
     def __init__(self, root, set_passions):
         self.root = root
-        self.passions_window = Toplevel(self.root)
+        self.passions_window = Toplevel(self.root, padx=5, pady=5)
         self.info = pandas.read_csv('./data/passions.csv').to_dict('records')
         self.choices = {'Pride': {}, 'Disgrace': {}, 'Motivation': {}}
-        self.pride_info = LabelFrame(self.passions_window, text="Pride")
-        self.disgrace_info = LabelFrame(self.passions_window, text="Disgrace")
-        self.motivation_info = LabelFrame(self.passions_window, text="Motivation")
+        self.pride_info = LabelFrame(self.passions_window, text="Pride", width=20)
+        self.disgrace_info = LabelFrame(self.passions_window, text="Disgrace", width=20)
+        self.motivation_info = LabelFrame(self.passions_window, text="Motivation", width=20)
         self.set_passions = set_passions
 
     def details(self, listbox):
@@ -21,12 +21,35 @@ class PassionSelection:
                 widget.destroy()
 
             Label(details_box, text=selection['Name']).grid(row=0, column=0)
-            Label(details_box, text=f"Characteristics Bonus : {selection['Characteristic Bonus'].title()}").grid(row=1, column=0)
-            Label(details_box, text=f"Characteristics Penalty : {selection['Characteristic Penalty'].title()}").grid(row=2, column=0)
+            bonus_frame = LabelFrame(details_box, text='Characteristics Bonus')
+            try:
+                if ', ' in selection['Characteristic Bonus']:
+                    split_bonuses = selection['Characteristic Bonus'].split(', ')
+                    for bonus in split_bonuses:
+                        Label(bonus_frame, text=bonus.title()).grid(sticky=NW)
+                else:
+                    Label(bonus_frame, text=selection['Characteristic Bonus'].title()).grid(sticky=NW)
+            except TypeError:
+                Label(bonus_frame, text="Special").grid(sticky=NW)
+            bonus_frame.grid(row=1, sticky='nsew', rowspan=3)
+
+            penalty_frame = LabelFrame(details_box, text='Characteristics Penalty')
+            try:
+                if ', ' in selection['Characteristic Penalty']:
+                    split_penalty = selection['Characteristic Penalty'].split(', ')
+                    for penalty in split_penalty:
+                        Label(penalty_frame, text=penalty.title()).grid(sticky=NW)
+                else:
+                    Label(penalty_frame, text=selection['Characteristic Penalty'].title()).grid(sticky=NW)
+            except TypeError:
+                Label(penalty_frame, text="Special").grid(sticky=NW)
+            penalty_frame.grid(row=4, rowspan=2, sticky='nsew')
+
             if type(selection['Special Modifier']) != float:
-                Label(details_box, text=f"Special Modifier").grid(row=1, column=1)
-                Label(details_box, text=selection['Special Modifier']).grid(row=2, column=1)
-            Label(details_box, text=selection['Description'], wraplength=200).grid(row=3, column=0)
+                special_frame = LabelFrame(details_box, text="Special Modifier")
+                Label(special_frame, text=selection['Special Modifier'], wraplength=200, justify=LEFT).grid(sticky='nsew')
+                special_frame.grid(row=6, sticky='nsew')
+            Label(details_box, text=selection['Description'], wraplength=200, justify=LEFT).grid(row=7)
 
         choice = {}
 
@@ -45,10 +68,6 @@ class PassionSelection:
         except KeyError:
             pass
 
-        self.pride_info.grid(row=1, column=0, sticky=N)
-        self.disgrace_info.grid(row=1, column=1, sticky=N)
-        self.motivation_info.grid(row=1, column=2, sticky=N)
-
     def populate_listbox(self, listbox, items):
         for index, item in enumerate(items):
             listbox.insert(index, item['Name'])
@@ -59,20 +78,23 @@ class PassionSelection:
         disgraces = [x for x in self.info if x['Type'] == 'Disgrace']
         motivations = [x for x in self.info if x['Type'] == 'Motivation']
 
-        pride_listbox = Listbox(self.passions_window)
-        disgrace_listbox = Listbox(self.passions_window)
-        motivation_listbox = Listbox(self.passions_window)
+        pride_listbox = Listbox(self.passions_window, width=20)
+        disgrace_listbox = Listbox(self.passions_window, width=20)
+        motivation_listbox = Listbox(self.passions_window, width=20)
 
         self.populate_listbox(pride_listbox, prides)
         self.populate_listbox(disgrace_listbox, disgraces)
         self.populate_listbox(motivation_listbox, motivations)
 
-        pride_listbox.grid(row=0, column=0)
-        disgrace_listbox.grid(row=0, column=1)
-        motivation_listbox.grid(row=0, column=2)
+        pride_listbox.grid(row=0, column=0, sticky='new')
+        disgrace_listbox.grid(row=0, column=1, sticky='new')
+        motivation_listbox.grid(row=0, column=2, sticky='new')
 
     def choose_passions(self):
         # pp(self.choices)
+        # TODO: Factor in Special Modifiers
+        # TODO: Configure Perfection Motivation
+
         self.set_passions(self.choices)
         self.passions_window.grab_release()
         self.passions_window.destroy()
@@ -80,7 +102,15 @@ class PassionSelection:
     def create(self):
         self.passions_window.title('Select Passions')
         self.passions_window.grab_set()
-        self.passions_window.geometry('800x600')
+        self.passions_window.geometry('650x550')
+
+        Label(self.pride_info, text='Pick One', width=25).grid()
+        Label(self.disgrace_info, text='Pick One', width=25).grid()
+        Label(self.motivation_info, text='Pick One', width=25).grid()
+
+        self.pride_info.grid(row=1, column=0, sticky='nsew')
+        self.disgrace_info.grid(row=1, column=1, sticky='nsew')
+        self.motivation_info.grid(row=1, column=2, sticky='nsew')
 
         select_button = Button(self.passions_window, text='Choose Passions', command=self.choose_passions)
         select_button.grid(row=2, columnspan=3, sticky=S)

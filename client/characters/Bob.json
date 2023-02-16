@@ -1,37 +1,37 @@
 {
-  "name": "Test",
-  "archetype": "Chosen",
+  "name": "Bob",
+  "archetype": "Champion",
   "picture": "assets/testy_mctestface.png",
   "alignment": "Unaligned",
   "passions": {
-    "Pride": "Foresight",
-    "Disgrace": "Destruction",
-    "Motivation": "Ascendancy"
+    "Pride": "Charm",
+    "Disgrace": "Wrath",
+    "Motivation": "Dominion"
   },
   "characteristics": {
-    "weapon skill": 41,
-    "ballistic skill": 33,
-    "strength": 42,
-    "toughness": 41,
-    "agility": 40,
-    "intelligence": 47,
-    "perception": 46,
-    "willpower": 43,
-    "fellowship": 38,
-    "infamy": 25,
+    "weapon skill": 34,
+    "ballistic skill": 45,
+    "strength": 41,
+    "toughness": 34,
+    "agility": 38,
+    "intelligence": 48,
+    "perception": 54,
+    "willpower": 38,
+    "fellowship": 50,
+    "infamy": 23,
     "corruption": 0,
-    "wounds": 18
+    "wounds": 17
   },
   "skills": {
     "non-specialist": {
       "Acrobatics": -20,
       "Athletics": -20,
       "Awareness": -20,
-      "Charm": -20,
-      "Command": -20,
+      "Charm": 0,
+      "Command": 0,
       "Commerce": -20,
       "Deceive": -20,
-      "Dodge": "10",
+      "Dodge": -20,
       "Inquiry": -20,
       "Intimidate": 0,
       "Logic": -20,
@@ -44,7 +44,7 @@
       "Scrutiny": -20,
       "Security": -20,
       "Sleight of hand": -20,
-      "Stealth": 0,
+      "Stealth": -20,
       "Survival": -20,
       "Tech-Use": -20,
       "Tracking": -20,
@@ -66,7 +66,9 @@
       "Linguistics": {
         "Low Gothic": 0
       },
-      "Scholastic Lore": {},
+      "Scholastic Lore": {
+        "Python": 0
+      },
       "Navigate": {
         "Surface": 0
       },
@@ -130,19 +132,14 @@
       "description": "Due to extensive training in techniques of unarmed combat the character has gained the Natural Weapon Trait (see page 142) improving all his unarmed attacks from 1d5-3 to 1d10 Primitive (7) and meaning he counts as armed even when facing opponents with weapons while bare handed."
     },
     {
-      "name": "Lightning Reflexes",
+      "name": "Iron Discipline",
       "book": "Core",
-      "description": "The character always expects trouble, even in the most innocuous situations, allowing him to act quickly when needed. When making an Initiative Roll the character may roll twice and add the highest of the two dice result to his Agility Bonus."
+      "description": "Iron sharpens iron. The character does not coddle his subordinates nor motivate them through kindness. The character\u2019s stalwart example and stern leadership exhorts them with steel instead of spoils. If the character is visible to his followers, either in person or via vox- or pict-caster, they may reroll failed Willpower Tests made to resist Fear and Pinning. Heretics cannot benefi t from the Iron Discipline of another Heretic."
     },
     {
-      "name": "Quick Draw",
+      "name": "Air Of Authority",
       "book": "Core",
-      "description": "The character has practiced so frequently with his weapons that they practically leap into his hands in response to a simple thought. The character can draw and ready a weapon as a Free Action when the character is armed with a Pistol or Basic-class ranged weapon, or a melee weapon that can be wielded in one hand."
-    },
-    {
-      "name": "Double Team",
-      "book": "Core",
-      "description": "The character has experience fighting in paired teams that work together to take down their enemies. When ganging up on an opponent, the character gains an additional +10 bonus to Weapon Skill Tests. If one or more of the other allies ganging up on the opponent have this Talent, both gain an additional +10 bonus, for a total of +20. This bonus is in addition to the normal bonus gained from Ganging Up on an opponent (see page 245)."
+      "description": "The character was born to command, either motivating or terrifying those under their charge. When making Command Skill Tests, the character may affect a number of targets equal to 10 times his Fellowship bonus. If the character has Minions (see page 135) they are also more devoted to him and add +10 to their Loyalty when in his presence. This talent has no effect on hostile targets, and only affects NPCs."
     },
     {
       "name": "Sure Strike",
@@ -167,9 +164,9 @@
       "description": "One or more of the creature\u2019s Characteristics is unnatural. This is indicated by a number which is then added directly to the creature\u2019s Characteristic Bonus. For example, a creature with a Strength of 41 normally has a 4 Strength Bonus. If the creature had Unnatural Characteristic Strength (3) then its Strength Bonus increases to 7 (4+3). A creature may have this Trait more than once. Each time, it is applied to a new Characteristic. In addition, whenever someone with an Unnatural Characteristic succeeds on a Test utilizing that Characteristic, they gain a number of bonus Degrees of Success equal to half of their Unnatural Characteristic."
     },
     {
-      "name": "Cold Killer",
+      "name": "Inspiring Presence",
       "book": "Core",
-      "description": "Chosen are masters of conflict and combat, and few are better at crippling or killing their opponent. When a Chosen inflicts Zealous Hatred on a target, he may choose to reroll the Crit Result. The second result stands."
+      "description": "The Aspiring Champions are natural leaders, and often shape warbands in their own image whether deliberately or not. When an ally within sight of the Aspiring Champion uses an Infamy Point, as a Free Action the Aspiring Champion may choose to allow the ally to use his Infamy Point as if he possessed the Aspiring Champion\u2019s Corruption Point level and Alignment."
     }
   ],
   "equipment": {
@@ -213,41 +210,22 @@
         "Quality": "Common"
       },
       {
-        "Name": "Legion Bolt Pistol",
-        "Class": "Pistol",
-        "Range": "30",
-        "RoF": "S/2/-",
-        "Damage": "1d10+9",
-        "Damage Type": "X",
-        "Penetration": 4,
-        "Clip": 8.0,
-        "Reload": "Full ",
-        "Special": "Tearing",
-        "Weight": 5.5,
-        "Availability": "Extremely Rare",
-        "Grouping": "Bolt",
-        "System": "BC",
-        "Book": "Core",
-        "Description": "Just as the Adeptus Astartes of the Imperium wield weapons beyond the heft of mere mortals, so to do the Traitor Legions arm themselves with larger bolt weapons that fi re far more powerful rounds. Those of the Chaos Space Marines are often true relic weapons, possibly even left over from the Heresy itself, and thus are possessed by ancient and murderous machine spirits. The blood-thirst of their weapons is kept in check only by the formidable will of their fearsome masters. The Legion boltgun, bolt pistol, combi-bolter, and heavy bolter share many design similarities with their non-Legion variations, the most sizeable difference being the more powerful rounds and more reliable mechanisms. They also count as Legion weapons, and thus follow the rules concerning non-Legionaires wielding Traitor Legion weapons.",
-        "Quality": "Common"
-      },
-      {
-        "Name": "Legion Chainsword",
+        "Name": "Legion Power Sword",
         "Class": "Melee",
         "Range": NaN,
         "RoF": NaN,
-        "Damage": "1d10+3",
-        "Damage Type": "R",
-        "Penetration": 3,
+        "Damage": "1d10+6",
+        "Damage Type": "E",
+        "Penetration": 6,
         "Clip": NaN,
         "Reload": NaN,
-        "Special": "Tearing, Balanced",
-        "Weight": 10.0,
+        "Special": "Power Field, Balanced",
+        "Weight": 5.0,
         "Availability": "Extremely Rare",
-        "Grouping": "Chain",
+        "Grouping": "Power",
         "System": "BC",
         "Book": "Core",
-        "Description": "As the name suggests, chainswords are roughly sword-like in shape with a large flat housing containing the chain. Chainsword variants often used by Chaos followers often have the entire blade chassis opened to expose the chained teeth. This makes the weapon more dangerous to both user and victim, but for a truly dedicated warrior this is of little concern. Like all their weapons, the chainswords used by Legion forces are longer and heavier, fi t only to be carried by these mightiest of warriors. The Legion variant is a Legion weapon and follows all the rules for the use of Legion weapons. This is a one-handed melee weapon.",
+        "Description": "Often the signature weapons of elite warriors, power swords are perhaps the most dangerous of melee weapons. In the hands of skilled swordsman, they combine a deadly offence with a nearly impenetrable defence. They come in a variety of shapes and styles, and entire schools are devoted to their mastery. The Legion variant is a Legion weapon and follows all the rules for the use of Legion weapons. This is a one-handed melee weapon.",
         "Quality": "Common"
       }
     ],
@@ -276,16 +254,6 @@
         "Availability": "Abundant",
         "Description": "A clip of basic ammunition for the specified weapon to be reloaded once.",
         "Quantity": "4",
-        "Quality": "Common"
-      },
-      {
-        "Name": "Clip (Legion Bolt Pistol)",
-        "System": "BC",
-        "Book": "Core",
-        "Wt": 0.0,
-        "Availability": "Abundant",
-        "Description": "A clip of basic ammunition for the specified weapon to be reloaded once.",
-        "Quantity": "2",
         "Quality": "Common"
       }
     ]
