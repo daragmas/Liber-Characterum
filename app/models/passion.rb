@@ -1,0 +1,2 @@
+class Passion < ApplicationRecord
+end

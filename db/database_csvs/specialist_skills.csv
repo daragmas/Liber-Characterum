@@ -1,0 +1,7 @@
+Name,Characteristic,Alignment,Descriptors,Trained Only
+Common Lore,INT,Unaligned,"Interaction, Investigation",FALSE
+Forbidden Lore,INT,Tzeentch,"Interaction, Investigation",TRUE
+Linguistics,INT,Unaligned,"Interaction, Investigation",FALSE
+Navigation,INT,Unaligned,,FALSE
+Scholatic Lore,INT,Unaligned,"Interaction, Investigation",FALSE
+Trade,INT,Unaligned,"Crafting, Interaction",FALSE

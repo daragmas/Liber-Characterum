@@ -1,0 +1,2 @@
+class SpecialistSkill < ApplicationRecord
+end

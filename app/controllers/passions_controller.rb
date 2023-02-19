@@ -1,0 +1,2 @@
+class PassionsController < ApplicationController
+end
