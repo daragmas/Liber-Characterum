@@ -1,0 +1,134 @@
+{
+  "name": "Michael",
+  "archetype": "Forsaken",
+  "picture": "",
+  "alignment": "Unaligned",
+  "passions": {
+    "Pride": "Logic",
+    "Disgrace": "Hubris",
+    "Motivation": "Violence"
+  },
+  "characteristics": {
+    "weapon skill": 40,
+    "ballistic skill": 49,
+    "strength": 45,
+    "toughness": 41,
+    "agility": 42,
+    "intelligence": 48,
+    "perception": 27,
+    "willpower": 46,
+    "fellowship": 37,
+    "infamy": 26,
+    "corruption": 5,
+    "wounds": 20
+  },
+  "skills": {
+    "non-specialist": {
+      "acrobatics": -20,
+      "athletics": 0,
+      "awareness": 0,
+      "charm": -20,
+      "command": -20,
+      "commerce": -20,
+      "deceive": -20,
+      "dodge": 0,
+      "inquiry": -20,
+      "intimidate": -20,
+      "logic": -20,
+      "medicae": -20,
+      "operate_aeronautica": -20,
+      "operate_surface": -20,
+      "operate_voidship": -20,
+      "parry": 0,
+      "psyniscience": -20,
+      "scrutiny": -20,
+      "security": -20,
+      "sleight_of_hand": -20,
+      "stealth": -20,
+      "survival": -20,
+      "tech_use": -20,
+      "tracking": -20,
+      "operate (surface)": 0,
+      "Acrobatics": 0,
+      "Survival": "10",
+      "Commerce": 0
+    },
+    "specialist": {
+      "Common Lore (War)": 0,
+      "Forbidden Lore (Adeptus Astartes)": 0,
+      "Forbidden Lore (The Long War)": 0,
+      "Forbidden Lore (The Horus Heresy)": 0,
+      "Linguistics (Low Gothic)": 0,
+      "Navigate (Surface)": 0
+    }
+  },
+  "talents": [
+    "Ambidextrous",
+    "Bulging Biceps",
+    "Legion Weapon Training",
+    "Heightened Senses (Hearing)",
+    "Heightened Senses (Sight)",
+    "Nerves of Steel",
+    "Quick Draw",
+    "Resistance (Cold)",
+    "Resistance (Heat)",
+    "Resistance (Poisons)",
+    "Unarmed Warrior",
+    "Jaded",
+    "Hatred (General Assembly)",
+    "Light Sleeper",
+    "Sound Constitution"
+  ],
+  "traits": [
+    "Amphibious",
+    "Unnatural Strength (+4)",
+    "Unnatural Toughness (+4)",
+    "Resourceful"
+  ],
+  "equipment": {
+    "weapons": [
+      "Legionnaire Combat Knife",
+      "Legionnaire Bolter",
+      {
+        "name": "Legion Chainsword",
+        "quality": "Common"
+      },
+      {
+        "name": "Legion Shotgun",
+        "quality": "Common"
+      }
+    ],
+    "armors": [
+      "Legionnaire Power Armour,"
+    ],
+    "force_field": {},
+    "gear": [
+      "Clip (Starting Weapon) x4",
+      "Legion Frag Grenades x4",
+      "Clip (Legion Shotgun) x2"
+    ]
+  },
+  "spent_xp": 0,
+  "total_xp": 500,
+  "total_alignments": {
+    "khorne": 0,
+    "nurgle": 0,
+    "slaanesh": 0,
+    "tzeentch": 0,
+    "unaligned": 0
+  },
+  "purchased_advancements": [],
+  "mutations": [],
+  "psychic": {
+    "rating": 0,
+    "class": NaN,
+    "type": {
+      "fettered": "",
+      "unfettered": "",
+      "push": "",
+      "sustained": ""
+    },
+    "powers": []
+  },
+  "race": "Chaos Space Marine"
+}
