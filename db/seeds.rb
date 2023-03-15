@@ -61,3 +61,15 @@ csv = CSV.parse(File.read('db/database_csvs/armor.csv'), :headers =>true, :encod
 
 puts "Seeding Passions"
 csv = CSV.parse(File.read('db/database_csvs/passions.csv'), :headers =>true, :encoding => 'ISO-8859-1')
+
+puts "Seeding Talents"
+csv = CSV.parse(File.read('db/database_csvs/talents.csv'), :headers =>true, :encoding => 'ISO-8859-1')
+
+puts "Seeding Weapons"
+csv = CSV.parse(File.read('db/database_csvs/weapons.csv'), :headers =>true, :encoding => 'ISO-8859-1')
+
+puts "Seeding Powers"
+csv = CSV.parse(File.read('db/database_csvs/powers.csv'), :headers =>true, :encoding => 'ISO-8859-1')
+
+puts "Seeding Weapon Properties"
+csv = CSV.parse(File.read('db/database_csvs/weapon_properties.csv'), :headers =>true, :encoding => 'ISO-8859-1')
