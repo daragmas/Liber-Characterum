@@ -1,2 +1,0 @@
-class Armor < ApplicationRecord
-end

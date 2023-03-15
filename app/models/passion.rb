@@ -1,2 +1,0 @@
-class Passion < ApplicationRecord
-end

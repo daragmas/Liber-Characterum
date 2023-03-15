@@ -1,2 +1,0 @@
-class SpecialistSkillsController < ApplicationController
-end
