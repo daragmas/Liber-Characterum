@@ -25,7 +25,7 @@ root.geometry("1200x600")
 tb = Toolbar(root, set_character)
 tb.create()
 
-aboutFrame = LabelFrame(root, text='About', width=1100, pady=10, padx=10)
+aboutFrame = LabelFrame(root, text='About', width=1200, pady=10, padx=10)
 headerText = "Welcome to Liber Characterum!"
 subHeaderText = "A character creation application for Warhammer 40k RPGs"
 aboutText = "This a Python project built by Nathaniel Wolf. " \
@@ -39,6 +39,6 @@ Label(aboutFrame, text=subHeaderText).pack(side=TOP)
 Label(aboutFrame, text=aboutText).pack(side=TOP)
 Label(aboutFrame, text=instructions).pack(side=TOP)
 Label(aboutFrame, text=disclaimer).pack(side=BOTTOM)
-aboutFrame.grid(columnspan=5, sticky='nsew')
+aboutFrame.grid(sticky='nsew')
 
 root.mainloop()
