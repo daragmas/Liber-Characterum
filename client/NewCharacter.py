@@ -58,6 +58,13 @@ class NewCharacter:
         except KeyError:
             print("Race: ", self.new_character['race'])
 
+        try:
+            if self.new_character["archetype"] != "":
+                self.new_character['archetype'] = ""
+                self.archetype_selection()
+        except KeyError:
+            pass
+
         if self.new_character['race'] == 'Mortal':
             self.characteristics_modifiers['race'] = 25
         elif self.new_character['race'] == 'Chaos Space Marine':
