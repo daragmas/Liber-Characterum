@@ -40,7 +40,8 @@ class RaceSelection:
             "traits": [x for x in self.selection["Starting Traits"].split(', ')],
             "equipment": {
                 "armors": [self.selection["Starting Armor"]] if str(self.selection["Starting Armor"]) != 'nan' else [],
-                "weapons": [self.selection["Starting Weapons"]] if str(self.selection["Starting Weapons"]) != 'nan' else [],
+                "weapons": [self.selection["Starting Weapons"]] if str(
+                    self.selection["Starting Weapons"]) != 'nan' else [],
                 "gear": [self.selection["Starting Gear"]] if str(self.selection["Starting Gear"]) != 'nan' else []
             },
             "spent_xp": 0,
@@ -143,7 +144,8 @@ class RaceSelection:
                 for index, choice in enumerate(split_choices):
                     choice_var = StringVar()
                     for ind, option in enumerate(choice):
-                        self.option_choice(choices_frame=equipment_choices, option=option, index=ind, choice_var=choice_var)
+                        self.option_choice(choices_frame=equipment_choices, option=option, index=ind,
+                                           choice_var=choice_var)
             else:
                 self.selection["Starting Equipment Choices"] = []
                 Label(equipment_choices, text='None').grid(sticky='nsew')
@@ -196,16 +198,19 @@ class RaceSelection:
                 self.selection = race
 
         self.decisions = []
-        Label(details_window, text=f"{self.selection['Name']}").grid(row=0, column=0, columnspan=4)
-        Label(details_window,
-              text=f"{self.selection['Description']}",
-              wraplength=800, justify=CENTER).grid(row=1, column=0, columnspan=4)
-        self.starting_skills(details_window)
-        self.starting_skill_choices(details_window)
-        self.starting_talents(details_window)
-        self.starting_traits(details_window)
-        self.starting_equipment(details_window)
-        self.starting_xp(details_window)
+        try:
+            Label(details_window, text=f"{self.selection['Name']}").grid(row=0, column=0, columnspan=4)
+            Label(details_window,
+                  text=f"{self.selection['Description']}",
+                  wraplength=800, justify=CENTER).grid(row=1, column=0, columnspan=4)
+            self.starting_skills(details_window)
+            self.starting_skill_choices(details_window)
+            self.starting_talents(details_window)
+            self.starting_traits(details_window)
+            self.starting_equipment(details_window)
+            self.starting_xp(details_window)
+        except KeyError:
+            pass
 
     def create(self):
         self.race_select_window.grab_set()
@@ -216,7 +221,10 @@ class RaceSelection:
 
         for index, item in enumerate(self.info):
             self.race_list.insert(index, item["Name"])
-        self.race_list.bind("<Button>", lambda e: self.show_info(details_window=details_window))
+        try:
+            self.race_list.bind("<Button>", lambda e: self.show_info(details_window=details_window))
+        except KeyError:
+            pass
 
         self.race_list.grid(row=0, column=0, sticky=N)
         details_window.grid(row=0, column=1, sticky=N)

@@ -21,6 +21,7 @@ Currently, only the client folder has any usable code. To make or view a charact
 
 - [ ] Character Creation
   - [X] Bugfix: When changing race, does not reset Archetype selection or Characteristics
+  - [ ] Bugfix: Remove old selections on New Character Screen when changing Race or Archetype
   - [ ] Configure Skill selection when there is an Any choice as an option (Ex. Forsaken)
   - [ ] Configure special Passion bonuses/penalties
     - [ ] Wealth Pride

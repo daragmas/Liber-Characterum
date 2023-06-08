@@ -52,19 +52,28 @@ class NewCharacter:
     def set_character_race_attributes(self, attributes):
         for key in attributes:
             self.new_character = {**self.new_character, key: attributes[key]}
+        # TODO: Add try statement that checks for a racelabel, and deletes it if it is there
+        try:
+            self.new_character_window.nametowidget('.!toplevel.raceLabel').destroy()
+        except KeyError:
+            print('RaceLabel was not destroyed')
+            pp(self.new_character_window.winfo_children())
 
         try:
-            Label(self.new_character_window, text=f'{self.new_character["race"]}').grid(row=1, column=1, sticky=NW)
+            racelabel = Label(self.new_character_window,
+                  text=f'{self.new_character["race"]}',
+                  name='raceLabel')
+            racelabel.grid(row=1, column=1, sticky=NW)
+            print(str(racelabel))
+
         except KeyError:
             print("Race: ", self.new_character['race'])
-
         try:
             if self.new_character["archetype"] != "":
                 self.new_character['archetype'] = ""
                 self.archetype_selection()
         except KeyError:
             pass
-
         if self.new_character['race'] == 'Mortal':
             self.characteristics_modifiers['race'] = 25
         elif self.new_character['race'] == 'Chaos Space Marine':
@@ -83,8 +92,8 @@ class NewCharacter:
         talent_frame.grid(sticky='nsew', row=0, column=0)
 
         traits_frame = LabelFrame(self.display_stats_window, text='Traits')
-        for traits in self.new_character['traits']:
-            Label(traits_frame, text=traits).grid(sticky=NW)
+        for trait in self.new_character['traits']:
+            Label(traits_frame, text=trait).grid(sticky=NW)
         traits_frame.grid(sticky='nsew', row=0, column=1)
 
         equipment_frame = LabelFrame(self.display_stats_window, text='Equipment')
@@ -113,8 +122,11 @@ class NewCharacter:
 
     def set_character_archetype(self, archetype, characteristic_mods):
         self.new_character = merge(self.new_character, archetype, strategy=Strategy.ADDITIVE)
+
+        # TODO: Add check for archetypelabel, and delete it so the new one isn't overlayed on it
         try:
-            Label(self.new_character_window, text=f'{self.new_character["archetype"]}').grid(row=2, column=1, sticky=NW)
+            archetypelabel = Label(self.new_character_window, text=f'{self.new_character["archetype"]}')
+            archetypelabel.grid(row=2, column=1, sticky=NW)
         except KeyError:
             pass
 
@@ -158,8 +170,8 @@ class NewCharacter:
             pp(self.new_character['passions'])
 
     def name_character(self):
-        Label(self.new_character_window, text="Name ").grid(row=0, column=0, sticky=NW)
-        character_name = Entry(self.new_character_window)
+        Label(self.new_character_window, text="Name ", name='nameLabel').grid(row=0, column=0, sticky=NW)
+        character_name = Entry(self.new_character_window, name='charNameEntry')
         character_name.grid(row=0, column=1, sticky=NW)
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
 
@@ -296,19 +308,28 @@ class NewCharacter:
 
     def new_character_form(self):
         Label(self.new_character_window, text="Name: ").grid(row=0, column=0, sticky=NE)
-        character_name = Entry(self.new_character_window)
+        character_name = Entry(self.new_character_window, name='charName')
         character_name.grid(row=0, column=1, sticky=NW)
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
 
-        race_select = Button(self.new_character_window, text="Race ", command=self.race_selection)
+        race_select = Button(self.new_character_window,
+                             text="Race ",
+                             command=self.race_selection,
+                             name='raceSelect')
         race_select.grid(row=1, column=0, sticky=NE)
 
         self.characteristics_window.grid(row=0, column=2, sticky=NW, rowspan=15)
 
-        archetype_select = Button(self.new_character_window, text="Archetype ", command=self.archetype_selection)
+        archetype_select = Button(self.new_character_window,
+                                  text="Archetype ",
+                                  command=self.archetype_selection,
+                                  name='archetypeSelect')
         archetype_select.grid(row=2, column=0, sticky=NE)
 
-        passions_select = Button(self.new_character_window, text='Passions', command=self.passion_selection)
+        passions_select = Button(self.new_character_window,
+                                 text='Passions',
+                                 command=self.passion_selection,
+                                 name='passionSelect')
         passions_select.grid(row=3, column=0, sticky=NE)
 
         for widget in self.new_character_window.winfo_children():
@@ -320,5 +341,15 @@ class NewCharacter:
         self.new_character_window.title("New Character")
         self.new_character_form()
 
-        Button(self.new_character_window, text="Create", command=self.finish_creation).grid(row=20, sticky=N, columnspan=5)
-        Button(self.new_character_window, text="Console Log", command=lambda: pp(self.new_character)).grid()
+        Button(self.new_character_window, text="Create",
+               command=self.finish_creation,
+               name='createChar').grid(row=20, sticky=N, columnspan=5)
+        Button(self.new_character_window,
+               text="Console Log",
+               command=lambda: pp(self.new_character)).grid()
+        Button(self.new_character_window,
+               text="Window Info",
+               command=lambda: pp(self.new_character_window.winfo_children())).grid()
+        Button(self.new_character_window,
+               text="RaceLabel Info",
+               command=lambda: pp(self.new_character_window.nametowidget('.!toplevel.raceLabel'))).grid()
