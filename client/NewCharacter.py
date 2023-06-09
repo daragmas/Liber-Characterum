@@ -11,7 +11,8 @@ from tkinter.filedialog import asksaveasfile
 import json
 import pandas
 
-# TODO: Clear Archetype and Archetype benefits if race reselected
+# TODO: Refactor widget placement.
+#   Need to be able to destroy and repopulate race, archetype, and passions if choices change
 
 traits = pandas.read_csv('./data/traits.csv').to_dict('records')
 talents = pandas.read_csv('./data/talents.csv').to_dict('records')
@@ -23,14 +24,16 @@ gear = pandas.read_csv('./data/gear.csv').to_dict('records')
 class NewCharacter:
     def __init__(self, root):
         self.root = root
-        self.new_character_window = Toplevel(self.root, padx=5, pady=5)
+        self.new_character_window = Toplevel(self.root, padx=5, pady=5, name='new_character_window')
         self.new_character = {'characteristics': {},
                               'passions': {
                                   'Pride': '',
                                   'Disgrace': '',
                                   'Motivation': ''
                               }}
-        self.characteristics_window = LabelFrame(self.new_character_window, text="Characteristics")
+        self.characteristics_window = LabelFrame(self.new_character_window,
+                                                 text="Characteristics",
+                                                 name='characteristics_window')
         self.characteristics_modifiers = {
             "race": 0,
             "archetype": {},
@@ -38,7 +41,7 @@ class NewCharacter:
             "Disgrace": {},
             "Motivation": {}
         }
-        self.display_stats_window = Frame(self.new_character_window)
+        self.display_stats_window = LabelFrame(self.new_character_window, text='Stats', name='stats_window')
         self.update_modifiers = lambda: self.characteristics_modifiers
         self.characteristics_generation = CharacteristicsGeneration(characteristics_frame=self.characteristics_window,
                                                                     new_character=self.new_character,
@@ -53,18 +56,19 @@ class NewCharacter:
         for key in attributes:
             self.new_character = {**self.new_character, key: attributes[key]}
         # TODO: Add try statement that checks for a racelabel, and deletes it if it is there
-        try:
-            self.new_character_window.nametowidget('.!toplevel.raceLabel').destroy()
-        except KeyError:
-            print('RaceLabel was not destroyed')
-            pp(self.new_character_window.winfo_children())
+        # try:
+        #     self.new_character_window.nametowidget('.!toplevel.raceLabel').config(bg='black')
+        #     print('racelabel does exist')
+        # except KeyError:
+        #     print('Racelabel does not exist yet')
+        #     # pp(self.new_character_window.winfo_children())
 
         try:
             racelabel = Label(self.new_character_window,
                   text=f'{self.new_character["race"]}',
                   name='raceLabel')
             racelabel.grid(row=1, column=1, sticky=NW)
-            print(str(racelabel))
+            # print(str(racelabel))
 
         except KeyError:
             print("Race: ", self.new_character['race'])
@@ -86,21 +90,23 @@ class NewCharacter:
         for widget in self.display_stats_window.winfo_children():
             widget.destroy()
 
-        talent_frame = LabelFrame(self.display_stats_window, text='Talents')
+        # TODO: Delete old talents, traits, and equipment when reselecting archetype
+
+        talent_frame = LabelFrame(self.display_stats_window, text='Talents', name='talents_frame')
         for talent in self.new_character['talents']:
             Label(talent_frame, text=talent).grid(sticky=NW)
         talent_frame.grid(sticky='nsew', row=0, column=0)
 
-        traits_frame = LabelFrame(self.display_stats_window, text='Traits')
+        traits_frame = LabelFrame(self.display_stats_window, text='Traits', name='traits_frame')
         for trait in self.new_character['traits']:
             Label(traits_frame, text=trait).grid(sticky=NW)
         traits_frame.grid(sticky='nsew', row=0, column=1)
 
-        equipment_frame = LabelFrame(self.display_stats_window, text='Equipment')
+        equipment_frame = LabelFrame(self.display_stats_window, text='Equipment', name='equipment_frame')
         for equipment, item_array in self.new_character['equipment'].items():
-            equipment_type = LabelFrame(equipment_frame, text=equipment.title())
+            equipment_type = LabelFrame(equipment_frame, text=equipment.title(), name=f'{equipment}')
             if type(item_array) == str:
-                Label(equipment_type, text=item_array).grid(sticky=NW)
+                Label(equipment_type, text=item_array, name=f'{item_array[0]}').grid(sticky=NW)
             else:
                 for item in item_array:
                     try:
@@ -123,9 +129,16 @@ class NewCharacter:
     def set_character_archetype(self, archetype, characteristic_mods):
         self.new_character = merge(self.new_character, archetype, strategy=Strategy.ADDITIVE)
 
-        # TODO: Add check for archetypelabel, and delete it so the new one isn't overlayed on it
         try:
-            archetypelabel = Label(self.new_character_window, text=f'{self.new_character["archetype"]}')
+            for widget in self.new_character_window.winfo_children():
+                print(widget)
+        except KeyError:
+            pass
+
+        try:
+            archetypelabel = Label(self.new_character_window,
+                                   text=f'{self.new_character["archetype"]}',
+                                   name='archetype_label')
             archetypelabel.grid(row=2, column=1, sticky=NW)
         except KeyError:
             pass
@@ -161,10 +174,16 @@ class NewCharacter:
                 self.characteristics_generation.calculate_final(characteristic, index)
 
         try:
-            passions_frame = Frame(self.new_character_window)
-            Label(passions_frame, text=f'Pride: {self.new_character["passions"]["Pride"]}').grid(sticky=NW)
-            Label(passions_frame, text=f'Disgrace: {self.new_character["passions"]["Disgrace"]}').grid(sticky=NW)
-            Label(passions_frame, text=f'Motivation: {self.new_character["passions"]["Motivation"]}').grid(sticky=NW)
+            passions_frame = Frame(self.new_character_window, name='passions_frame')
+            Label(passions_frame,
+                  text=f'Pride: {self.new_character["passions"]["Pride"]}',
+                  name='pride_choice').grid(sticky=NW)
+            Label(passions_frame,
+                  text=f'Disgrace: {self.new_character["passions"]["Disgrace"]}',
+                  name='disgrace_choice').grid(sticky=NW)
+            Label(passions_frame,
+                  text=f'Motivation: {self.new_character["passions"]["Motivation"]}',
+                  name='motivation_choice').grid(sticky=NW)
             passions_frame.grid(row=3, column=1, sticky=NW)
         except KeyError:
             pp(self.new_character['passions'])
@@ -307,7 +326,7 @@ class NewCharacter:
         self.new_character_window.destroy()
 
     def new_character_form(self):
-        Label(self.new_character_window, text="Name: ").grid(row=0, column=0, sticky=NE)
+        Label(self.new_character_window, text="Name: ", name='name_label').grid(row=0, column=0, sticky=NE)
         character_name = Entry(self.new_character_window, name='charName')
         character_name.grid(row=0, column=1, sticky=NW)
         character_name.bind('<KeyRelease>', lambda e: self.set_character_name(character_name=character_name))
