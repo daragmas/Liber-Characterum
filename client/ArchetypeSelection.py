@@ -251,6 +251,23 @@ class ArchetypeSelection:
     def choose_archetype(self):
         # TODO: Talents, Traits, and Equipment if reselecting archetype
 
+        if self.new_character['race'] == 'Mortal':
+            pass
+        else:
+            self.new_character['talents'] = self.new_character['talents'][:11]
+            self.new_character['traits'] = self.new_character['traits'][:3]
+            self.new_character['equipment']['weapons'] = self.new_character['equipment']['weapons'][:2]
+            self.new_character['skills']['non-specialist'] = {
+                'athletics': 0, 'awareness': 0, 'dodge': 0, 'operate (surface)': 0, 'parry': 0}
+            self.new_character['skills']['specialist'] = {
+                'Common Lore (War)': 0,
+                'Forbidden Lore (Adeptus Astartes)': 0,
+                'Forbidden Lore (The Long War)': 0,
+                'Forbidden Lore (The Horus Heresy)': 0,
+                'Linguistics (Low Gothic)': 0,
+                'Navigate (Surface)': 0
+            }
+
         try:
             starting_specialist_skills = {x: 0 for x in
                                           self.archetype_selection["Starting Specialist Skills"].split(', ')}

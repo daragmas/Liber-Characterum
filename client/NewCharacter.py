@@ -118,6 +118,22 @@ class NewCharacter:
             equipment_type.grid(sticky=NW)
         equipment_frame.grid(sticky='nsew', columnspan=2)
 
+        skill_frame = LabelFrame(self.display_stats_window, text='Skills', name='skills_frame')
+        non_spec_skills = LabelFrame(skill_frame, text='Non-Specialist Skills', name='non-spec_skills_frame')
+        for skill, rating in self.new_character['skills']['non-specialist'].items():
+            Label(non_spec_skills, text=f'{skill.title()}: {rating}').grid(sticky=NW)
+        non_spec_skills.grid(row=0, column=0, sticky='nw')
+
+        spec_skills = LabelFrame(skill_frame, text='Specialist Skills', name='spec_skills_frame')
+        try:
+            for skill, rating in self.new_character['skills']['specialist'].items():
+                Label(spec_skills, text=f'{skill.title()}: {rating}').grid(sticky=NW)
+            spec_skills.grid(row=0, column=1, sticky='nw')
+        except AttributeError:
+            print(self.new_character['skills']['specialist'].items())
+
+        skill_frame.grid(row=0, column=2, sticky='n')
+
         self.display_stats_window.grid(row=0, column=3, rowspan=20)
 
     def set_character_characteristics(self, characteristic, rating):
@@ -129,11 +145,11 @@ class NewCharacter:
     def set_character_archetype(self, archetype, characteristic_mods):
         self.new_character = merge(self.new_character, archetype, strategy=Strategy.ADDITIVE)
 
-        try:
-            for widget in self.new_character_window.winfo_children():
-                print(widget)
-        except KeyError:
-            pass
+        # try:
+        #     for widget in self.new_character_window.winfo_children():
+        #         print(widget)
+        # except KeyError:
+        #     pass
 
         try:
             archetypelabel = Label(self.new_character_window,
@@ -356,7 +372,7 @@ class NewCharacter:
 
     def create(self):
         self.new_character_window.grab_set()
-        self.new_character_window.geometry("1000x600")
+        self.new_character_window.geometry("1200x600")
         self.new_character_window.title("New Character")
         self.new_character_form()
 

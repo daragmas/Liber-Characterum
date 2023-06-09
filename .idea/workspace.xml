@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="added starting equipment, trait, and talent information for new characters when saving. Note: Heretek starting cybernetics are not factored. Starting Psychic Powers are not factored.">
+    <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="Started fixing bug where labels widgets of old selections are not deleted when changing race or archetype">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/ArchetypeSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/ArchetypeSelection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/NewCharacter.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/NewCharacter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/RaceSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/RaceSelection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/data/archetypes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/archetypes.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +87,14 @@
       <option name="presentableId" value="Default" />
       <updated>1663681387233</updated>
     </task>
+    <task id="LOCAL-00001" summary="Started fixing bug where labels widgets of old selections are not deleted when changing race or archetype">
+      <created>1686234787278</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686234787278</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,6 +110,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added starting equipment, trait, and talent information for new characters when saving. Note: Heretek starting cybernetics are not factored. Starting Psychic Powers are not factored." />
-    <option name="LAST_COMMIT_MESSAGE" value="added starting equipment, trait, and talent information for new characters when saving. Note: Heretek starting cybernetics are not factored. Starting Psychic Powers are not factored." />
+    <MESSAGE value="Started fixing bug where labels widgets of old selections are not deleted when changing race or archetype" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started fixing bug where labels widgets of old selections are not deleted when changing race or archetype" />
   </component>
 </project>
