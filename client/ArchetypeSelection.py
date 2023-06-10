@@ -246,14 +246,17 @@ class ArchetypeSelection:
                 self.starting_psychic_info()
         except KeyError:
             pass
-        self.details_frame.grid(row=0, column=1, rowspan=2, sticky='nswe')
+        self.details_frame.grid(row=0, column=1, rowspan=2, sticky='nsew')
 
     def choose_archetype(self):
-        # TODO: Talents, Traits, and Equipment if reselecting archetype
-
+        # Reset attributes if reselecting Archetype
         if self.new_character['race'] == 'Mortal':
-            # use popitem() to reduce size of skills?
-            pass
+            self.new_character['talents'] = []
+            self.new_character['traits'] = [self.new_character['traits'][0]]
+            self.new_character['equipment'] = {'armors': [], 'weapons': [], 'gear': []}
+            self.new_character['skills']['non-specialist'] = {}
+            while len(self.new_character['skills']['specialist']) > 4:
+                self.new_character['skills']['specialist'].popitem()
         else:
             self.new_character['talents'] = self.new_character['talents'][:11]
             self.new_character['traits'] = self.new_character['traits'][:3]
@@ -306,9 +309,9 @@ class ArchetypeSelection:
             },
             'psychic': {
                 # TODO: Find way to get psy rating from starting talents list
-                'rating': 0, # self.archetype_selection['Starting Talents'][
+                'rating': 0,  # self.archetype_selection['Starting Talents'][
                 # self.archetype_selection['Starting Talents'].find('Psy Rating') + 11],
-                'class': "None", # self.archetype_selection['Starting Psyker Class'],
+                'class': "None",  # self.archetype_selection['Starting Psyker Class'],
                 'powers': self.psychic_powers_choices
             }
         }
