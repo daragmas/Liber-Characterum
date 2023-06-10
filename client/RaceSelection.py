@@ -55,7 +55,8 @@ class RaceSelection:
                         if subtype == 'weapons':
                             split_strip = item.strip(')').split(' (')
                             item = {'name': split_strip[0], 'quality': split_strip[1]}
-                        selection[key][subtype] = [*selection[key][subtype], item]
+                        else:
+                            selection[key][subtype][item] = 0
 
         self.pass_choice(selection)
 

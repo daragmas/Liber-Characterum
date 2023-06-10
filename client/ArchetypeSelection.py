@@ -252,6 +252,7 @@ class ArchetypeSelection:
         # TODO: Talents, Traits, and Equipment if reselecting archetype
 
         if self.new_character['race'] == 'Mortal':
+            # use popitem() to reduce size of skills?
             pass
         else:
             self.new_character['talents'] = self.new_character['talents'][:11]

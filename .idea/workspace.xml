@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="Started fixing bug where labels widgets of old selections are not deleted when changing race or archetype">
+    <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="Fixed not removing old traits, talents, skills, and weapons when reselecting Archetype for Chaos Space Marines">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/ArchetypeSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/ArchetypeSelection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/NewCharacter.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/NewCharacter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/data/archetypes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/archetypes.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/RaceSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/RaceSelection.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686234787278</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixed not removing old traits, talents, skills, and weapons when reselecting Archetype for Chaos Space Marines">
+      <created>1686346151025</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686346151025</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,6 +117,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added starting equipment, trait, and talent information for new characters when saving. Note: Heretek starting cybernetics are not factored. Starting Psychic Powers are not factored." />
     <MESSAGE value="Started fixing bug where labels widgets of old selections are not deleted when changing race or archetype" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started fixing bug where labels widgets of old selections are not deleted when changing race or archetype" />
+    <MESSAGE value="Fixed not removing old traits, talents, skills, and weapons when reselecting Archetype for Chaos Space Marines" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed not removing old traits, talents, skills, and weapons when reselecting Archetype for Chaos Space Marines" />
   </component>
 </project>
