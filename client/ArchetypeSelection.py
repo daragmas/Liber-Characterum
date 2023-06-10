@@ -146,8 +146,8 @@ class ArchetypeSelection:
             decision = choice_var.get()
             if category == 'skill':
                 if '+' in decision:
-                    rating = decision.split(' +')[1]
-                    decision = decision.split(' +')[0]
+                    decision, rating = decision.split(' +')
+                    # decision = decision.split(' +')[0]
                 else:
                     rating = 0
 
@@ -168,8 +168,28 @@ class ArchetypeSelection:
 
         for ind, option in enumerate(choice):
             # TODO: Parse Specialist (Any) skill option for radio button
-            option_radio = Radiobutton(frame, text=option, value=option, variable=choice_var, command=make_choice)
-            option_radio.grid(row=index, column=ind, sticky=W)
+            #   if any choice,
+            #       strip (Any) off of option
+            #       make an Entry next to Radiobutton
+            #       Radiobutton(frame, text=option, value=f'{option} ({Entry.get()})', variable=choice_var, command=make_choice)
+
+            if '(Any)' in option:
+                option = option.strip(" (Any)")
+                any_or_frame = Frame(frame)
+                choice_entry = Entry(any_or_frame)
+                choice_entry.grid(row=0, column=1, sticky=W)
+                option_radio = Radiobutton(frame, text=option,
+                                           value=f'{option} ({choice_entry.get()})',
+                                           variable=choice_var,
+                                           command=make_choice)
+                choice_entry.bind('<KeyRelease>', lambda e: option_radio.configure(value=f'{option} ({choice_entry.get()})'))
+                any_or_frame.grid(row=index, column=ind+1, sticky=W)
+                option_radio.grid(row=index, column=ind, sticky=W)
+            else:
+                option_radio = Radiobutton(frame, text=option, value=option, variable=choice_var, command=make_choice)
+                option_radio.grid(row=index, column=ind, sticky=W)
+            # option_radio = Radiobutton(frame, text=option, value=option, variable=choice_var, command=make_choice)
+            # option_radio.grid(row=index, column=ind, sticky=W)
 
     def starting_skill_choices(self, choices):
         skill_choice_frame = LabelFrame(self.details_frame, text='Skill Choices')
@@ -359,3 +379,4 @@ class ArchetypeSelection:
         self.archetypes_list.grid(row=0, column=0, sticky='nw')
         select_button = Button(self.archetype_select_window, text="Choose Archetype", command=self.choose_archetype)
         select_button.grid(row=2, column=0, sticky='n', columnspan=2)
+        Button(self.archetype_select_window, text='Show skill decisions', command=lambda: print(self.skill_decisions)).grid()
