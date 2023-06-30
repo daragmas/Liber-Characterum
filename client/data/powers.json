@@ -5,11 +5,13 @@
     "Alternate Names": "Repulsive Shield, Mantle of Esh\u2019raiik, Bulwark of Detestation",
     "Value": "300xp",
     "Prerequisites": {
-      "Characteristics": [
+      "Characteristics":
+      [
         {
           "Corruption": 30
         }
-      ],
+      ]
+      ,
       "Talents": [
         "Psy Rating 4"
       ],
@@ -30,9 +32,14 @@
     "Discipline": "Unaligned",
     "Alternate Names": "Shards of Malice, Fist of Ruin",
     "Value": "200xp",
-    "Prerequisites": [
-      "None"
-    ],
+    "Prerequisites": {
+      "Characteristics": [],
+      "Talents": [],
+      "Skills": [],
+      "Powers": [],
+      "Traits": [],
+      "Alignment": ""
+    },
     "Action": "Half Action",
     "Focus Power": "Challenging (+0) Willpower Test",
     "Range": "20 metres x Psy Rating",
@@ -602,9 +609,7 @@
     "Prerequisites": {
       "Characteristics": [
         {
-          "Intelligence": 40
-        },
-        {
+          "Intelligence": 40,
           "Fellowship": 40
         }
       ],
@@ -652,12 +657,8 @@
     "Prerequisites": {
       "Characteristics": [
         {
-          "Corruption": 50
-        },
-        {
-          "Toughness": 50
-        },
-        {
+          "Corruption": 50,
+          "Toughness": 50,
           "Willpower": 50
         }
       ],
@@ -1022,9 +1023,14 @@
     "Discipline": "Telepathy",
     "Alternate Names": "Echo of Thought, Whispered Will",
     "Value": "100xp",
-    "Prerequisites": [
-      "None"
-    ],
+    "Prerequisites": {
+      "Characteristics": [],
+      "Talents": [],
+      "Skills": [],
+      "Powers": [],
+      "Traits": [],
+      "Alignment": ""
+    },
     "Action": "Free Action",
     "Focus Power": "Simple (+40) Opposed Willpower Test",
     "Range": "1 kilometre per Psy Rating radius",
@@ -1082,9 +1088,14 @@
     "Discipline": "Telekinesis",
     "Alternate Names": "Spectral Hands, Ethereal Motion",
     "Value": "100xp",
-    "Prerequisites": [
-      "None"
-    ],
+    "Prerequisites": {
+      "Characteristics": [],
+      "Talents": [],
+      "Skills": [],
+      "Powers": [],
+      "Traits": [],
+      "Alignment": ""
+    },
     "Action": "Half Action",
     "Focus Power": "Willpower Test; Special \u2013 See Below",
     "Range": "5 metres per Psy Rating",
@@ -1222,7 +1233,7 @@
       "Alignment": ""
     },
     "Action": "Reaction",
-    "Focus Power": "Diffi cult (\u201310) Perception Test",
+    "Focus Power": "Difficult (\u201310) Perception Test",
     "Range": "Self",
     "Sustained": "No",
     "Subtype": "Concentration",
@@ -1248,7 +1259,7 @@
     "Range": "1 metre",
     "Sustained": "No",
     "Subtype": "Concentration",
-    "Description": "The psyker\u2019s gaze is cast upon the infi nite tides of the warp, to seek out the future of a single, specifi c individual. While supposedly something of a staple of soothsayers and other petty seers, it takes real skill to gain more than the vaguest impressions. The Emperor\u2019s Tarot is a common method within the Imperium, while Eldar Farseers typically employ tiny, psychically conductive runes to divine the future, but untold billions of different methods exist within the myriad civilisations across the galaxy. To begin with, the power\u2019s target must specify a circumstance that he wishes to have divined. This may be as detailed as \u201cWhat forces defend the Mechanicus Basilica on Belacane?\u201d or as vague as \u201cHow can I attain glory and power in the name of the Dark Gods?\u201d The more precise the question, the more specifi c the reading may be. Once the question is established, the psyker and the target spend the next thirty minutes using assorted psychic foci\u2014drawing Tarot cards, sifting through the entrails of exotic beasts, casting runes, gazing deep into fi re or toxin-saturated water, or any of countless other methods. At the end of this time, the psyker makes his Focus Power Test to discern the weave of the target\u2019s future. Each Degree of Success reveals more information, as explained on Table 6\u20135: Personal Augury Results."
+    "Description": "The psyker\u2019s gaze is cast upon the infinite tides of the warp, to seek out the future of a single, specific individual. While supposedly something of a staple of soothsayers and other petty seers, it takes real skill to gain more than the vaguest impressions. The Emperor\u2019s Tarot is a common method within the Imperium, while Eldar Farseers typically employ tiny, psychically conductive runes to divine the future, but untold billions of different methods exist within the myriad civilisations across the galaxy. To begin with, the power\u2019s target must specify a circumstance that he wishes to have divined. This may be as detailed as \u201cWhat forces defend the Mechanicus Basilica on Belacane?\u201d or as vague as \u201cHow can I attain glory and power in the name of the Dark Gods?\u201d The more precise the question, the more specifi c the reading may be. Once the question is established, the psyker and the target spend the next thirty minutes using assorted psychic foci\u2014drawing Tarot cards, sifting through the entrails of exotic beasts, casting runes, gazing deep into fi re or toxin-saturated water, or any of countless other methods. At the end of this time, the psyker makes his Focus Power Test to discern the weave of the target\u2019s future. Each Degree of Success reveals more information, as explained on Table 6\u20135: Personal Augury Results."
   },
   {
     "Name": "Glimpse",

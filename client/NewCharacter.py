@@ -240,39 +240,39 @@ class NewCharacter:
 
         self.new_character['skills']['specialist'] = formattedspecialists
 
-        for index, talent in enumerate(self.new_character['talents']):
-            for t in talents:
-                if '(' in talent:
-                    if talent.split(' (')[0] == t['Name']:
-                        self.new_character['talents'][index] = {
-                            "name": talent,
-                            "book": 'Core',
-                            'description': t['Description']
-                        }
-                else:
-                    if talent == t['Name']:
-                        self.new_character['talents'][index] = {
-                            "name": talent,
-                            "book": 'Core',
-                            'description': t['Description']
-                        }
+        # for index, talent in enumerate(self.new_character['talents']):
+        #     for t in talents:
+        #         if '(' in talent:
+        #             if talent.split(' (')[0] == t['Name']:
+        #                 self.new_character['talents'][index] = {
+        #                     "name": talent,
+        #                     "book": 'Core',
+        #                     'description': t['Description']
+        #                 }
+        #         else:
+        #             if talent == t['Name']:
+        #                 self.new_character['talents'][index] = {
+        #                     "name": talent,
+        #                     "book": 'Core',
+        #                     'description': t['Description']
+        #                 }
 
-        for index, trait in enumerate(self.new_character['traits']):
-            for tr in traits:
-                if '(' in trait:
-                    if trait.split(' (')[0] == tr["Name"].split(' (')[0]:
-                        self.new_character['traits'][index] = {
-                            'name': trait,
-                            'book': tr['Book'],
-                            'description': tr['Description']
-                        }
-                else:
-                    if trait == tr["Name"]:
-                        self.new_character['traits'][index] = {
-                            'name': trait,
-                            'book': tr['Book'],
-                            'description': tr['Description']
-                        }
+        # for index, trait in enumerate(self.new_character['traits']):
+        #     for tr in traits:
+        #         if '(' in trait:
+        #             if trait.split(' (')[0] == tr["Name"].split(' (')[0]:
+        #                 self.new_character['traits'][index] = {
+        #                     'name': trait,
+        #                     'book': tr['Book'],
+        #                     'description': tr['Description']
+        #                 }
+        #         else:
+        #             if trait == tr["Name"]:
+        #                 self.new_character['traits'][index] = {
+        #                     'name': trait,
+        #                     'book': tr['Book'],
+        #                     'description': tr['Description']
+        #                 }
 
         for index, armor in enumerate(self.new_character['equipment']['armors']):
             for a in armors:

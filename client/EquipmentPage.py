@@ -13,6 +13,7 @@ class EquipmentPage:
         weapons_frame = LabelFrame(self.root, text="Weapons")
 
         for weapon in self.character["equipment"]["weapons"]:
+            print(weapon)
             weapon_subframe = Frame(weapons_frame)
             name = Label(weapon_subframe, text=f'Name: {weapon["Name"].title()}')
             weapon_class = Label(weapon_subframe, text=f'Class: {weapon["Class"].title()}')

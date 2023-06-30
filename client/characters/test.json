@@ -1,217 +1,218 @@
 {
-    "name": "Testy McTestface",
-    "archetype": "Codetester",
-    "picture": "assets/testy_mctestface.png",
-    "alignment": "Unaligned",
-    "passions": {
-        "Pride": "Logic",
-        "Disgrace": "Hubris",
-        "Motivation": "Arcane"
+  "name": "jhgf",
+  "archetype": "Chosen",
+  "picture": "assets/testy_mctestface.png",
+  "alignment": "Unaligned",
+  "passions": {
+    "Pride": "Charm",
+    "Disgrace": "Destruction",
+    "Motivation": "Innovation"
+  },
+  "characteristics": {
+    "weapon skill": 38,
+    "ballistic skill": 39,
+    "strength": 43,
+    "toughness": 43,
+    "agility": 49,
+    "intelligence": 53,
+    "perception": 47,
+    "willpower": 35,
+    "fellowship": 40,
+    "infamy": 24,
+    "corruption": 2,
+    "wounds": 19
+  },
+  "skills": {
+    "non-specialist": {
+      "Acrobatics": -20,
+      "Athletics": -20,
+      "Awareness": -20,
+      "Charm": -20,
+      "Command": -20,
+      "Commerce": -20,
+      "Deceive": -20,
+      "Dodge": "10",
+      "Inquiry": -20,
+      "Intimidate": 0,
+      "Logic": -20,
+      "Medicae": -20,
+      "Operate (Aeronautica)": -20,
+      "Operate (Surface)": -20,
+      "Operate (Voidship)": -20,
+      "Parry": -20,
+      "Psyniscience": -20,
+      "Scrutiny": -20,
+      "Security": -20,
+      "Sleight of hand": -20,
+      "Stealth": 0,
+      "Survival": -20,
+      "Tech-Use": -20,
+      "Tracking": -20,
+      "athletics": 0,
+      "awareness": 0,
+      "dodge": 0,
+      "operate (surface)": 0,
+      "parry": 0
     },
-    "characteristics": {
-        "weapon_skill": 10,
-        "ballistic_skill": 11,
-        "strength": 13,
-        "toughness": 14,
-        "agility": 15,
-        "intelligence": 16,
-        "perception": 17,
-        "willpower": 18,
-        "fellowship": 19,
-        "infamy": 20,
-        "corruption": 21,
-        "wounds": 22
-    },
-    "skills": {
-        "non-specialist":
-            {
-                "acrobatics": 0,
-                "athletics": 0,
-                "awareness": 0,
-                "charm": 10,
-                "command": -20,
-                "commerce": 0,
-                "deceive": 10,
-                "dodge": -20,
-                "inquiry": 30,
-                "intimidate": 0,
-                "logic": 20,
-                "medicae": 0,
-                "operate_aeronautica": -20,
-                "operate_surface": -20,
-                "operate_voidship": -20,
-                "parry": 0,
-                "psyniscience": -20,
-                "scrutiny": 10,
-                "security": 0,
-                "sleight_of_hand": -20,
-                "stealth": 0,
-                "survival": 10,
-                "tech_use": 30,
-                "tracking": -20
-            },
-        "specialist":
-            {
-                "common_lore": {"Take Out": 10},
-                "forbidden_lore": {"Sinatra": 10},
-                "linguistics": {"English": 0, "Python": 10, "Ruby": 10, "JavaScript": 30},
-                "navigation": {},
-                "scholastic_lore": {},
-                "trade": {"Software Development": 20}
-            }
-
-    },
-    "talents": [
-        {
-            "name": "Touch Typer",
-            "description": "Able to type without looking at the keyboard",
-            "book": "Internet"
-        },
-        {
-            "name": "Google-fu",
-            "description": "+10 to Inquiry tests when using a search engine",
-            "book": "Internet"
-        },
-        {
-            "name": "Psy Rating 1",
-            "description": "Do some wacky psychic shit, brah!",
-            "book": "Black Crusade Core Rulebook"
-        }
-    ],
-    "traits": [
-        {
-            "name": "Flatiron Alumni",
-            "description": "+10 to social tests during interviews with other Flatiron Alumni",
-            "book": "Canvas"
-        },
-        {
-            "name": "Just one more test...",
-            "description": "+10 to Toughness tests for staying up late to work on code.",
-            "book": "Michael Law's Guide to Coding"
-        },
-        {
-            "name": "Psyker",
-            "description": "You can do a psychic, if you train!",
-            "book": "Black Crusade Core Rulebook"
-        }
-    ],
-    "equipment": {
-        "weapons": [
-            {
-                "name": "Laspistol",
-                "class": "basic",
-                "damage": "1d10+2",
-                "damage_type": "E",
-                "penetration": 0,
-                "range": 30,
-                "rate_of_fire": "S/2/-",
-                "clip": 30,
-                "reload": "half",
-                "special": ["reliable", "variable fire"]
-            },
-            {
-                "name": "Another Laspistol",
-                "class": "basic",
-                "damage": "1d10+2",
-                "damage_type": "E",
-                "penetration": 0,
-                "range": 30,
-                "rate_of_fire": "S/2/-",
-                "clip": 30,
-                "reload": "half",
-                "special": ["reliable", "variable fire"]
-            }
-        ],
-        "armors":
-            [
-                {
-                    "name": "Guard Flak Armor",
-                    "coverage": "all",
-                    "armor_points": 4,
-                    "weight": "11"
-                }
-            ],
-        "force_field":
-            {
-                "name": "Conversion Field",
-                "protection": 50,
-                "weight": 1,
-                "overload": 10
-            },
-        "gear":
-            [
-                {
-                    "name": "Thing",
-                    "book": "Book",
-                    "quantity": 1,
-                    "quality": "average",
-                    "description": "A thing of average quality."
-                },
-                {
-                    "name": "Another Thing",
-                    "book": "Book 2",
-                    "quantity": 2,
-                    "quality": "best",
-                    "description": "A thing of great quality."
-                },
-                {
-                    "name": "Thing number 3",
-                    "book": "Book 3",
-                    "quantity": 3,
-                    "quality": "poor",
-                    "description": "A thing of bad quality."
-                }
-            ]
-    },
-    "spent_xp": 7000,
-    "total_xp": 10000,
-    "total_alignments": {
-        "khorne": 1,
-        "nurgle": 2,
-        "slaanesh": 3,
-        "tzeentch": 5,
-        "unaligned": 4
-    },
-    "purchased_advancements": [
-        {
-            "name": "Test Advancement",
-            "book": "Test book",
-            "description": "Does this work?"
-        },
-        {
-            "name": "Another Test Advancement",
-            "book": "Test book 2: Textual Boogaloo",
-            "description": "It work!?!?!"
-        }
-    ],
-    "mutations": [
-        {
-            "name": "Test Mutation",
-            "description": "This is a test value"
-        }
-    ],
-    "psychic": {
-        "rating": 1,
-        "class": "unbound",
-        "type":
-            {
-            "fettered": "Focus Test with PR equal to half normal. \nNo chance for Psychic Phenomena",
-            "unfettered": "If you roll doubles on the Focus Test,\n roll for Psychic Phenomena, adding +10 to the roll.",
-            "push": "Add up to +5 to PR when rolling Focus Test.\n Roll for Psychic Phenomena at a +5 for every +1 to PR",
-            "sustained": "+10 to all rolls for Psychic Phenomena.\n Decrease PR by 1 per power sustained"
-            },
-        "powers": [
-            {
-                "name": "Doombolt",
-                "action": "half",
-                "focus": "willpower",
-                "focus_difficulty": 0,
-                "range": 20,
-                "sustained": "",
-                "grouping": "unaligned",
-                "subtypes": ["attack", "concentration"],
-                "description": "Psychic Barrage. 1d10+PR PEN 8"
-            }
-        ]
+    "specialist": {
+      "Common Lore": {
+        "War": 0
+      },
+      "Forbidden Lore": {
+        "Adeptus Astartes": 0,
+        "The Long War": 0,
+        "The Horus Heresy": 0
+      },
+      "Linguistics": {
+        "Low Gothic": 0
+      },
+      "Scholastic Lore": {},
+      "Navigate": {
+        "Surface": 0
+      },
+      "Trade": {}
     }
+  },
+  "talents": [
+    "Ambidextrous",
+    "Bulging Biceps",
+    "Legion Weapon Training",
+    "Heightened Senses (Hearing)",
+    "Heightened Senses (Sight)",
+    "Nerves of Steel",
+    "Quick Draw",
+    "Resistance (Cold)",
+    "Resistance (Heat)",
+    "Resistance (Poisons)",
+    "Unarmed Warrior",
+    "Lightning Reflexes",
+    "Rapid Reload",
+    "Disarm",
+    "Sure Strike"
+  ],
+  "traits": [
+    "Amphibious",
+    "Unnatural Characteristic (Strength +4)",
+    "Unnatural Characteristic (Toughness +4)",
+    "Cold Killer"
+  ],
+  "equipment": {
+    "weapons": [
+      {
+        "Name": "Legion Combat Knife",
+        "Class": "Melee",
+        "Range": "\u2014",
+        "RoF": "-",
+        "Damage": "1d10",
+        "Damage Type": "R",
+        "Penetration": "2",
+        "Clip": "-",
+        "Reload": "-",
+        "Special": "-",
+        "Wt": "2kg",
+        "Availability": "Very Rare",
+        "Group": "Primary",
+        "Book": "Core",
+        "Description": NaN,
+        "Quality": "Common"
+      },
+      {
+        "Name": "Legion Bolt Pistol",
+        "Class": "Pistol",
+        "Range": "30m",
+        "RoF": "S/2/\u2013",
+        "Damage": "1d10+9",
+        "Damage Type": "X",
+        "Penetration": "4",
+        "Clip": "8",
+        "Reload": "Full",
+        "Special": "Tearing",
+        "Wt": "5.5kg",
+        "Availability": "Extremely Rare",
+        "Group": "Bolt",
+        "Book": "Core",
+        "Description": "Just as the Adeptus Astartes of the Imperium wield weapons beyond the heft of mere mortals, so to do the Traitor Legions arm themselves with larger bolt weapons that fi re far more powerful rounds. Those of the Chaos Space Marines are often true relic weapons, possibly even left over from the Heresy itself, and thus are possessed by ancient and murderous machine spirits. The blood-thirst of their weapons is kept in check only by the formidable will of their fearsome masters. The Legion boltgun, bolt pistol, combi-bolter, and heavy bolter share many design similarities with their non-Legion variations, the most sizeable difference being the more powerful rounds and more reliable mechanisms. They also count as Legion weapons, and thus follow the rules concerning non-Legionaires wielding Traitor Legion weapons.",
+        "Quality": "Common"
+      },
+      {
+        "Name": "Legion Chainsword",
+        "Class": "Melee",
+        "Range": "\u2014",
+        "RoF": "-",
+        "Damage": "1d10+3",
+        "Damage Type": "R",
+        "Penetration": "3",
+        "Clip": "-",
+        "Reload": "-",
+        "Special": "Tearing, Balanced",
+        "Wt": "10kg",
+        "Availability": "Extremely",
+        "Group": "Rare",
+        "Book": "Core",
+        "Description": NaN,
+        "Quality": "Common"
+      }
+    ],
+    "armors": [
+      {
+        "Name": "Legion Power Armor",
+        "Covering": "Arms, Body, Legs, Head",
+        "AP": 8,
+        "Wt": 100.0,
+        "Availability": "Extremely Rare",
+        "Grouping": "Power",
+        "System": "Black Crusade",
+        "Book": "Core Rulebook",
+        "Special": NaN,
+        "Alignment Required": NaN,
+        "Unnamed: 10": NaN
+      }
+    ],
+    "force_field": {},
+    "gear": [
+      {
+        "Name": "Clip (Starting Weapon)",
+        "System": "BC",
+        "Book": "Core",
+        "Wt": 0.0,
+        "Availability": "Abundant",
+        "Description": "A clip of basic ammunition for the specified weapon to be reloaded once.",
+        "Quantity": "4",
+        "Quality": "Common"
+      },
+      {
+        "Name": "Clip (Legion Bolt Pistol)",
+        "System": "BC",
+        "Book": "Core",
+        "Wt": 0.0,
+        "Availability": "Abundant",
+        "Description": "A clip of basic ammunition for the specified weapon to be reloaded once.",
+        "Quantity": "2",
+        "Quality": "Common"
+      }
+    ]
+  },
+  "spent_xp": 0,
+  "total_xp": 500,
+  "total_alignments": {
+    "khorne": 0,
+    "nurgle": 0,
+    "slaanesh": 0,
+    "tzeentch": 0,
+    "unaligned": 0
+  },
+  "purchased_advancements": [],
+  "mutations": [],
+  "psychic": {
+    "rating": 0,
+    "class": "None",
+    "type": {
+      "fettered": "",
+      "unfettered": "",
+      "push": "",
+      "sustained": ""
+    },
+    "powers": []
+  },
+  "race": "Chaos Space Marine"
 }

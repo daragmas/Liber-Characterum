@@ -14,13 +14,21 @@ def fill_listbox(listbox, power_filter, character):
     for index, power in enumerate(data):
         # pp(power['Prerequisites'])
         if power_filter.get() == 1:
-            if power['Prerequisites'] == ["None"]:
+            addpowerbool = True
+            try:
+                for char, value in power['Prerequisites']['Characteristics'][0].items():
+                    if character['characteristics'][char.lower()] < value:
+                        addpowerbool = False
+                for talent in power['Prerequisites']['Talents']:
+                    print(talent)
+            except IndexError:
+                pass
+
+            if addpowerbool:
                 listbox.insert(index, power['Name'])
-            else:
-                print(power['Prerequisites'])
-                for prereqType, arr in power['Prerequisites'].items():
-                    if arr:
-                        print(arr)
+            for prereqType, arr in power['Prerequisites'].items():
+                if arr:
+                     print(prereqType, arr)
         else:
             listbox.insert(index, power['Name'])
     # TODO: Add Filter

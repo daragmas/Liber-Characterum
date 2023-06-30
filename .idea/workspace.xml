@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="Fixed not removing old traits, talents, skills, and weapons when reselecting Archetype for Chaos Space Marines">
+    <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="started fixing archetype reselection for Mortal Characters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/ArchetypeSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/ArchetypeSelection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/RaceSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/RaceSelection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/AddPower.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/AddPower.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/EquipmentPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/EquipmentPage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/NewCharacter.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/NewCharacter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/TraitsAndTalentsPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/TraitsAndTalentsPage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/characters/Nate.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/characters/Nate.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/characters/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/characters/test.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/data/powers.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/powers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/data/talents.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/talents.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/data/weapon.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/weapon.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686346151025</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="started fixing archetype reselection for Mortal Characters">
+      <created>1686429028140</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1686429028140</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -118,6 +132,7 @@
     <MESSAGE value="added starting equipment, trait, and talent information for new characters when saving. Note: Heretek starting cybernetics are not factored. Starting Psychic Powers are not factored." />
     <MESSAGE value="Started fixing bug where labels widgets of old selections are not deleted when changing race or archetype" />
     <MESSAGE value="Fixed not removing old traits, talents, skills, and weapons when reselecting Archetype for Chaos Space Marines" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed not removing old traits, talents, skills, and weapons when reselecting Archetype for Chaos Space Marines" />
+    <MESSAGE value="started fixing archetype reselection for Mortal Characters" />
+    <option name="LAST_COMMIT_MESSAGE" value="started fixing archetype reselection for Mortal Characters" />
   </component>
 </project>
