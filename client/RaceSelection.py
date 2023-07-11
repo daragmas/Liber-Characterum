@@ -16,7 +16,7 @@ class RaceSelection:
 
     def choose_race(self):
         if type(self.selection["Starting Skills"]) != float:
-            non_specialist_skills = {x.casefold(): 0 for x in self.selection["Starting Skills"].split(', ')}
+            non_specialist_skills = {x.title(): 0 for x in self.selection["Starting Skills"].split(', ')}
         else:
             non_specialist_skills = {}
 

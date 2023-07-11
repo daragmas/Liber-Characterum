@@ -393,7 +393,7 @@
     "Range": "Self",
     "Sustained": "Free Action",
     "Subtype": "Concentration",
-    "Description": "The Sorcerer summons up every fl ickering moment of stray emotion he can fi nd within the Immaterium, and draws them into himself, overwhelming his own senses and rendering him oblivious to the sensations of battle around him. Many sorcerers become addicted to the sensations they conjure, burning away their soul with warp-spawned ecstasy. While this power remains in effect, the Sorcerer cannot be stunned or rendered unconscious, nor is he affected by fatigue. In addition, he is so addled by sensation that he can push his body far beyond its normal limits, gaining Unnatural Strength and Unnatural Agility at a value equal to half the Sorcerer\u2019s Psy Rating. However, he suffers a \u201320 penalty to all Perception Tests."
+    "Description": "The Sorcerer summons up every flickering moment of stray emotion he can fi nd within the Immaterium, and draws them into himself, overwhelming his own senses and rendering him oblivious to the sensations of battle around him. Many sorcerers become addicted to the sensations they conjure, burning away their soul with warp-spawned ecstasy. While this power remains in effect, the Sorcerer cannot be stunned or rendered unconscious, nor is he affected by fatigue. In addition, he is so addled by sensation that he can push his body far beyond its normal limits, gaining Unnatural Strength and Unnatural Agility at a value equal to half the Sorcerer\u2019s Psy Rating. However, he suffers a \u201320 penalty to all Perception Tests."
   },
   {
     "Name": "Hellshriek [Corruption]",
@@ -419,7 +419,7 @@
     "Range": "3 metres x Psy Rating radius",
     "Sustained": "No",
     "Subtype": "Attack, Concentration",
-    "Description": "The Sorcerer reaches deep into the warp and produces a soul-shattering noise that infl icts terrible pain upon those that hear it. Many sorcerers attribute this power to the genetic tampering of Fabius Bile during the early days of the Heresy, and to the engineered talents of Lord-Commander Eidolon of the Emperor\u2019s Children. A Hellshriek is a Psychic Blast centred on the Sorcerer. Any creature within the area of effect, with the exception of the Sorcerer, suffers 2d10 + Psy Rating Rending Damage with the Concussive (1) and Warp Weapon Qualities. Psychic Phenomena: The shrieking cry of the Sorcerer reverberates through the warp, echoing for moments after the initial blast of sound, lingering in the ears and minds of those nearby. Until the start of the Sorcerer\u2019s next turn, all creatures within range of the power suffer a \u201320 penalty to all Perception Tests. This is in addition to any normal psychic phenomena."
+    "Description": "The Sorcerer reaches deep into the warp and produces a soul-shattering noise that inflicts terrible pain upon those that hear it. Many sorcerers attribute this power to the genetic tampering of Fabius Bile during the early days of the Heresy, and to the engineered talents of Lord-Commander Eidolon of the Emperor\u2019s Children. A Hellshriek is a Psychic Blast centred on the Sorcerer. Any creature within the area of effect, with the exception of the Sorcerer, suffers 2d10 + Psy Rating Rending Damage with the Concussive (1) and Warp Weapon Qualities. Psychic Phenomena: The shrieking cry of the Sorcerer reverberates through the warp, echoing for moments after the initial blast of sound, lingering in the ears and minds of those nearby. Until the start of the Sorcerer\u2019s next turn, all creatures within range of the power suffer a \u201320 penalty to all Perception Tests. This is in addition to any normal psychic phenomena."
   },
   {
     "Name": "Lash Of Submission",
@@ -473,7 +473,7 @@
     "Range": "25 metres x Psy Rating",
     "Sustained": "No",
     "Subtype": "Attack, Concentration",
-    "Description": "The Sorcerer becomes a mouthpiece for the infi nite voice of Slaanesh, crawling deep into the mind of a chosen victim, calling forth the darkest desires from the depths of his victim\u2019s soul, unleashing them and giving them free reign. Slaanesh sorcerers consider this power to be the greatest of blessings they can bestow upon a mortal soul. The Sorcerer nominates a single creature within range, who may resist this power with a Willpower Test (the opposing Test for the Focus Power Test). If this test is failed, then the victim\u2019s darkest impulses take control of his mind for a number of turns equal to the Sorcerer\u2019s Psy Rating. During this time, he acts in accordance with the most destructive side of his personality, unrestrained by self-control, and attacks the nearest target (creature, Heretic, or NPC) with his most powerful weapons. He will not take suicidal actions such as leaping off a building to attack someone in melee, but he still takes otherwise foolhardy risks and automatically passes Willpower Tests to resist Fear or Pinning. He is also immune to stunning and the effects of Fatigue."
+    "Description": "The Sorcerer becomes a mouthpiece for the infinite voice of Slaanesh, crawling deep into the mind of a chosen victim, calling forth the darkest desires from the depths of his victim\u2019s soul, unleashing them and giving them free reign. Slaanesh sorcerers consider this power to be the greatest of blessings they can bestow upon a mortal soul. The Sorcerer nominates a single creature within range, who may resist this power with a Willpower Test (the opposing Test for the Focus Power Test). If this test is failed, then the victim\u2019s darkest impulses take control of his mind for a number of turns equal to the Sorcerer\u2019s Psy Rating. During this time, he acts in accordance with the most destructive side of his personality, unrestrained by self-control, and attacks the nearest target (creature, Heretic, or NPC) with his most powerful weapons. He will not take suicidal actions such as leaping off a building to attack someone in melee, but he still takes otherwise foolhardy risks and automatically passes Willpower Tests to resist Fear or Pinning. He is also immune to stunning and the effects of Fatigue."
   },
   {
     "Name": "Symphony Of Pain",
@@ -529,7 +529,7 @@
     "Range": "10 metres x Psy Rating",
     "Sustained": "No",
     "Subtype": "Attack, Concentration",
-    "Description": "The Sorcerer focuses his will and his wrath into a searing bolt of warp-fl ame\u2014often red, due to the pervasive lore of the many-coloured fi res of Tzeentch\u2014that reduces enemies to twitching masses of mutating gore, or swirling whirlwinds of iridescent ash. Few substances can withstand the corrupting energies of a Bolt of Change. Bolt of Change is a Psychic Bolt that deals Xd10 Energy Damage with a Pen of 9 (where X equals the sorcerer\u2019s Psy Rating), and with the Felling (Psy Rating) Quality. In addition, a living creature struck by a Bolt of Change must immediately make a Challenging (+0) Toughness Test. Failure indicates that the target gains 1d5 Corruption Points for every Degree of Failure. Five or more Degrees of Failure indicates that the target becomes subject to swift and catastrophic mutation, transforming into a Chaos Spawn that swiftly collapses into a puddle of shrieking ichor."
+    "Description": "The Sorcerer focuses his will and his wrath into a searing bolt of warp-flame\u2014often red, due to the pervasive lore of the many-coloured fi res of Tzeentch\u2014that reduces enemies to twitching masses of mutating gore, or swirling whirlwinds of iridescent ash. Few substances can withstand the corrupting energies of a Bolt of Change. Bolt of Change is a Psychic Bolt that deals Xd10 Energy Damage with a Pen of 9 (where X equals the sorcerer\u2019s Psy Rating), and with the Felling (Psy Rating) Quality. In addition, a living creature struck by a Bolt of Change must immediately make a Challenging (+0) Toughness Test. Failure indicates that the target gains 1d5 Corruption Points for every Degree of Failure. Five or more Degrees of Failure indicates that the target becomes subject to swift and catastrophic mutation, transforming into a Chaos Spawn that swiftly collapses into a puddle of shrieking ichor."
   },
   {
     "Name": "Boon Of Tzeentch",
@@ -579,7 +579,7 @@
     "Range": "Self",
     "Sustained": "Free Action",
     "Subtype": "Concentration",
-    "Description": "The Sorcerer creates a shimmering fi eld of unreality around him, his image becoming transparent and intermittent as he fl ickers between reality and the warp. In this manner, he may step through solid objects as if they were air, and the blows of the enemy pass through him as if he were nothing more than a holographic image. For as long as this power remains in effect, the Sorcerer gains the Incorporeal Trait (see Chapter IV: Talents and Traits), and counts his Agility Bonus as equal to the Sorcerer\u2019s Psy Rating for the purposes of determining how far he may move, and he may move as easily vertically as horizontally. While in this state, the Sorcerer cannot cross psychically charged barriers, holy wards or energy wards designed to bend reality or manipulate the warp, such as a Gellar Field or Void Shield."
+    "Description": "The Sorcerer creates a shimmering field of unreality around him, his image becoming transparent and intermittent as he flickers between reality and the warp. In this manner, he may step through solid objects as if they were air, and the blows of the enemy pass through him as if he were nothing more than a holographic image. For as long as this power remains in effect, the Sorcerer gains the Incorporeal Trait (see Chapter IV: Talents and Traits), and counts his Agility Bonus as equal to the Sorcerer\u2019s Psy Rating for the purposes of determining how far he may move, and he may move as easily vertically as horizontally. While in this state, the Sorcerer cannot cross psychically charged barriers, holy wards or energy wards designed to bend reality or manipulate the warp, such as a Gellar Field or Void Shield."
   },
   {
     "Name": "Gholam Curse",
@@ -1077,7 +1077,7 @@
       "Alignment": ""
     },
     "Action": "Half Action",
-    "Focus Power": "Diffi cult (\u201310) Willpower Test",
+    "Focus Power": "Difficult (\u201310) Willpower Test",
     "Range": "10 metres per Psy Rating",
     "Sustained": "No",
     "Subtype": "Attack, Concentration",
