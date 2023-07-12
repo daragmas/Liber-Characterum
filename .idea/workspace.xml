@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="Continued Powers filtering. Refactored how traits and talents are saved in character jsons. Fixed some missed issues with weapon.csv">
+    <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="Finished AddPower's prerequisite filtering">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/AddPower.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/AddPower.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/EquipmentPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/EquipmentPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/NewCharacter.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/NewCharacter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/RaceSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/RaceSelection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/data/powers.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/powers.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688153805203</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finished AddPower's prerequisite filtering">
+      <created>1689106667007</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689106667007</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -137,6 +140,7 @@
     <MESSAGE value="Fixed not removing old traits, talents, skills, and weapons when reselecting Archetype for Chaos Space Marines" />
     <MESSAGE value="started fixing archetype reselection for Mortal Characters" />
     <MESSAGE value="Continued Powers filtering. Refactored how traits and talents are saved in character jsons. Fixed some missed issues with weapon.csv" />
-    <option name="LAST_COMMIT_MESSAGE" value="Continued Powers filtering. Refactored how traits and talents are saved in character jsons. Fixed some missed issues with weapon.csv" />
+    <MESSAGE value="Finished AddPower's prerequisite filtering" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished AddPower's prerequisite filtering" />
   </component>
 </project>

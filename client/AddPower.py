@@ -8,10 +8,15 @@ from pprint import pprint as pp
 data = pandas.read_json('./data/powers.json').to_dict('records')
 
 
-def fill_listbox(listbox, power_filter, character):
+def fill_listbox(listbox, power_filter, character, discipline):
     listbox.delete(0, END)
     for index, power in enumerate(data):
         addpowerbool = True
+
+        if discipline != '-':
+            print(power['Name'], power['Discipline'], discipline)
+            if power['Discipline'] != discipline:
+                addpowerbool = False
 
         # -----------Prerequisite Filter------------#
         if power_filter.get() == 1:
@@ -52,7 +57,8 @@ def fill_listbox(listbox, power_filter, character):
                         skill_prereq[0] = skill_prereq[0].split(' (')
                         skill_prereq[0][1] = skill_prereq[0][1].strip(')')
                         try:
-                            if character['skills']['specialist'][skill_prereq[0][0]][skill_prereq[0][1]] < skill_prereq[1]:
+                            if character['skills']['specialist'][skill_prereq[0][0]][skill_prereq[0][1]] < skill_prereq[
+                                1]:
                                 addpowerbool = False
                         except KeyError:
                             addpowerbool = False
@@ -78,7 +84,8 @@ def fill_listbox(listbox, power_filter, character):
             if addpowerbool:
                 listbox.insert(index, power['Name'])
         else:
-            listbox.insert(index, power['Name'])
+            if addpowerbool:
+                listbox.insert(index, power['Name'])
 
 
 def create(root, character):
@@ -156,15 +163,27 @@ def create(root, character):
 
     powers_list = Listbox(powers_window, height=25)
     power_filter = IntVar(powers_window, 0, "powerFilter")
-    fill_listbox(powers_list, power_filter=power_filter, character=character)
+    fill_listbox(powers_list, power_filter=power_filter, character=character, discipline='-')
+    disc_var = StringVar()
+    disc_var.set('-')
+
+    def filter_discs(event):
+        print('event', event)
+        fill_listbox(powers_list, power_filter, character, event)
+
     filter_prereqs = Checkbutton(powers_window,
                                  text='Filter by prerequisites',
                                  variable=power_filter,
                                  onvalue=power_filter.set(1),
                                  offvalue=power_filter.set(0),
-                                 command=lambda: fill_listbox(powers_list, power_filter, character))
+                                 command=lambda: fill_listbox(powers_list, power_filter, character, disc_var.get()))
 
-    # TODO: Add Discipline Filter
+    disciplines = ['Tzeentch', 'Nurgle', 'Slaanesh', 'Divination', 'Telekinesis', 'Telepathy', 'Exalted', 'Unaligned',
+                   '-']
+    disc_filter = OptionMenu(powers_window, disc_var, *disciplines, command=filter_discs)
+    # disc_filter.bind('<Button>', lambda: fill_listbox(powers_list, power_filter, character, disc_var.get()))
+
+    disc_filter.grid(row=0, column=1, sticky=N)
     powers_list.grid(row=1, column=0, rowspan=9, sticky=NW)
     filter_prereqs.grid(row=0, column=0, sticky=NW)
     details_frame = LabelFrame(powers_window, text='Details')
