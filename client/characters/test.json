@@ -212,7 +212,7 @@
       "push": "",
       "sustained": ""
     },
-    "powers": []
+    "powers": [{"Name": "Doombolt", "Discipline": "Unaligned", "Alternate Names": "Shards of Malice, Fist of Ruin", "Value": "200xp", "Prerequisites": {"Characteristics": [], "Talents": [], "Skills": [], "Powers": [], "Traits": [], "Alignment": ""}, "Action": "Half Action", "Focus Power": "Challenging (+0) Willpower Test", "Range": "20 metres x Psy Rating", "Sustained": "No", "Subtype": "Attack, Concentration", "Description": "Known by a variety of names, the Doombolt is a common destructive power utilised by a great many Chaos magos to strike down their foes. Formed from the coalesced spite and loathing of the Sorcerer, they are corrosive bolts of dark energy, raining down like black hail upon the enemy. As the Sorcerer conjures these bitter projectiles with clenched fi sts, he fi lls the air with the stench of brimstone and the booming roar of daemons for the brief moment of the power’s manifestation. Doombolt is a Psychic Barrage that deals 1d10+ Psy Rating Energy Damage with a Pen of 8."}]
   },
   "race": "Chaos Space Marine"
 }

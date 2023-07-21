@@ -7,10 +7,16 @@ class PowersPage:
     def __init__(self, root, character):
         self.root = root
         self.character = character
-        self.selected_frame = LabelFrame(self.root, text="Info")
+        self.bottom_box = Frame(self.root)
+        self.selected_frame = LabelFrame(self.bottom_box, text="Info")
 
     def add_power(self):
-        AddPower.create(self.root, self.character)
+        def new_power(power):
+            self.character['psychic']['powers'].append(power)
+            print(self.character['psychic']['powers'])
+
+        AddPower.create(self.root, self.character, new_power)
+        self.powers_list()
 
     def top_bar(self):
         psy_rating_frame = Frame(self.root)
@@ -45,16 +51,20 @@ class PowersPage:
         self.selected_frame.grid(row=1, column=1, columnspan=3)
 
     def create_list_item(self, root, item):
-        entry = Label(root, text=item["name"])
+        entry = Label(root, text=item["Name"])
         entry.bind("<Button>", lambda e: self.render_selected(item))
         entry.grid(sticky=W)
 
     def powers_list(self):
-        powers_frame = LabelFrame(self.root, text="Psychic Powers")
+        # for widget in self.bottom_box.winfo_children():
+        #     widget.destroy()
+
+        powers_frame = LabelFrame(self.bottom_box, text="Psychic Powers")
         for power in self.character["psychic"]["powers"]:
             self.create_list_item(root=powers_frame, item=power)
         add_power = Button(powers_frame, text="Add Power", command=self.add_power)
         add_power.grid()
+        self.bottom_box.grid(row=1, column=0, columnspan=3)
         powers_frame.grid(row=1, column=0, sticky=N)
     # TODO: Move some power information from description window to powers list?
 

@@ -4,8 +4,15 @@ from tkinter import ttk
 import pandas
 from pprint import pprint as pp
 
-# pp(data)
 data = pandas.read_json('./data/powers.json').to_dict('records')
+selection = {}
+
+
+def set_selected(powers_list):
+    for power in data:
+        if powers_list.get(ANCHOR) == power.get('Name'):
+            global selection
+            selection = power
 
 
 def fill_listbox(listbox, power_filter, character, discipline):
@@ -14,7 +21,7 @@ def fill_listbox(listbox, power_filter, character, discipline):
         addpowerbool = True
 
         if discipline != '-':
-            print(power['Name'], power['Discipline'], discipline)
+            # print(power['Name'], power['Discipline'], discipline)
             if power['Discipline'] != discipline:
                 addpowerbool = False
 
@@ -76,7 +83,8 @@ def fill_listbox(listbox, power_filter, character, discipline):
                 print('No Trait Prereqs')
 
             try:
-                if power['Prerequisites']['Alignment'] != "" and power['Prerequisites']['Alignment'] != character['alignment']:
+                if power['Prerequisites']['Alignment'] != "" and power['Prerequisites']['Alignment'] != character[
+                    'alignment']:
                     addpowerbool = False
             except IndexError:
                 print('No Alignment Prereqs')
@@ -88,19 +96,17 @@ def fill_listbox(listbox, power_filter, character, discipline):
                 listbox.insert(index, power['Name'])
 
 
-def create(root, character):
-    # pp(character)
-    # print('Add Power Alignment Check:', character['alignment'])
+def create(root, character, new_power):
+    def done():
+        powers_window.grab_release()
+        powers_window.destroy()
+        new_power(selection)
 
     def show_details():
         for widget in details_frame.winfo_children():
             widget.destroy()
 
-        selection = {}
-
-        for power in data:
-            if powers_list.get(ANCHOR) == power.get('Name'):
-                selection = power
+        set_selected(powers_list)
 
         name = LabelFrame(details_frame, text='Name')
         alt_names = LabelFrame(details_frame, text='Alternate Names')
@@ -114,34 +120,37 @@ def create(root, character):
         discipline = LabelFrame(details_frame, text='Discipline')
         description = LabelFrame(details_frame, text='Description')
 
-        Label(name, text=selection['Name']).grid()
-        Label(alt_names, text=selection['Alternate Names']).grid()
-        Label(xp_value, text=selection['Value']).grid()
+        try:
+            Label(name, text=selection['Name']).grid()
+            Label(alt_names, text=selection['Alternate Names']).grid()
+            Label(xp_value, text=selection['Value']).grid()
 
-        if selection['Prerequisites'] != ['None']:
-            for prereq, value in selection['Prerequisites'].items():
-                if value:
-                    prereqCategory = LabelFrame(prereqs, text=prereq)
-                    if type(value) != str:
-                        for item in value:
-                            try:
-                                for characteristic, rating in item.items():
-                                    Label(prereqCategory, text=f'{characteristic}: {rating}').grid(sticky=NW)
-                            except AttributeError:
-                                Label(prereqCategory, text=item).grid(sticky=NW)
-                    else:
-                        Label(prereqCategory, text=value).grid(sticky=NW)
-                    prereqCategory.grid(sticky=NW)
-        else:
-            Label(prereqs, text='None').grid(sticky=NW)
+            if selection['Prerequisites'] != ['None']:
+                for prereq, value in selection['Prerequisites'].items():
+                    if value:
+                        prereqCategory = LabelFrame(prereqs, text=prereq)
+                        if type(value) != str:
+                            for item in value:
+                                try:
+                                    for characteristic, rating in item.items():
+                                        Label(prereqCategory, text=f'{characteristic}: {rating}').grid(sticky=NW)
+                                except AttributeError:
+                                    Label(prereqCategory, text=item).grid(sticky=NW)
+                        else:
+                            Label(prereqCategory, text=value).grid(sticky=NW)
+                        prereqCategory.grid(sticky=NW)
+            else:
+                Label(prereqs, text='None').grid(sticky=NW)
 
-        Label(action, text=selection['Action']).grid()
-        Label(focus, text=selection['Focus Power']).grid()
-        Label(power_range, text=selection['Range']).grid()
-        Label(sustained, text=selection['Sustained']).grid()
-        Label(subtype, text=selection['Subtype']).grid()
-        Label(discipline, text=selection['Discipline']).grid()
-        Label(description, text=selection['Description'], wraplength=600).grid()
+            Label(action, text=selection['Action']).grid()
+            Label(focus, text=selection['Focus Power']).grid()
+            Label(power_range, text=selection['Range']).grid()
+            Label(sustained, text=selection['Sustained']).grid()
+            Label(subtype, text=selection['Subtype']).grid()
+            Label(discipline, text=selection['Discipline']).grid()
+            Label(description, text=selection['Description'], wraplength=600).grid()
+        except UnboundLocalError:
+            pass
 
         name.grid(row=0, column=0, sticky=NW)
         alt_names.grid(row=0, column=1, sticky=NW)
@@ -168,7 +177,6 @@ def create(root, character):
     disc_var.set('-')
 
     def filter_discs(event):
-        print('event', event)
         fill_listbox(powers_list, power_filter, character, event)
 
     filter_prereqs = Checkbutton(powers_window,
@@ -181,10 +189,11 @@ def create(root, character):
     disciplines = ['Tzeentch', 'Nurgle', 'Slaanesh', 'Divination', 'Telekinesis', 'Telepathy', 'Exalted', 'Unaligned',
                    '-']
     disc_filter = OptionMenu(powers_window, disc_var, *disciplines, command=filter_discs)
-    # disc_filter.bind('<Button>', lambda: fill_listbox(powers_list, power_filter, character, disc_var.get()))
 
-    disc_filter.grid(row=0, column=1, sticky=N)
+    disc_filter.grid(row=0, column=1, sticky=NW)
     powers_list.grid(row=1, column=0, rowspan=9, sticky=NW)
     filter_prereqs.grid(row=0, column=0, sticky=NW)
     details_frame = LabelFrame(powers_window, text='Details')
     powers_list.bind('<Button>', lambda e: show_details())
+    add_power_button = Button(powers_window, text='Add Power', command=done)
+    add_power_button.grid(row=11, column=0, sticky=NW)
