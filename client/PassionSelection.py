@@ -125,10 +125,6 @@ class PassionSelection:
         motivation_listbox.grid(row=0, column=2, sticky='new')
 
     def choose_passions(self):
-        # pp(self.choices)
-        # TODO: Factor in Special Modifiers
-        # TODO: Configure Perfection Motivation
-
         self.set_passions(self.choices)
         self.passions_window.grab_release()
         self.passions_window.destroy()

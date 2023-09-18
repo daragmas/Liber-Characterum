@@ -167,12 +167,6 @@ class ArchetypeSelection:
                     self.equipment_decisions[index] = {'gear': decision}
 
         for ind, option in enumerate(choice):
-            # TODO: Parse Specialist (Any) skill option for radio button
-            #   if any choice,
-            #       strip (Any) off of option
-            #       make an Entry next to Radiobutton
-            #       Radiobutton(frame, text=option, value=f'{option} ({Entry.get()})', variable=choice_var, command=make_choice)
-
             if '(Any)' in option:
                 option = option.strip(" (Any)")
                 any_or_frame = Frame(frame)
@@ -339,7 +333,7 @@ class ArchetypeSelection:
         for decision in self.skill_decisions:
             for key in decision:
                 for subtype in decision[key]:
-                    archetype['skills'][key] = {**archetype['skills'][key], subtype: decision[key][subtype]}
+                    archetype['skills'][key] = {**archetype['skills'][key], subtype.lower(): decision[key][subtype]}
 
         for decision in self.talent_decisions:
             archetype['talents'].append(decision)

@@ -171,16 +171,33 @@ class NewCharacter:
         for passion in passions_choices:
             self.new_character['passions'][passion] = passions_choices[passion]['Name']
 
-            bonuses = passions_choices[passion]['Characteristic Bonus'].split(', ')
-            split_bonuses = {}
-            for bonus in bonuses:
-                split_bonus = bonus.split(': ')
-                split_bonuses = {**split_bonuses, split_bonus[0]: int(split_bonus[1])}
-            split_penalties = {}
-            penalties = passions_choices[passion]['Characteristic Penalty'].split(', ')
-            for penalty in penalties:
-                split_penalty = penalty.split(': ')
-                split_penalties = {**split_penalties, split_penalty[0]: int(split_penalty[1]) * -1}
+            try:
+                bonuses = passions_choices[passion]['Characteristic Bonus'].split(', ')
+                split_bonuses = {}
+                for bonus in bonuses:
+                    split_bonus = bonus.split(': ')
+                    split_bonuses = {**split_bonuses, split_bonus[0]: int(split_bonus[1])}
+
+            except AttributeError:
+                split_bonuses = {}
+
+            try:
+                penalties = passions_choices[passion]['Characteristic Penalty'].split(', ')
+                split_penalties = {}
+                for penalty in penalties:
+                    split_penalty = penalty.split(': ')
+                    split_penalties = {**split_penalties, split_penalty[0]: int(split_penalty[1]) * -1}
+            except AttributeError:
+                split_penalties = {}
+
+            try:
+                special_trait = passions_choices[passion]["Special Modifier"].split(': ')[0]
+                for trait in traits:
+                    if trait['Name'] == special_trait:
+                        self.new_character['traits'].append(special_trait)
+            except AttributeError:
+                print(passions_choices[passion]["Special Modifier"])
+
             characteristic_mods = {**split_bonuses, **split_penalties}
             self.characteristics_generation.modifiers[passion] = characteristic_mods
 
@@ -188,6 +205,8 @@ class NewCharacter:
                 index = characteristics_bc.index(characteristic) + 1
                 self.characteristics_generation.show_modifiers(characteristic, index)
                 self.characteristics_generation.calculate_final(characteristic, index)
+
+            self.display_stats()
 
         try:
             passions_frame = Frame(self.new_character_window, name='passions_frame')
