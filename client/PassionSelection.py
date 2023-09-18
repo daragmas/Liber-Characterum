@@ -16,17 +16,30 @@ class PassionSelection:
         self.set_passions = set_passions
 
     def details(self, listbox):
+        characteristics = ["weapon skill", "ballistic skill", 'strength', "toughness", "agility",
+                           "intelligence", "perception", "willpower", "fellowship"]
+
         def display_info(selection, details_box):
             for widget in details_box.winfo_children():
                 widget.destroy()
 
             Label(details_box, text=selection['Name']).grid(row=0, column=0)
+
             bonus_frame = LabelFrame(details_box, text='Characteristics Bonus')
             try:
                 if ', ' in selection['Characteristic Bonus']:
                     split_bonuses = selection['Characteristic Bonus'].split(', ')
                     for bonus in split_bonuses:
                         Label(bonus_frame, text=bonus.title()).grid(sticky=NW)
+                elif 'ANY' in selection['Characteristic Bonus']:
+                    bonus_selection = StringVar(bonus_frame)
+                    bonus_selection.set("Weapon Skill")
+                    characteristic_menu = OptionMenu(bonus_frame, bonus_selection, *characteristics)
+                    characteristic_menu.bind('<Configure>',
+                                             lambda e: self.choices['Motivation'].update(
+                                                 {'Characteristic Bonus': f'{bonus_selection.get()}: 5'}))
+                    characteristic_menu.grid(sticky=NW)
+                    Label(bonus_frame, text='+5').grid(row=0, column=1, sticky=NW)
                 else:
                     Label(bonus_frame, text=selection['Characteristic Bonus'].title()).grid(sticky=NW)
             except TypeError:
@@ -35,7 +48,27 @@ class PassionSelection:
 
             penalty_frame = LabelFrame(details_box, text='Characteristics Penalty')
             try:
-                if ', ' in selection['Characteristic Penalty']:
+                if 'ANY' in selection['Characteristic Penalty']:
+                    penalty_one_selection = StringVar(penalty_frame)
+                    penalty_one_selection.set("Weapon Skill")
+                    char_pen_one_menu = OptionMenu(penalty_frame, penalty_one_selection, *characteristics)
+                    char_pen_one_menu.grid(sticky=NW)
+                    Label(penalty_frame, text='-3').grid(row=0, column=1, sticky=NW)
+
+                    penalty_two_selection = StringVar(penalty_frame)
+                    penalty_two_selection.set("Weapon Skill")
+                    char_pen_two_menu = OptionMenu(penalty_frame, penalty_two_selection, *characteristics)
+                    char_pen_two_menu.grid(sticky=NW)
+                    Label(penalty_frame, text='-3').grid(row=0, column=1, sticky=NW)
+
+                    char_pen_one_menu.bind('<Configure>',
+                                           lambda e: self.choices['Motivation'].update(
+                                               {'Characteristic Penalty': f'{penalty_one_selection.get()}: 3, {penalty_two_selection.get()}: 3'}))
+                    char_pen_two_menu.bind('<Configure>',
+                                           lambda e: self.choices['Motivation'].update(
+                                               {'Characteristic Penalty': f'{penalty_one_selection.get()}: 3, {penalty_two_selection.get()}: 3'}))
+
+                elif ', ' in selection['Characteristic Penalty']:
                     split_penalty = selection['Characteristic Penalty'].split(', ')
                     for penalty in split_penalty:
                         Label(penalty_frame, text=penalty.title()).grid(sticky=NW)
@@ -47,7 +80,8 @@ class PassionSelection:
 
             if type(selection['Special Modifier']) != float:
                 special_frame = LabelFrame(details_box, text="Special Modifier")
-                Label(special_frame, text=selection['Special Modifier'], wraplength=200, justify=LEFT).grid(sticky='nsew')
+                Label(special_frame, text=selection['Special Modifier'], wraplength=200, justify=LEFT).grid(
+                    sticky='nsew')
                 special_frame.grid(row=6, sticky='nsew')
             Label(details_box, text=selection['Description'], wraplength=200, justify=LEFT).grid(row=7)
 
@@ -114,5 +148,8 @@ class PassionSelection:
 
         select_button = Button(self.passions_window, text='Choose Passions', command=self.choose_passions)
         select_button.grid(row=2, columnspan=3, sticky=S)
+
+        print_button = Button(self.passions_window, text='Show Selections', command=lambda: pp(self.choices))
+        print_button.grid()
 
         self.show_info()
