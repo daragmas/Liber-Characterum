@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="Deleted old character sheets, configured Perfection Motivation for character creation">
+    <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="Configured Passions with special modifiers - Wealth, Regret, Greed, Betrayal. Created traits for special passion modifiers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/ArchetypeSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/ArchetypeSelection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/NewCharacter.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/NewCharacter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/data/passions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/passions.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/data/traits.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/traits.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/PowersPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/PowersPage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695057381464</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Configured Passions with special modifiers - Wealth, Regret, Greed, Betrayal. Created traits for special passion modifiers">
+      <option name="closed" value="true" />
+      <created>1695067692181</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1695067692181</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,6 +174,7 @@
     <MESSAGE value="Finished AddPower's prerequisite filtering" />
     <MESSAGE value="Started passing new power selection to character sheet." />
     <MESSAGE value="Deleted old character sheets, configured Perfection Motivation for character creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted old character sheets, configured Perfection Motivation for character creation" />
+    <MESSAGE value="Configured Passions with special modifiers - Wealth, Regret, Greed, Betrayal. Created traits for special passion modifiers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Configured Passions with special modifiers - Wealth, Regret, Greed, Betrayal. Created traits for special passion modifiers" />
   </component>
 </project>

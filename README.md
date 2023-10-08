@@ -23,16 +23,17 @@ Currently, only the client folder has any usable code. To make or view a charact
   - [X] Bugfix: When changing race, does not reset Archetype selection or Characteristics
   - [X] Bugfix: Remove old selections on New Character Screen when changing Race or Archetype
   - [X] Configure Skill selection when there is an Any choice as an option (Ex. Forsaken)
-  - [ ] Configure special Passion bonuses/penalties
-    - [ ] Wealth Pride
-    - [ ] Betrayal Disgrace
-    - [ ] Greed Disgrace
-    - [ ] Regret Disgrace
-    - [ ] Perfection Motivation
-  - [ ] Add Starting Gear to New Character Window
+  - [X] Configure special Passion bonuses/penalties
+    - [X] Wealth Pride
+    - [X] Betrayal Disgrace
+    - [X] Greed Disgrace
+    - [x] Regret Disgrace
+    - [x] Perfection Motivation
+  - [x] Add Starting Gear to New Character Window
   - [ ] Configure Starting Psychic Power selection for psykers
   - [ ] Add warning on Create if missing or incorrect data
   - [ ] Delete old tkinter labels for Race and Archetype if they are reselected
+  - [ ] Add Starting Powers to New Character Window
 - [ ] Data
   - [ ] Add weapon Descriptions
   - [ ] Create csvs

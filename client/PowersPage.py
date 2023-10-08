@@ -3,7 +3,8 @@ from tkinter import ttk
 import AddPower
 
 # TODO: Fix formatting for Top Bar
-# TODO: Fix formatting for power information TODO: Repopulate list when new power is added
+# TODO: Fix formatting for power information
+# TODO: Repopulate list when new power is added
 # TODO: Refactor powers on character sheet to be just names? Involves adding powers data lookup. Maybe move
 #   lookup from AddPower into its own file?
 

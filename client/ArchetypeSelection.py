@@ -3,6 +3,7 @@ from pprint import pp
 from tkinter import *
 from tkinter import ttk
 import pandas
+import CharacterCreationPowerSelection
 
 
 class ArchetypeSelection:
@@ -113,7 +114,7 @@ class ArchetypeSelection:
         Label(starting_powers_frame, text="Functionality Coming Soon!").grid()
         starting_powers_frame.grid(row=3, column=0, sticky='nswe')
 
-        choose_powers = Button(psychic_frame, text="Choose Powers", command=lambda: print("Coming Soon!"))
+        choose_powers = Button(psychic_frame, text="Choose Powers", command=CharacterCreationPowerSelection.create)
         choose_powers.grid(row=4, column=0, sticky='nswe')
         # TODO: Choose Starting Psychic Powers here
 
