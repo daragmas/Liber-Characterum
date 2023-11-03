@@ -114,7 +114,12 @@ class ArchetypeSelection:
         Label(starting_powers_frame, text="Functionality Coming Soon!").grid()
         starting_powers_frame.grid(row=3, column=0, sticky='nswe')
 
-        choose_powers = Button(psychic_frame, text="Choose Powers", command=CharacterCreationPowerSelection.create)
+        choose_powers = Button(psychic_frame,
+                               text="Choose Powers",
+                               command=lambda: CharacterCreationPowerSelection.create(root=self.archetype_select_window,
+                                                                                      disciplines=self.archetype_selection['Starting Powers Disciplines'],
+                                                                                      budget=self.archetype_selection['Starting Powers Budget'],
+                                                                                      character=self.new_character))
         choose_powers.grid(row=4, column=0, sticky='nswe')
         # TODO: Choose Starting Psychic Powers here
 
