@@ -111,7 +111,20 @@ class ArchetypeSelection:
         discipline_choices.grid(row=1, column=0, columnspan=2, sticky='nswe')
 
         starting_powers_frame = LabelFrame(psychic_frame, text="Powers")
-        Label(starting_powers_frame, text="Functionality Coming Soon!").grid()
+
+        # starting_powers = []
+        # for power in starting_powers:
+        #     Label(starting_powers_frame, text=power).grid()
+
+        def refresh_powers_list(powers):
+            print(powers)
+            self.psychic_powers_choices = powers
+            for widget in starting_powers_frame.winfo_children():
+                widget.destroy()
+
+            for p in powers:
+                Label(starting_powers_frame, text=p).grid()
+
         starting_powers_frame.grid(row=3, column=0, sticky='nswe')
 
         choose_powers = Button(psychic_frame,
@@ -119,7 +132,9 @@ class ArchetypeSelection:
                                command=lambda: CharacterCreationPowerSelection.create(root=self.archetype_select_window,
                                                                                       disciplines=self.archetype_selection['Starting Powers Disciplines'],
                                                                                       budget=self.archetype_selection['Starting Powers Budget'],
-                                                                                      character=self.new_character))
+                                                                                      character=self.new_character,
+                                                                                      talents=self.archetype_selection['Starting Talents'].split(', '),
+                                                                                      refresh=refresh_powers_list))
         choose_powers.grid(row=4, column=0, sticky='nswe')
         # TODO: Choose Starting Psychic Powers here
 
@@ -310,6 +325,9 @@ class ArchetypeSelection:
         except AttributeError:
             pass
 
+        print(self.archetype_selection['Starting Talents'].find('Psy Rating'))
+        pp(self.archetype_selection)
+
         archetype = {
             'archetype': self.archetype_selection['Name'],
             'alignment': self.archetype_selection['Alignment'],
@@ -329,9 +347,8 @@ class ArchetypeSelection:
             },
             'psychic': {
                 # TODO: Find way to get psy rating from starting talents list
-                'rating': 0,  # self.archetype_selection['Starting Talents'][
-                # self.archetype_selection['Starting Talents'].find('Psy Rating') + 11],
-                'class': "None",  # self.archetype_selection['Starting Psyker Class'],
+                'rating': self.archetype_selection['Starting Psy Rating'],
+                'class': self.archetype_selection['Starting Psyker Class'],
                 'powers': self.psychic_powers_choices
             }
         }
