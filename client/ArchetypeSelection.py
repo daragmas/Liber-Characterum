@@ -117,13 +117,13 @@ class ArchetypeSelection:
         #     Label(starting_powers_frame, text=power).grid()
 
         def refresh_powers_list(powers):
-            print(powers)
+            # print(powers)
             self.psychic_powers_choices = powers
             for widget in starting_powers_frame.winfo_children():
                 widget.destroy()
 
             for p in powers:
-                Label(starting_powers_frame, text=p).grid()
+                Label(starting_powers_frame, text=p['Name']).grid()
 
         starting_powers_frame.grid(row=3, column=0, sticky='nswe')
 
@@ -325,9 +325,6 @@ class ArchetypeSelection:
         except AttributeError:
             pass
 
-        print(self.archetype_selection['Starting Talents'].find('Psy Rating'))
-        pp(self.archetype_selection)
-
         archetype = {
             'archetype': self.archetype_selection['Name'],
             'alignment': self.archetype_selection['Alignment'],
@@ -346,7 +343,6 @@ class ArchetypeSelection:
                     self.archetype_selection['Starting Gear']) != float else []
             },
             'psychic': {
-                # TODO: Find way to get psy rating from starting talents list
                 'rating': self.archetype_selection['Starting Psy Rating'],
                 'class': self.archetype_selection['Starting Psyker Class'],
                 'powers': self.psychic_powers_choices

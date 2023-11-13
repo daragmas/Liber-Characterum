@@ -90,18 +90,19 @@ class NewCharacter:
         for widget in self.display_stats_window.winfo_children():
             widget.destroy()
 
-        # TODO: Delete old talents, traits, and equipment when reselecting archetype
-
+        # DISPLAY TALENTS
         talent_frame = LabelFrame(self.display_stats_window, text='Talents', name='talents_frame')
         for talent in self.new_character['talents']:
             Label(talent_frame, text=talent).grid(sticky=NW)
         talent_frame.grid(sticky='nsew', row=0, column=0)
 
+        # DISPLAY TRAITS
         traits_frame = LabelFrame(self.display_stats_window, text='Traits', name='traits_frame')
         for trait in self.new_character['traits']:
             Label(traits_frame, text=trait).grid(sticky=NW)
         traits_frame.grid(sticky='nsew', row=0, column=1)
 
+        # DISPLAY EQUIPMENT
         equipment_frame = LabelFrame(self.display_stats_window, text='Equipment', name='equipment_frame')
         for equipment, item_array in self.new_character['equipment'].items():
             equipment_type = LabelFrame(equipment_frame, text=equipment.title(), name=f'{equipment}')
@@ -118,12 +119,16 @@ class NewCharacter:
             equipment_type.grid(sticky=NW)
         equipment_frame.grid(sticky='nsew', columnspan=2)
 
+        # DISPLAY SKILLS
         skill_frame = LabelFrame(self.display_stats_window, text='Skills', name='skills_frame')
+
+        # NON-SPECIALIST SKILLS
         non_spec_skills = LabelFrame(skill_frame, text='Non-Specialist Skills', name='non-spec_skills_frame')
         for skill, rating in self.new_character['skills']['non-specialist'].items():
             Label(non_spec_skills, text=f'{skill.title()}: {rating}').grid(sticky=NW)
         non_spec_skills.grid(row=0, column=0, sticky='nw')
 
+        # SPECIALIST SKILLS
         spec_skills = LabelFrame(skill_frame, text='Specialist Skills', name='spec_skills_frame')
         try:
             for skill, rating in self.new_character['skills']['specialist'].items():
@@ -133,6 +138,26 @@ class NewCharacter:
             print(self.new_character['skills']['specialist'].items())
 
         skill_frame.grid(row=0, column=2, sticky='n')
+
+        # DISPLAY PSYCHIC
+        psychic_frame = LabelFrame(self.display_stats_window, text='Psychic', name='psychic_frame')
+
+        try:
+            psy_rating = Label(psychic_frame, text=f'Psy Rating: {self.new_character["psychic"]["rating"]}')
+            psy_class = Label(psychic_frame, text=f'Psychic Class: {self.new_character["psychic"]["class"].title()}')
+            powers_frame = LabelFrame(psychic_frame, text="Powers", name="psychic_powers_frame")
+
+            for power in self.new_character["psychic"]["powers"]:
+                Label(powers_frame, text=power['Name']).grid(sticky=NW)
+
+            psy_rating.grid(row=0, column=0, sticky=NW)
+            psy_class.grid(row=1, column=0, sticky=NW)
+            powers_frame.grid(row=0, column=1, rowspan=5, sticky=NW)
+
+        except KeyError:
+            print('Not a psyker')
+
+        psychic_frame.grid(row=1, column=2, sticky=NW)
 
         self.display_stats_window.grid(row=0, column=3, rowspan=20)
 
@@ -245,6 +270,8 @@ class NewCharacter:
         passions_selection.create()
 
     def finish_creation(self):
+        # TODO: Add checks for missing choices. Maybe disable button if missing choices?
+
         formattedspecialists = {
             "Common Lore": {},
             "Forbidden Lore": {},
@@ -254,17 +281,19 @@ class NewCharacter:
             "Trade": {}
         }
 
+        # Add specialist skills to character
         for skill, rating in self.new_character['skills']['specialist'].items():
             splitskill = skill.strip(')').split(' (')
             merge(formattedspecialists, {splitskill[0]: {splitskill[1]: rating}}, strategy=Strategy.ADDITIVE)
-
         self.new_character['skills']['specialist'] = formattedspecialists
 
+        # Add armor to character
         for index, armor in enumerate(self.new_character['equipment']['armors']):
             for a in armors:
                 if armor == a['Name']:
                     self.new_character['equipment']['armors'][index] = a
 
+        # Add weapons to Character
         for index, weapon in enumerate(self.new_character['equipment']['weapons']):
             for w in weapons:
                 if 'x' in weapon['name']:
@@ -274,11 +303,11 @@ class NewCharacter:
                             'Quality': weapon['quality'],
                             'Special': f'{w["Special"]}, Quantity: {weapon["name"].split(" x")[1]}'
                         }
-
                 elif weapon['name'] == w['Name']:
                     self.new_character['equipment']['weapons'][index] = {
                         **w, 'Quality': weapon['quality']}
 
+        # Add gear to character
         for index, starting_gear in enumerate(self.new_character['equipment']['gear']):
             for g in gear:
                 if ' - ' in starting_gear:
@@ -315,8 +344,10 @@ class NewCharacter:
                 #         "Quality":
                 #     }
 
+        # Add missing pieces of character sheet to new character
         self.new_character = merge(character_template, self.new_character, strategy=Strategy.ADDITIVE)
 
+        # Save new character to disk
         path = asksaveasfile(initialdir='./characters',
                              title='Save New Character',
                              initialfile='Untitled.json',
@@ -324,6 +355,7 @@ class NewCharacter:
                              filetypes=[("JSON Documents", "*.json")])
         json.dump(fp=path, obj=self.new_character, indent=2)
 
+        # Close character creation window
         self.new_character_window.grab_release()
         self.new_character_window.destroy()
 
@@ -365,6 +397,8 @@ class NewCharacter:
         Button(self.new_character_window, text="Create",
                command=self.finish_creation,
                name='createChar').grid(row=20, sticky=N, columnspan=5)
+
+        # Debugging Buttons
         Button(self.new_character_window,
                text="Console Log",
                command=lambda: pp(self.new_character)).grid()

@@ -39,12 +39,19 @@ def create(root, disciplines, budget, character, talents, refresh):
 
             # Powers Filtering
             try:
+                # Prerequisite Powers Filtering
                 for pow in power['Prerequisites']['Powers']:
-                    if pow not in selected_powers:
+                    selected_powers_names = [sel_pow['Name'] for sel_pow in selected_powers]
+                    # print(selected_powers_names)
+                    if pow not in selected_powers_names:
                         addpowerbool = False
 
-                if power['Name'] in selected_powers:
-                    addpowerbool = False
+                # Already Selected Filtering
+                for sel_pow in selected_powers:
+                    if power['Name'] == sel_pow['Name']:
+                        addpowerbool = False
+                # if power['Name'] in selected_powers:
+                #     addpowerbool = False
             except IndexError:
                 pass
 
@@ -162,12 +169,13 @@ def create(root, disciplines, budget, character, talents, refresh):
         selected_powers_list.delete(0, END)
 
         for index, power in enumerate(selected_powers):
-            selected_powers_list.insert(index, power)
+            selected_powers_list.insert(index, power['Name'])
 
         fill_listbox()
 
     def add_selection():
-        selected_powers.append(selection['Name'])
+        selected_powers.append(selection)
+        # pp(selected_powers)
         global spent_xp
         spent_xp += int(selection['Value'].split('x')[0])
         budget_label.configure(text=f'{int(budget - spent_xp)} / {int(budget)} xp')
@@ -184,9 +192,11 @@ def create(root, disciplines, budget, character, talents, refresh):
 
         fill_selected_listbox()
 
+    # TODO: Add check to disable add button when there isn't enough xp in the budget for the selected power
     add_power_to_selected = Button(powers_window, text='Add to Selected', command=add_selection)
     add_power_to_selected.grid(row=1, column=0, sticky='NW')
 
+    # TODO: Disable remove button when selected list is empty?
     remove_power_from_selected = Button(powers_window, text='Remove from Selected', command=remove_selection)
     remove_power_from_selected.grid(row=1, column=1, sticky='NW')
 

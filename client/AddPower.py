@@ -195,5 +195,6 @@ def create(root, character, new_power):
     filter_prereqs.grid(row=0, column=0, sticky=NW)
     details_frame = LabelFrame(powers_window, text='Details')
     powers_list.bind('<Button>', lambda e: show_details())
+    # TODO: Disable add_power_button if power is already in character sheet?
     add_power_button = Button(powers_window, text='Add Power', command=done)
     add_power_button.grid(row=11, column=0, sticky=NW)
