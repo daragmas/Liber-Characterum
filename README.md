@@ -30,10 +30,10 @@ Currently, only the client folder has any usable code. To make or view a charact
     - [x] Regret Disgrace
     - [x] Perfection Motivation
   - [x] Add Starting Gear to New Character Window
-  - [ ] Configure Starting Psychic Power selection for psykers
+  - [x] Configure Starting Psychic Power selection for psykers
   - [ ] Add warning on Create if missing or incorrect data
   - [ ] Delete old tkinter labels for Race and Archetype if they are reselected
-  - [ ] Add Starting Powers to New Character Window
+  - [x] Add Starting Powers to New Character Window
 - [ ] Data
   - [ ] Add weapon Descriptions
   - [ ] Create csvs
@@ -65,7 +65,7 @@ Currently, only the client folder has any usable code. To make or view a charact
     - [ ] Configure Add Gear button
     - [ ] Separate gear into Categories?
   - [ ] Powers
-    - [ ] Configure Add Power button to actually add new power
+    - [x] Configure Add Power button to actually add new power
     - [ ] Add more filters to Add Power selection
   - [ ] Advancements
     - [ ] Add functionality to keep track of spent XP

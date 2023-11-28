@@ -136,7 +136,6 @@ class ArchetypeSelection:
                                                                                       talents=self.archetype_selection['Starting Talents'].split(', '),
                                                                                       refresh=refresh_powers_list))
         choose_powers.grid(row=4, column=0, sticky='nswe')
-        # TODO: Choose Starting Psychic Powers here
 
         psychic_frame.grid(row=5, columnspan=2, sticky='nswe')
 
@@ -238,6 +237,8 @@ class ArchetypeSelection:
 
     def starting_equipment_choices(self, choices):
         equipment_choice_frame = LabelFrame(self.details_frame, text='Equipment Choices')
+
+        # TODO: Factor starting Cybernetics choices for Heretek
 
         try:
             choices = choices.split(', ')

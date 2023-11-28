@@ -15,7 +15,7 @@ class EquipmentPage:
 
         for weapon in self.character["equipment"]["weapons"]:
             # pprint.pp(weapon)
-            # TODO: Why do Force Weapons indent?
+            # TODO: Why does the last weapon entry indent?
 
             weapon_subframe = Frame(weapons_frame)
             name = Label(weapon_subframe, text=f'Name: {weapon["Name"].title()}')
@@ -45,7 +45,7 @@ class EquipmentPage:
             special_label.grid(row=3, column=0, sticky=NW)
             special_frame.grid(row=3, column=1, columnspan=3, sticky=NW)
 
-            weapon_subframe.grid()
+            weapon_subframe.grid(sticky=NW)
 
         weapons_frame.grid(row=0, column=0, sticky=N)
 

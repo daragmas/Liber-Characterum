@@ -7,7 +7,7 @@ spent_xp = 0
 
 
 def create(root, disciplines, budget, character, talents, refresh):
-    # TODO: Fix spent_xp not being 0 when closing screen and reopening
+    global spent_xp
     spent_xp = 0
 
     data = pandas.read_json('./data/powers.json').to_dict('records')
@@ -143,6 +143,8 @@ def create(root, disciplines, budget, character, talents, refresh):
         discipline.grid(row=1, column=1, sticky=NW)
         description.grid(row=6, column=0, columnspan=3, sticky=NW)
 
+        check_budget()
+
     info_frame.grid(row=0, column=1, rowspan=25, sticky='NW')
     powers_list.bind('<Button>', lambda e: show_details(powers_list))
 
@@ -173,6 +175,16 @@ def create(root, disciplines, budget, character, talents, refresh):
 
         fill_listbox()
 
+    def check_budget():
+        global selection
+        try:
+            if int(selection['Value'].strip('xp')) > (int(budget) - spent_xp) or selection in selected_powers:
+                add_power_to_selected.config(state=DISABLED)
+            else:
+                add_power_to_selected.config(state=NORMAL)
+        except KeyError:
+            pass
+
     def add_selection():
         selected_powers.append(selection)
         # pp(selected_powers)
@@ -181,24 +193,34 @@ def create(root, disciplines, budget, character, talents, refresh):
         budget_label.configure(text=f'{int(budget - spent_xp)} / {int(budget)} xp')
 
         fill_selected_listbox()
+        remove_power_from_selected.config(state=NORMAL)
 
     def remove_selection():
         # print(selected_powers)
+        # print(selection['Name'])
         # TODO: Add check to prevent prerequisite powers being removed before subsequent power
-        selected_powers.remove(selection['Name'])
+        for x in range(len(selected_powers)):
+            # print(selected_powers[x]['Name'], selection['Name'])
+            if selected_powers[x]['Name'] == selection['Name']:
+                selected_powers.pop(x)
+                break
+
+        # selected_powers.remove(selection['Name'])
         global spent_xp
         spent_xp -= int(selection['Value'].split('x')[0])
         budget_label.configure(text=f'{int(budget - spent_xp)} / {int(budget)} xp')
 
         fill_selected_listbox()
+        if len(selected_powers) == 0:
+            remove_power_from_selected.config(state=DISABLED)
 
     # TODO: Add check to disable add button when there isn't enough xp in the budget for the selected power
     add_power_to_selected = Button(powers_window, text='Add to Selected', command=add_selection)
     add_power_to_selected.grid(row=1, column=0, sticky='NW')
 
-    # TODO: Disable remove button when selected list is empty?
     remove_power_from_selected = Button(powers_window, text='Remove from Selected', command=remove_selection)
     remove_power_from_selected.grid(row=1, column=1, sticky='NW')
+    remove_power_from_selected.config(state=DISABLED)
 
     # FINISH SELECTION BUTTON
     def finish():
