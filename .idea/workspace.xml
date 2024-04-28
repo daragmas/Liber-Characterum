@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="32939944-7e1c-457d-a583-b152b5bd2193" name="Changes" comment="Deleted old character sheets, configured Perfection Motivation for character creation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/ArchetypeSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/ArchetypeSelection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/CharacterCreationPowerSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/CharacterCreationPowerSelection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/EquipmentPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/EquipmentPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/data/archetypes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/client/data/archetypes.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/NewCharacter.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/NewCharacter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/PowersPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/PowersPage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter import messagebox
+
 import pandas
 from pprint import pprint as pp
 
@@ -42,7 +44,6 @@ def create(root, disciplines, budget, character, talents, refresh):
                 # Prerequisite Powers Filtering
                 for pow in power['Prerequisites']['Powers']:
                     selected_powers_names = [sel_pow['Name'] for sel_pow in selected_powers]
-                    # print(selected_powers_names)
                     if pow not in selected_powers_names:
                         addpowerbool = False
 
@@ -50,8 +51,6 @@ def create(root, disciplines, budget, character, talents, refresh):
                 for sel_pow in selected_powers:
                     if power['Name'] == sel_pow['Name']:
                         addpowerbool = False
-                # if power['Name'] in selected_powers:
-                #     addpowerbool = False
             except IndexError:
                 pass
 
@@ -187,7 +186,6 @@ def create(root, disciplines, budget, character, talents, refresh):
 
     def add_selection():
         selected_powers.append(selection)
-        # pp(selected_powers)
         global spent_xp
         spent_xp += int(selection['Value'].split('x')[0])
         budget_label.configure(text=f'{int(budget - spent_xp)} / {int(budget)} xp')
@@ -196,16 +194,21 @@ def create(root, disciplines, budget, character, talents, refresh):
         remove_power_from_selected.config(state=NORMAL)
 
     def remove_selection():
-        # print(selected_powers)
-        # print(selection['Name'])
-        # TODO: Add check to prevent prerequisite powers being removed before subsequent power
         for x in range(len(selected_powers)):
-            # print(selected_powers[x]['Name'], selection['Name'])
             if selected_powers[x]['Name'] == selection['Name']:
+                # Check for dependent powers
+                for other_power in selected_powers:
+                    if other_power['Name'] != selection['Name'] and selected_powers[x]['Name'] in \
+                            other_power['Prerequisites']['Powers']:
+                        # Display error message or handle dependent powers
+                        messagebox.showerror("Removal Error",
+                                             f"Cannot remove {selection['Name']} because {other_power['Name']} depends on it.")
+                        return
+
+                # If no dependent powers, proceed with removal
                 selected_powers.pop(x)
                 break
 
-        # selected_powers.remove(selection['Name'])
         global spent_xp
         spent_xp -= int(selection['Value'].split('x')[0])
         budget_label.configure(text=f'{int(budget - spent_xp)} / {int(budget)} xp')
@@ -214,7 +217,6 @@ def create(root, disciplines, budget, character, talents, refresh):
         if len(selected_powers) == 0:
             remove_power_from_selected.config(state=DISABLED)
 
-    # TODO: Add check to disable add button when there isn't enough xp in the budget for the selected power
     add_power_to_selected = Button(powers_window, text='Add to Selected', command=add_selection)
     add_power_to_selected.grid(row=1, column=0, sticky='NW')
 
@@ -230,9 +232,3 @@ def create(root, disciplines, budget, character, talents, refresh):
 
     finish_selection_button = Button(powers_window, text='Finish Selection', command=finish)
     finish_selection_button.grid(row=2, column=2, sticky='NW')
-
-    # fill_listbox(powers_list, power_filter=power_filter, character=character)
-    #
-    # pp(disciplines)
-    # pp(budget)
-    # pp(character)

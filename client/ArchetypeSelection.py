@@ -130,10 +130,15 @@ class ArchetypeSelection:
         choose_powers = Button(psychic_frame,
                                text="Choose Powers",
                                command=lambda: CharacterCreationPowerSelection.create(root=self.archetype_select_window,
-                                                                                      disciplines=self.archetype_selection['Starting Powers Disciplines'],
-                                                                                      budget=self.archetype_selection['Starting Powers Budget'],
+                                                                                      disciplines=
+                                                                                      self.archetype_selection[
+                                                                                          'Starting Powers Disciplines'],
+                                                                                      budget=self.archetype_selection[
+                                                                                          'Starting Powers Budget'],
                                                                                       character=self.new_character,
-                                                                                      talents=self.archetype_selection['Starting Talents'].split(', '),
+                                                                                      talents=self.archetype_selection[
+                                                                                          'Starting Talents'].split(
+                                                                                          ', '),
                                                                                       refresh=refresh_powers_list))
         choose_powers.grid(row=4, column=0, sticky='nswe')
 
@@ -180,7 +185,8 @@ class ArchetypeSelection:
             else:
                 if '(' in decision:
                     decision = decision.split(' (')
-                    self.equipment_decisions[index] = {'weapons': {'name': decision[0], 'quality': decision[1].strip(')')}}
+                    self.equipment_decisions[index] = {
+                        'weapons': {'name': decision[0], 'quality': decision[1].strip(')')}}
                 elif 'Armour' in decision:
                     self.equipment_decisions[index] = {'armors': decision}
                 else:
@@ -196,8 +202,9 @@ class ArchetypeSelection:
                                            value=f'{option} ({choice_entry.get()})',
                                            variable=choice_var,
                                            command=make_choice)
-                choice_entry.bind('<KeyRelease>', lambda e: option_radio.configure(value=f'{option} ({choice_entry.get()})'))
-                any_or_frame.grid(row=index, column=ind+1, sticky=W)
+                choice_entry.bind('<KeyRelease>',
+                                  lambda e: option_radio.configure(value=f'{option} ({choice_entry.get()})'))
+                any_or_frame.grid(row=index, column=ind + 1, sticky=W)
                 option_radio.grid(row=index, column=ind, sticky=W)
             else:
                 option_radio = Radiobutton(frame, text=option, value=option, variable=choice_var, command=make_choice)
@@ -326,6 +333,8 @@ class ArchetypeSelection:
         except AttributeError:
             pass
 
+        # TODO: Add default psyker information for non-psychic archetypes.
+
         archetype = {
             'archetype': self.archetype_selection['Name'],
             'alignment': self.archetype_selection['Alignment'],
@@ -393,4 +402,5 @@ class ArchetypeSelection:
         self.archetypes_list.grid(row=0, column=0, sticky='nw')
         select_button = Button(self.archetype_select_window, text="Choose Archetype", command=self.choose_archetype)
         select_button.grid(row=2, column=0, sticky='n', columnspan=2)
-        Button(self.archetype_select_window, text='Show skill decisions', command=lambda: print(self.skill_decisions)).grid()
+        Button(self.archetype_select_window, text='Show skill decisions',
+               command=lambda: print(self.skill_decisions)).grid()

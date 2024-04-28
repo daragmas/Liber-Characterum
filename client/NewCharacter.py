@@ -55,35 +55,38 @@ class NewCharacter:
     def set_character_race_attributes(self, attributes):
         for key in attributes:
             self.new_character = {**self.new_character, key: attributes[key]}
-        # TODO: Add try statement that checks for a racelabel, and deletes it if it is there
-        # try:
-        #     self.new_character_window.nametowidget('.!toplevel.raceLabel').config(bg='black')
-        #     print('racelabel does exist')
-        # except KeyError:
-        #     print('Racelabel does not exist yet')
-        #     # pp(self.new_character_window.winfo_children())
 
+        # Check if the racelabel widget exists and delete it if it does
         try:
-            racelabel = Label(self.new_character_window,
-                  text=f'{self.new_character["race"]}',
-                  name='raceLabel')
-            racelabel.grid(row=1, column=1, sticky=NW)
-            # print(str(racelabel))
-
+            self.new_character_window.nametowidget('.!toplevel.raceLabel').destroy()
+            print('Race label deleted')
         except KeyError:
-            print("Race: ", self.new_character['race'])
+            print('Race label does not exist yet')
+
+        # Create a new racelabel widget
+        racelabel = Label(self.new_character_window,
+                          text=f'{self.new_character["race"]}',
+                          name='raceLabel')
+        racelabel.grid(row=1, column=1, sticky=NW)
+
+        # Check if the archetype key exists and if it's not empty
         try:
             if self.new_character["archetype"] != "":
                 self.new_character['archetype'] = ""
                 self.archetype_selection()
         except KeyError:
             pass
+
+        # Set the race characteristic modifier
         if self.new_character['race'] == 'Mortal':
             self.characteristics_modifiers['race'] = 25
         elif self.new_character['race'] == 'Chaos Space Marine':
             self.characteristics_modifiers['race'] = 30
 
+        # Generate characteristics
         self.characteristics_generation.create()
+
+        # Display stats
         self.display_stats()
 
     def display_stats(self):
@@ -168,13 +171,9 @@ class NewCharacter:
             print("characteristic", characteristic, "rating", rating)
 
     def set_character_archetype(self, archetype, characteristic_mods):
-        self.new_character = merge(self.new_character, archetype, strategy=Strategy.ADDITIVE)
+        # TODO: Previously selected powers are not being removed when reselecting archetype
 
-        # try:
-        #     for widget in self.new_character_window.winfo_children():
-        #         print(widget)
-        # except KeyError:
-        #     pass
+        self.new_character = merge(self.new_character, archetype, strategy=Strategy.ADDITIVE)
 
         try:
             archetypelabel = Label(self.new_character_window,
