@@ -32,12 +32,12 @@ class AddEquipment:
         for i in self.item_list.curselection():
             Label(details_window, text=self.dict[i]["Name"]).grid(row=0, column=0)
             Label(details_window, text=f'Class: {self.dict[i]["Class"].title()}').grid(row=1, column=0)
-            Label(details_window, text=f'DAM: {self.dict[i]["Dam"]} {self.dict[i]["Dam Type"]}').grid(row=1, column=1)
-            Label(details_window, text=f'PEN: {self.dict[i]["Pen"]}').grid(row=1, column=2)
+            Label(details_window, text=f'DAM: {self.dict[i]["Damage"]} {self.dict[i]["Damage Type"]}').grid(row=1, column=1)
+            Label(details_window, text=f'PEN: {self.dict[i]["Penetration"]}').grid(row=1, column=2)
             Label(details_window, text=f'Range: {self.dict[i]["Range"]}').grid(row=2, column=0)
             Label(details_window, text=f'RoF: {self.dict[i]["RoF"]}').grid(row=2, column=1)
             Label(details_window, text=f'Clip: {self.dict[i]["Clip"]}').grid(row=2, column=2)
-            Label(details_window, text=f'Rld: {self.dict[i]["Rld"]}').grid(row=2, column=3)
+            Label(details_window, text=f'Rld: {self.dict[i]["Reload"]}').grid(row=2, column=3)
 
             special_frame = Frame(details_window)
             Label(details_window, text="Special Rules: ").grid(row=3, column=0)

@@ -160,6 +160,9 @@ class NewCharacter:
         except KeyError:
             print('Not a psyker')
 
+        except AttributeError:
+            print('Not a psyker')
+
         psychic_frame.grid(row=1, column=2, sticky=NW)
 
         self.display_stats_window.grid(row=0, column=3, rowspan=20)

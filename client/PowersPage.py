@@ -30,8 +30,12 @@ class PowersPage:
         psy_rating_frame.grid(row=0, column=0)
 
         psyker_type = LabelFrame(self.root, text="Type")
-        type_label = Label(psyker_type, text=self.character['psychic']["class"].title())
-        type_label.pack()
+        try:
+            type_label = Label(psyker_type, text=self.character['psychic']["class"].title())
+            type_label.pack()
+        except AttributeError:
+            type_label = Label(psyker_type, text="None")
+            type_label.pack()
         psyker_type.grid(row=0, column=1)
 
         psychic_strength_table = LabelFrame(self.root, text='Psychic Strength')
@@ -125,7 +129,13 @@ class PowersPage:
             self.create_list_item(root=powers_frame, item=power)
 
         add_power = Button(powers_frame, text="Add Power", command=self.add_power)
+
+        if self.character["psychic"]["rating"] == 0:
+            print("Not a psyker")
+            add_power.config(state=DISABLED)
+
         add_power.grid()
+
         self.bottom_box.grid(row=1, column=0, columnspan=3)
         powers_frame.grid(row=1, column=0, sticky=N)
 
@@ -135,4 +145,6 @@ class PowersPage:
         try:
             self.render_selected(item=self.character['psychic']['powers'][0])
         except KeyError:
+            pass
+        except IndexError:
             pass
