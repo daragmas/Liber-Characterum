@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter import ttk
 import pandas
 import CharacterCreationPowerSelection
+import AddCybernetics
 
 
 class ArchetypeSelection:
@@ -212,6 +213,23 @@ class ArchetypeSelection:
             # option_radio = Radiobutton(frame, text=option, value=option, variable=choice_var, command=make_choice)
             # option_radio.grid(row=index, column=ind, sticky=W)
 
+    def cybernetic_choice(self, frame, index):
+        # TODO: Add Cybernetic choice to list of equipment choices
+        def chosen_cybernetic(choice):
+            try:
+                cybernetic_label = Label(frame, text=choice["Name"])
+            except:
+                cybernetic_label = Label(frame, text='Make a selection')
+            cybernetic_label.grid(row=index, column=1, sticky=NW)
+
+        add_cybernetic = Button(frame,
+                                text="Choose Cybernetic",
+                                command=lambda: AddCybernetics.create(self.archetype_select_window,
+                                                                      self.new_character,
+                                                                      chosen_cybernetic))
+        add_cybernetic.grid(row=index, column=0, sticky=W)
+
+
     def starting_skill_choices(self, choices):
         skill_choice_frame = LabelFrame(self.details_frame, text='Skill Choices')
         try:
@@ -254,6 +272,8 @@ class ArchetypeSelection:
                 if ' or ' in choice:
                     choice_var = StringVar()
                     self.option_choice(choice, equipment_choice_frame, index, 'equipment', choice_var)
+                elif 'Cybernetic' in choice:
+                    self.cybernetic_choice(equipment_choice_frame, index)
                 else:
                     self.any_choice(choice, equipment_choice_frame, index, 'equipment')
         except AttributeError:
